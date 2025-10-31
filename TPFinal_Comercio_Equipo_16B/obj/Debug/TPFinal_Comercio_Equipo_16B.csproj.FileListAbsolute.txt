@@ -1,0 +1,232 @@
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.AppContext.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Collections.Immutable.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Console.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Globalization.Calendars.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Http.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Sockets.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Reflection.Metadata.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.ValueTuple.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.Web.Infrastructure.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\WebGrease.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\System.Web.Optimization.resources.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.AssemblyReference.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.CoreCompileInputs.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_.3A419BB3.Up2Date
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll.config
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe.config
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.rsp
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe.config
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.rsp
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.AppContext.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Console.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Http.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.ValueTuple.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe.config
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.rsp
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\WebGrease.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.xml
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.xml
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.AssemblyReference.cache
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.CoreCompileInputs.cache
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_.3A419BB3.Up2Date
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Negocio.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Negocio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\TPFinal_Comercio_Equipo_16B.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csc.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\csi.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.AppContext.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Collections.Immutable.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Console.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Globalization.Calendars.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Http.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Net.Sockets.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Reflection.Metadata.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.ValueTuple.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\vbc.rsp
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\roslyn\VBCSCompiler.exe.config
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.Web.Infrastructure.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Negocio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\WebGrease.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Dominio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Negocio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\System.Web.Optimization.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Newtonsoft.Json.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Antlr3.Runtime.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\System.Web.Optimization.resources.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.AssemblyReference.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.csproj.CoreCompileInputs.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_.3A419BB3.Up2Date
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\TPFinal_Comercio_Equipo_16B\obj\Debug\TPFinal_Comercio_Equipo_16B.pdb

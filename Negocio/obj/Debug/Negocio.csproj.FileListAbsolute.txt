@@ -1,0 +1,18 @@
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Negocio.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Dominio.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Dominio.pdb
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.dll
+C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Negocio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Negocio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Dominio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\bin\Debug\Dominio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.csproj.Up2Date
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Negocio\obj\Debug\Negocio.pdb
