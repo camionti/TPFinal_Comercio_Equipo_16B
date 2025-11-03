@@ -17,7 +17,7 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void btnSistema_Click(object sender, EventArgs e)
         {
-            Response.Redirect("EleccionPerfil.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }

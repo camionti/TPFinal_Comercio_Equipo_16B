@@ -33,7 +33,7 @@ namespace Negocio
                     venta.Fecha = (DateTime)datos.Lector["Fecha"];
                     venta.NumeroFactura = (string)datos.Lector["NumeroFactura"];
 
-                  
+
                     venta.Cliente = new Cliente
                     {
                         IdCliente = (int)datos.Lector["IdCliente"],

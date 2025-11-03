@@ -119,12 +119,10 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="EleccionPerfil.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="LoginAdministrador.aspx" />
-    <Content Include="LoginVendedor.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="RegistroCompras.aspx" />
@@ -215,13 +213,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EleccionPerfil.aspx.cs">
-      <DependentUpon>EleccionPerfil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EleccionPerfil.aspx.designer.cs">
-      <DependentUpon>EleccionPerfil.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -232,19 +223,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LoginAdministrador.aspx.cs">
-      <DependentUpon>LoginAdministrador.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LoginAdministrador.aspx.designer.cs">
-      <DependentUpon>LoginAdministrador.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginVendedor.aspx.cs">
-      <DependentUpon>LoginVendedor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginVendedor.aspx.designer.cs">
-      <DependentUpon>LoginVendedor.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

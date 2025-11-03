@@ -10,3 +10,9 @@ C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.csp
 C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.dll
 C:\Users\Renzo\Desktop\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\bin\Debug\Dominio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\bin\Debug\Dominio.pdb
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.dll
+D:\Desktop\PROGRAMACION III\TPFinal_Comercio_Equipo_16B\Dominio\obj\Debug\Dominio.pdb
