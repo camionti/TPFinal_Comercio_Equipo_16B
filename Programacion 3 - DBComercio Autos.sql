@@ -1,4 +1,4 @@
-CREATE DATABASE ComercioDB;
+/*CREATE DATABASE ComercioDB;
 GO
 USE ComercioDB;
 GO
@@ -98,14 +98,17 @@ CREATE TABLE Imagenes(
     FOREIGN KEY (IdProducto) REFERENCES Productos(IdProducto)
 )
 
-
+*/
 
 
 -- =========================
 -- USUARIOS
 -- =========================
+USE ComercioDB; GO
 INSERT INTO Usuarios (NombreUsuario, Contrasenia, Rol) VALUES
-('admin',    'admin', 'Administrador'),
+('Camila',    'Clave', 'Administrador')
+
+
 
 -- =========================
 -- CLIENTES

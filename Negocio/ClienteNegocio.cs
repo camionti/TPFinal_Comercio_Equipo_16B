@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;      
+using Dominio;
 
 namespace Negocio
 {
@@ -74,6 +74,37 @@ namespace Negocio
                 datos.setearParametro("@Email", cliente.Email);
                 datos.setearParametro("@IdCliente", cliente.IdCliente);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public Cliente ObtenerClientePorID(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Cliente aux = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT IdCliente, Nombre, Telefono, Email FROM Clientes WHERE IdCliente = @IdCliente");
+                datos.setearParametro("@IdCliente", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    aux = new Cliente();
+                    aux.IdCliente = (int)datos.Lector["IdCliente"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Telefono = (string)datos.Lector["Telefono"];
+                    aux.Email = (string)datos.Lector["Email"];
+                }
+
+                return aux;
             }
             catch (Exception ex)
             {
