@@ -68,7 +68,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Clientes SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email WHERE IdProveedor = @IdProveedor");
+                datos.setearConsulta("UPDATE Proveedores SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email WHERE IdProveedor = @IdProveedor");
                 datos.setearParametro("@Nombre", proveedor.Nombre);
                 datos.setearParametro("@Telefono", proveedor.Telefono);
                 datos.setearParametro("@Email", proveedor.Email);
@@ -85,13 +85,45 @@ namespace Negocio
             }
         }
 
+        public Proveedor ObtenerProveedorPorID(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Proveedor aux = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT IdProveedor, Nombre, Telefono, Email FROM Proveedores WHERE IdProveedor = @IdProveedor");
+                datos.setearParametro("@IdProveedor", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    aux = new Proveedor();
+                    aux.IdProveedor = (int)datos.Lector["IdProveedor"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Telefono = (string)datos.Lector["Telefono"];
+                    aux.Email = (string)datos.Lector["Email"];
+                }
+
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void Eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM Proveedor WHERE IdProveedor = @IdProveedor");
-                datos.setearParametro("@IdProveedor", id);
+                datos.setearConsulta("DELETE FROM Proveedores WHERE IdProveedor = @id");
+                datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
