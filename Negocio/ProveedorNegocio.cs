@@ -128,7 +128,10 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("REFERENCE constraint"))
+                    throw new Exception("No se puede eliminar el proveedor porque tiene productos asociados");
+                else
+                    throw;
             }
             finally
             {
