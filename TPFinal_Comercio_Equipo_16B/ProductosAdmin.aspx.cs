@@ -74,8 +74,8 @@ namespace TPFinal_Comercio_Equipo_16B
                     try
                     {
                         ProductosNegocio conexionProductos = new ProductosNegocio();
-                        //conexionProductos.eliminar(id);
-                        //CargarLista();
+                        conexionProductos.eliminar(id);
+                        CargarLista();
                         break;
 
                     }
