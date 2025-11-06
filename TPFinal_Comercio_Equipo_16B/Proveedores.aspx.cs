@@ -99,18 +99,20 @@ namespace TPFinal_Comercio_Equipo_16B
         //ELIMINA PROVEEDOR
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (gvProveedores.SelectedDataKey != null)
+            ProveedorNegocio negocio = new ProveedorNegocio();
+
+            try
             {
-                int IdProveedor = (int)gvProveedores.SelectedDataKey.Value;
+                int id = Convert.ToInt32(gvProveedores.SelectedDataKey.Value);
+                negocio.Eliminar(id);
 
-                ProveedorNegocio negocio = new ProveedorNegocio();
-                negocio.Eliminar(IdProveedor);
-
+                // Recarga la lista
                 cargarProveedores();
             }
-            else
+            catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Seleccione un proveedor primero');", true);
+                lblError.Text = ex.Message;
+                lblError.Visible = true;
             }
         }
 
