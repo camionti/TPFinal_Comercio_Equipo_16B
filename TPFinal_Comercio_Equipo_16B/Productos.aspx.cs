@@ -15,6 +15,14 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                CargarLista();
+            }
+        }
+
+        private void CargarLista()
+        {
             try
             {
                 ProductosNegocio conexionProducto = new ProductosNegocio();
@@ -22,8 +30,8 @@ namespace TPFinal_Comercio_Equipo_16B
 
                 if (!IsPostBack)
                 {
-                    repProductos.DataSource = listaProducto;
-                    repProductos.DataBind();
+                    gvProductos.DataSource = listaProducto;
+                    gvProductos.DataBind();
                 }
             }
             catch (Exception)

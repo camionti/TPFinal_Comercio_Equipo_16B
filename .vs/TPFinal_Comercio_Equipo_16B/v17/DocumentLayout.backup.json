@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Desktop\\PROGRAMACION III\\TPFinal_Comercio_Equipo_16B\\",
+  "WorkspaceRootPath": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|D:\\Desktop\\PROGRAMACION III\\TPFinal_Comercio_Equipo_16B\\negocio\\proveedornegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|solutionrelative:negocio\\proveedornegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -61,6 +62,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|D:\\Desktop\\PROGRAMACION III\\TPFinal_Comercio_Equipo_16B\\negocio\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|solutionrelative:negocio\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -70,7 +79,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 3,
+=======
+          "SelectedChildIndex": 1,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,6 +91,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 2,
               "Title": "Proveedores.aspx.cs",
               "DocumentMoniker": "D:\\Desktop\\PROGRAMACION III\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Proveedores.aspx.cs",
@@ -257,6 +271,31 @@
               "ViewState": "AgIAADEAAAAAAAAAAAAmwEwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T17:10:40.043Z"
+=======
+              "DocumentIndex": 0,
+              "Title": "ProductoAgregarModif.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAcwG0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T23:47:57.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductoAgregarModif.aspx",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-04T22:17:21.17Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             }
           ]
         }

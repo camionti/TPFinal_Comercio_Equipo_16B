@@ -123,7 +123,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="ProductoAgregarModif.aspx" />
     <Content Include="Productos.aspx" />
+    <Content Include="ProductosAdmin.aspx" />
+    <Content Include="ProductoVer.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="RegistroCompras.aspx" />
     <Content Include="RegistroVentas.aspx" />
@@ -237,12 +240,33 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="ProductoAgregarModif.aspx.cs">
+      <DependentUpon>ProductoAgregarModif.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoAgregarModif.aspx.designer.cs">
+      <DependentUpon>ProductoAgregarModif.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Productos.aspx.designer.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductosAdmin.aspx.cs">
+      <DependentUpon>ProductosAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductosAdmin.aspx.designer.cs">
+      <DependentUpon>ProductosAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoVer.aspx.cs">
+      <DependentUpon>ProductoVer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoVer.aspx.designer.cs">
+      <DependentUpon>ProductoVer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores.aspx.cs">

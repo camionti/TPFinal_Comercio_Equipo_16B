@@ -11,8 +11,26 @@ namespace TPFinal_Comercio_Equipo_16B
 {
 
 
-    public partial class Productos
+    public partial class ProductosAdmin
     {
+
+        /// <summary>
+        /// Control adminVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink adminVolver;
+
+        /// <summary>
+        /// Control adminAgregarProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink adminAgregarProducto;
 
         /// <summary>
         /// Control gvProductos.

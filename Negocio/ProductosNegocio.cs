@@ -66,23 +66,24 @@ namespace Negocio
 
         }
 
-        public List<Producto> buscar(string nombre = null, int? IdMarca = null, int? IdCategoria = null, decimal? precioMinimo = null, decimal? precioMaximo = null)
+        public List<Producto> buscar(int IdProducto, string nombre = null, int? IdMarca = null, int? IdCategoria = null, decimal? precioMinimo = null, decimal? precioMaximo = null)
         {
 
             List<Producto> productos = new List<Producto>();
 
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT * FROM Productos WHERE 1=1";
-
+            string consulta = "SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.Precio, P.StockActual, P.StockMinimo, P.PorcentajeGanancia," +
+                                     " C.Descripcion Categoria, M.Nombre Marca" +
+                                     " From Productos P" +
+                                     " LEFT JOIN Categorias C ON C.IdCategoria = P.IdCategoria" +
+                                     " LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca" +
+                                     " WHERE 1=1";
             try
             {
-                datos.setearConsulta("SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, C.Descripcion Categoria, M.Nombre Marca " +
-                                     "From Productos P" +
-                                     "LEFT JOIN Categorias C ON C.IdCategoria = P.IdCategoria " +
-                                     "LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca " +
-                                     "WHERE 1=1");
 
+                if (IdProducto != null)
+                    consulta += " AND P.IdProducto = @IdProducto";
                 if (!string.IsNullOrEmpty(nombre))
                     consulta += " AND Nombre LIKE @nombre";
                 if (IdMarca != null)
@@ -96,6 +97,8 @@ namespace Negocio
 
                 datos.setearConsulta(consulta);
 
+                if (IdProducto != null)
+                    datos.setearParametro("@IdProducto", IdProducto);
                 if (!string.IsNullOrEmpty(nombre))
                     datos.setearParametro("@Nombre", "%" + nombre + "%");
                 if (IdMarca != null)
@@ -111,16 +114,20 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    int id = (int)datos.Lector["Id"];
+                    int id = (int)datos.Lector["IdProducto"];
                     Producto aux = productos.Find(a => a.IdProducto == id);
 
                     if (aux == null)
                     {
                         aux = new Producto();
-                        aux.IdProducto = id;
+                        aux.IdProducto = (int)datos.Lector["IdProducto"]; ;
                         aux.Nombre = (string)datos.Lector["Nombre"];
-
                         aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.StockActual = (int)datos.Lector["StockActual"];
+                        aux.StockMinimo = (int)datos.Lector["StockMinimo"];
+                        aux.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
+                        aux.Precio = (decimal)datos.Lector["Precio"];
+
                         aux.Marca = new Dominio.Marca { Nombre = (string)datos.Lector["Marca"] };
                         aux.Categoria = new Categoria { Descripcion = (string)datos.Lector["Categoria"] };
 
@@ -133,10 +140,10 @@ namespace Negocio
 
                 return productos;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
             }
             finally
             {
@@ -180,8 +187,9 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio");
+                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio WHERE IdProducto = @IdProducto");
 
+                datos.setearParametro("@IdProducto", producto.IdProducto);
                 datos.setearParametro("@Nombre", producto.Nombre);
                 datos.setearParametro("@IdMarca", producto.Marca.IdMarca);
                 datos.setearParametro("@IdCategoria", producto.Categoria.IdCategoria);

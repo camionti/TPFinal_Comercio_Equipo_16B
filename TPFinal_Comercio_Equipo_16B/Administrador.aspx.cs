@@ -25,7 +25,7 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void btnProductos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Productos.aspx");
+            Response.RedirectToRoute("ProductosAdmin");
         }
 
         protected void btnVentas_Click(object sender, EventArgs e)
