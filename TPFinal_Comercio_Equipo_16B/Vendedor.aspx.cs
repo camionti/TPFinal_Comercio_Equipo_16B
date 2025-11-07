@@ -15,7 +15,15 @@ namespace TPFinal_Comercio_Equipo_16B
         }
         protected void btnRegiVenta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("registroVentasVendedor.aspx");
+            Response.RedirectToRoute("VendedorRegistroVentas", null);
         }
+
+        protected void btnProductos_Click(object sender, EventArgs e)
+        {
+            Response.RedirectToRoute("ProductosVendedor", null);
+
+        }
+
+
     }
 }

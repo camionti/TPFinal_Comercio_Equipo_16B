@@ -20,8 +20,8 @@ namespace TPFinal_Comercio_Equipo_16B
 
             if (!int.TryParse(idStr, out int id))
             {
-                Response.Redirect("~/admin/productos");
-                return;
+                //Si no puede parsear el ID vuelve a la pagina anterior del historial
+                ScriptManager.RegisterStartupScript(this, GetType(), "historyBack", "history.back();", true);
             }
 
             // 2) Buscar producto

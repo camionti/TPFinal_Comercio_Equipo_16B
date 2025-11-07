@@ -16,37 +16,80 @@ namespace TPFinal_Comercio_Equipo_16B
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            RegisterRoutes(RouteTable.Routes);
 
         }
 
-
-
-        private static void RegisterRoutes(RouteCollection routes)
+        public static class RouteConfig
         {
-            routes.MapPageRoute(
-                "ProductosAdmin", //nombre interno de la ruta
-                "admin/productos", //URL publica del navegador
-                "~/ProductosAdmin.aspx" //webform al que apunta
-            );
+            public static void RegisterRoutes(RouteCollection routes)
+            {
 
-            routes.MapPageRoute(
-                "ProductosAdmin_Editar",
-                "admin/productos/editar/{id}",
-                "~/ProductoAgregarModif.aspx"
-            );
+                routes.Add("IgnoreAdminFile", new Route("Administrador.aspx", new StopRoutingHandler()));
+                // ADMIN
+                routes.MapPageRoute(
+                    "ProductosAdmin_Editar",
+                    "admin/productos/editar/{id}",
+                    "~/ProductoAgregarModif.aspx",
+                    false, null,
+                    new RouteValueDictionary { { "id", @"^\d+$" } }
+                );
 
-            routes.MapPageRoute(
-                "ProductosAdmin_Agregar",
-                "admin/productos/agregar",
-                "~/ProductoAgregarModif.aspx"
-            );
+                routes.MapPageRoute(
+                    "ProductosAdmin_Agregar",
+                    "admin/productos/agregar",
+                    "~/ProductoAgregarModif.aspx"
+                );
 
-            routes.MapPageRoute(
-                "ProductosAdmin_Ver",
-                "admin/productos/{id}",
-                "~/ProductoVer.aspx"
-            );
+                routes.MapPageRoute(
+                    "ProductosAdmin_Ver",
+                    "admin/productos/{id}",
+                    "~/ProductoVer.aspx",
+                    false, null,
+                    new RouteValueDictionary { { "id", @"^\d+$" } }
+                );
+
+                routes.MapPageRoute(
+                    "ProductosAdmin",
+                    "admin/productos",
+                    "~/ProductosAdmin.aspx"
+                );
+
+                routes.MapPageRoute(
+                    "Administrador.aspx",
+                    "Administrador",
+                    "~/Administrador.aspx"
+                );
+
+                //Vendedor
+
+                routes.MapPageRoute(
+                    "Productos_Ver",
+                    "vendedor/productos/{id}",
+                    "~/ProductoVer.aspx",
+                    false, null,
+                    new RouteValueDictionary { { "id", @"^\d+$" } }
+                );
+
+                routes.MapPageRoute(
+                    "ProductosVendedor",
+                    "vendedor/productos",
+                    "~/Productos.aspx"
+                );
+
+                routes.MapPageRoute(
+                    "VendedorRegistroVentas",
+                    "vendedor/ventas",
+                    "~/registroVentasVendedor.aspx"
+                );
+
+                routes.MapPageRoute(
+                    "Vendedor",
+                    "vendedor",
+                    "~/Vendedor.aspx"
+                );
+
+                
+            }
         }
     }
 }

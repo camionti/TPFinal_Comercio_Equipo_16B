@@ -11,7 +11,7 @@
         <asp:HyperLink 
             runat="server" 
             CssClass="" 
-            NavigateUrl="<%$ RouteUrl:RouteName=ProductosAdmin %>">
+            NavigateUrl="javascript:history.back();">
             Volver a productos
         </asp:HyperLink>
 

@@ -119,13 +119,10 @@ namespace TPFinal_Comercio_Equipo_16B
                     Response.RedirectToRoute($"ProductosAdmin_Ver", new { id = id });
                     break;
                 case "Agregar":
-
-                    
                     Response.RedirectToRoute($"ProductosAdmin_Agregar");
                     break;
 
                 case "Editar":
-
                     Response.RedirectToRoute("ProductosAdmin_Editar", new { id = id });
                     break;
 

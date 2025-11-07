@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productosadmin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\tpfinal_comercio_equipo_16b\\vendedor.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\vendedor.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\tpfinal_comercio_equipo_16b\\productosadmin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productosadmin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\negocio\\productosnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{132B13BC-A008-42D0-A15E-06621F6B9A32}|Negocio\\Negocio.csproj|solutionrelative:negocio\\productosnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productoagregarmodif.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productosadmin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\tpfinal_comercio_equipo_16b\\productosadmin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productosadmin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\tpfinal_comercio_equipo_16b\\vendedor.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\vendedor.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productover.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productover.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|c:\\users\\renzo\\desktop\\tpfinal_comercio_equipo_16b\\tpfinal_comercio_equipo_16b\\productover.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{235C8172-F48C-4273-8323-032054F6CA5B}|TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B.csproj|solutionrelative:tpfinal_comercio_equipo_16b\\productover.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,54 +46,106 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductosNegocio.cs",
-              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\Negocio\\ProductosNegocio.cs",
-              "RelativeDocumentMoniker": "Negocio\\ProductosNegocio.cs",
-              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\Negocio\\ProductosNegocio.cs",
-              "RelativeToolTip": "Negocio\\ProductosNegocio.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAhwJAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T06:26:11.395Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductoAgregarModif.aspx",
-              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
-              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
-              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
-              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductoAgregarModif.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-07T06:24:32.692Z",
+              "DocumentIndex": 0,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\Login.aspx.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Login.aspx.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\Login.aspx.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T21:12:08.318Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductosAdmin.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
-              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
-              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
-              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwE8AAABQAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Login.aspx",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\Login.aspx",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Login.aspx",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-07T21:12:04.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductoVer.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T06:23:18.054Z",
+              "WhenOpened": "2025-11-07T20:48:43.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductoVer.aspx",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductoVer.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-07T20:48:26.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Vendedor.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Vendedor.aspx.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\Vendedor.aspx.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Vendedor.aspx.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\Vendedor.aspx.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvxoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T20:08:44.74Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "ProductosAdmin.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAIwHcAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T19:42:15.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Vendedor.aspx",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Vendedor.aspx",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\Vendedor.aspx",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Vendedor.aspx",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\Vendedor.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-07T20:08:42.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ProductosAdmin.aspx",
               "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx",
               "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\ProductosAdmin.aspx",
@@ -82,6 +154,19 @@
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2025-11-07T04:48:49.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Global.asax.cs",
+              "RelativeDocumentMoniker": "TPFinal_Comercio_Equipo_16B\\Global.asax.cs",
+              "ToolTip": "C:\\Users\\Renzo\\Desktop\\TPFinal_Comercio_Equipo_16B\\TPFinal_Comercio_Equipo_16B\\Global.asax.cs",
+              "RelativeToolTip": "TPFinal_Comercio_Equipo_16B\\Global.asax.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAkwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T19:52:33.267Z",
               "EditorCaption": ""
             }
           ]
