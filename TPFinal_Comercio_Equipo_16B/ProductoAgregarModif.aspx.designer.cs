@@ -123,6 +123,15 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.Label lblMensajeModal;
 
         /// <summary>
+        /// Control modalBody.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBody;
+
+        /// <summary>
         /// Control lblMensajeError.
         /// </summary>
         /// <remarks>
@@ -132,13 +141,13 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.Label lblMensajeError;
 
         /// <summary>
-        /// Control btnAceptarModal.
+        /// Control btnVolverAlPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnAceptarModal;
+        protected global::System.Web.UI.WebControls.Button btnVolverAlPanel;
 
         /// <summary>
         /// Control btnCerrarModal.

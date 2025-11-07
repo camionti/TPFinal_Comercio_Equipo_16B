@@ -66,7 +66,7 @@ namespace Negocio
 
         }
 
-        public List<Producto> buscar(int IdProducto, string nombre = null, int? IdMarca = null, int? IdCategoria = null, decimal? precioMinimo = null, decimal? precioMaximo = null)
+        public List<Producto> buscar(int IdProducto = 0, string nombreMarcaCategoria = null, decimal? precioMinimo = null, decimal? precioMaximo = null)
         {
 
             List<Producto> productos = new List<Producto>();
@@ -82,14 +82,10 @@ namespace Negocio
             try
             {
 
-                if (IdProducto != null)
+                if (IdProducto > 0)
                     consulta += " AND P.IdProducto = @IdProducto";
-                if (!string.IsNullOrEmpty(nombre))
-                    consulta += " AND Nombre LIKE @nombre";
-                if (IdMarca != null)
-                    consulta += " AND IdMarca = @IdMarca";
-                if (IdCategoria != null)
-                    consulta += " AND IdCategoria = @IdCategoria";
+                if (!string.IsNullOrWhiteSpace(nombreMarcaCategoria))
+                    consulta += " AND (P.Nombre LIKE @nombreMarcaCategoria OR C.Descripcion LIKE @nombreMarcaCategoria OR M.Nombre LIKE @nombreMarcaCategoria)";
                 if (precioMinimo != null)
                     consulta += " AND Precio >= @precioMinimo";
                 if (precioMaximo != null)
@@ -97,14 +93,10 @@ namespace Negocio
 
                 datos.setearConsulta(consulta);
 
-                if (IdProducto != null)
+                if (IdProducto > 0)
                     datos.setearParametro("@IdProducto", IdProducto);
-                if (!string.IsNullOrEmpty(nombre))
-                    datos.setearParametro("@Nombre", "%" + nombre + "%");
-                if (IdMarca != null)
-                    datos.setearParametro("@IdMarca", IdMarca);
-                if (IdCategoria != null)
-                    datos.setearParametro("@IdCategoria", IdCategoria);
+                if (!string.IsNullOrWhiteSpace(nombreMarcaCategoria))
+                    datos.setearParametro("@nombreMarcaCategoria", "%" + nombreMarcaCategoria + "%");
                 if (precioMinimo != null)
                     datos.setearParametro("@precioMinimo", precioMinimo);
                 if (precioMaximo != null)

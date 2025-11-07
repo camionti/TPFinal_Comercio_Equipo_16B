@@ -68,24 +68,26 @@
     <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header text-white" id="modalHeader" runat="server">
+          <div class="modal-header text-white mx-auto" id="modalHeader" runat="server">
             <asp:Label ID="lblMensajeModal" runat="server" Text=""></asp:Label>
           </div>
-            <div class="modal-body">
+            <div ID="modalBody" class="modal-body "  runat="server" >
                 <asp:Label ID="lblMensajeError" runat="server" Text="" EnableViewState="false" />
             </div>
 
           <div class="modal-footer">
             <!-- Botón para éxito -->
-            <button type="button" class="btn btn-primary m-auto" id="btnAceptarModal" runat="server">
-                Aceptar
-            </button>
+            <asp:Button ID="btnVolverAlPanel" runat="server" 
+                Text="Volver al panel" 
+                CssClass="btn btn-outline-primary mx-auto" 
+                OnClick="btnVolverAlPanel_Click" 
+                CausesValidation="false" />
 
             <!-- Botón para error -->
               <button id="btnCerrarModal"
                     runat="server"
                     type="button"
-                    class="btn btn-secondary m-auto"
+                    class="btn btn-outline-danger mx-auto"
                     data-dismiss="modal">
               Cerrar
             </button>
@@ -94,20 +96,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <script>
-        // Redirigir al listado cuando se hace clic en Aceptar
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnAceptar = document.getElementById('btnAceptarModal');
-            if (btnAceptar) {
-                btnAceptar.addEventListener('click', function () {
-                    window.location.href = '/admin/productos';
-                });
-            }
-        });
-
-    </script>
-
+     </div>
 
 </asp:Content>

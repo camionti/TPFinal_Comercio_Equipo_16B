@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Microsoft.Ajax.Utilities;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,9 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            bool hayInputsVacios = validarInputs();
+            if (hayInputsVacios) return;
+
             ProductosNegocio negocio = new ProductosNegocio();
             Producto prod = new Producto
             {
@@ -79,14 +83,99 @@ namespace TPFinal_Comercio_Equipo_16B
                 Precio = decimal.Parse(txtPrecio.Text)
             };
 
-            bool hayError = false;
             lblMensajeError.Text = "";
+            bool hayError = validarProducto(prod);
 
-            if(string.IsNullOrEmpty(prod.Nombre))
+            if (hayError || hayInputsVacios)
+            {
+                lblMensajeModal.Text = "Errores encontrados";
+                modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
+                btnCerrarModal.Visible = true;
+                btnVolverAlPanel.Visible = false;
+                modalBody.Visible = true;
+            }
+            else
+            {
+                modalHeader.Attributes["class"] = "modal-header bg-success text-white";
+                btnVolverAlPanel.Visible = true;
+                btnCerrarModal.Visible = false;
+                modalBody.Visible = false;
+
+            }
+
+            var idStr = Page.RouteData.Values["id"] as string;
+
+            if (!hayError && !hayInputsVacios)
+            {
+                if (int.TryParse(idStr, out int id))
+                {
+                    prod.IdProducto = id;
+                    negocio.modificar(prod);
+                    lblMensajeModal.Text = "Producto editado correctamente";
+                }
+                else
+                {
+                    negocio.agregar(prod);
+                    lblMensajeModal.Text = "Producto agregado correctamente";
+                }
+            }
+
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+                "$('#modalConfirmacion').modal('show');", true);
+
+        }
+
+        protected bool validarInputs()
+        {
+            bool hayError = false;
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 lblMensajeError.Text += "El nombre no puede estar vacío<br/>";
                 hayError = true;
             }
+
+            if (string.IsNullOrWhiteSpace(txtStockActual.Text))
+            {
+                lblMensajeError.Text += "El stock actual no puede estar vacío<br/>";
+                hayError = true;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(txtStockMinimo.Text))
+            {
+                lblMensajeError.Text += "El stock mínimo no puede estar vacío<br/>";
+                hayError = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPorcentajeGanancia.Text))
+            {
+                lblMensajeError.Text += "El porcentaje de ganancia no puede estar vacío<br/>";
+                hayError = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                lblMensajeError.Text += "El precio no puede estar vacío<br/>";
+                hayError = true;
+            }
+
+            lblMensajeModal.Text = "Errores encontrados";
+            modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
+            btnCerrarModal.Visible = true;
+            btnVolverAlPanel.Visible = false;
+            modalBody.Visible = true;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
+
+            return hayError;
+        }
+
+        protected bool validarProducto(Producto prod)
+        {
+            bool hayError = false;
 
             if (prod.PorcentajeGanancia < 0 || prod.PorcentajeGanancia > 100)
             {
@@ -112,57 +201,24 @@ namespace TPFinal_Comercio_Equipo_16B
                 hayError = true;
             }
 
-            if(prod.StockActual < prod.StockMinimo)
+            if (prod.StockActual < prod.StockMinimo)
             {
                 lblMensajeError.Text += "El stock actual no puede ser menor al mínimo<br/>";
                 hayError = true;
             }
 
-
-            if (hayError)
-            {
-                lblMensajeModal.Text = "Errores encontrados";
-                modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
-
-                btnAceptarModal.Visible = false;
-                btnCerrarModal.Visible = true;
-
-            }
-            else
-            {
-                btnAceptarModal.Visible = true;
-                btnCerrarModal.Visible = false;
-
-            }
-
-            var idStr = Page.RouteData.Values["id"] as string;
-
-            if (!hayError)
-            {
-                if (int.TryParse(idStr, out int id))
-                {
-                    prod.IdProducto = id;
-                    negocio.modificar(prod);
-                    lblMensajeModal.Text = "Producto editado correctamente";
-                }
-                else
-                {
-                    negocio.agregar(prod);
-                    lblMensajeModal.Text = "Producto agregado correctamente";
-                }
-            }
-
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
-                "$('#modalConfirmacion').modal('show');", true);
-
-            //Response.Redirect("Productos.aspx", false);
+            return hayError;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.RedirectToRoute($"ProductosAdmin");
 
+        }
+
+        protected void btnVolverAlPanel_Click(object sender, EventArgs e)
+        {
+            Response.RedirectToRoute($"ProductosAdmin");
         }
     }
 }

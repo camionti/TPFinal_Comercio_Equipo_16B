@@ -11,20 +11,40 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  
     <div class="container">
-    <div class="d-flex align-items-center justify-content-between my-4 ">
+    <div class="row align-items-center justify-content-between my-4 pl-2  ">
         <asp:HyperLink 
             ID="adminVolver" 
             runat="server" 
             NavigateUrl="~/administrador.aspx" 
-            CssClass="btn btn-secondary ml-2">
+            CssClass="btn btn-secondary ml-2 col">
             Volver al panel de admin
         </asp:HyperLink>
+
+        <div class="d-flex col-7 ">
+
+            <asp:TextBox ID="txtPrecioMin" runat="server" CssClass="form-control col ml-2 pl-2" placeholder="$ Desde" TextMode="Number" />
+            <asp:TextBox ID="txtPrecioMax" runat="server" CssClass="form-control col ml-2 pl-2" placeholder="$ Hasta" TextMode="Number" />
+
+            <div class="input-group col-8">
+                <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" placeholder="Buscá por marca, categoría o nombre" />
+
+                <asp:LinkButton runat="server"
+                    ID="btnBuscar"
+                    CssClass="btn btn-outline-secondary"
+                    OnClick="btnBuscar_Click"
+                    >
+
+                    Buscar
+                </asp:LinkButton>
+            </div>
+
+        </div>
 
         <asp:HyperLink 
             ID="adminAgregarProducto" 
             runat="server" 
             NavigateUrl='<%# GetRouteUrl("ProductosAdmin_Agregar", null) %>' 
-            CssClass="btn btn-primary">
+            CssClass="btn btn-primary col">
             Agregar nuevo producto
         </asp:HyperLink>
     </div>
@@ -81,5 +101,28 @@
     </asp:GridView>
     </div>
 
+    <!--Modal para error-->
+    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-white bg-danger" id="modalHeader" runat="server">
+                <asp:Label ID="lblMensajeModal" runat="server" Text=""></asp:Label>
+            </div>
+            <div ID="modalBody" class="modal-body "  runat="server" >
+                <asp:Label ID="lblMensajeError" runat="server" Text="" EnableViewState="false" />
+            </div>
+
+          <div class="modal-footer">
+              <button id="btnCerrarModal"
+                    runat="server"
+                    type="button"
+                    class="btn btn-outline-danger mx-auto"
+                    data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+     </div>
 
 </asp:Content>
