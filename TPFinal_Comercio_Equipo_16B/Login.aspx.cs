@@ -34,6 +34,9 @@ namespace TPFinal_Comercio_Equipo_16B
 
                 if (logueado)
                 {
+                    Session.Add("rol", usuario.Rol);
+                    Session.Add("id", usuario.IdUsuario);
+
                     // Redirige segun el rol
                     if (usuario.Rol == Rol.Administrador)
                     {

@@ -48,9 +48,6 @@ namespace Negocio
 
                     }
 
-
-
-
                 }
 
                 return lista;
@@ -203,9 +200,9 @@ namespace Negocio
 
         public void eliminar(int IdProducto)
         {
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("DELETE FROM Productos where IdProducto = @IdProducto");
                 datos.setearParametro("@IdProducto", IdProducto);
                 datos.ejecutarAccion();
@@ -213,6 +210,10 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 
