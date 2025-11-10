@@ -34,16 +34,18 @@ namespace TPFinal_Comercio_Equipo_16B
 
                 if (logueado)
                 {
-                    Session.Add("rol", usuario.Rol);
-                    Session.Add("id", usuario.IdUsuario);
+                    
+                    Session.Add("id", usuario.IdUsuario.ToString());
 
                     // Redirige segun el rol
                     if (usuario.Rol == Rol.Administrador)
                     {
+                        Session.Add("rol", "admin");
                         Response.Redirect("Administrador.aspx");
                     }
                     else if (usuario.Rol == Rol.Vendedor)
                     {
+                        Session.Add("rol", "vendedor");
                         Response.Redirect("Vendedor.aspx");
                     }
                 }

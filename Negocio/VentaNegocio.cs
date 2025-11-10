@@ -9,22 +9,37 @@ namespace Negocio
 {
     public class VentaNegocio
     {
-        public List<Venta> Listar()
+
+        public List<Venta> Listar(int? IdUsuario)
         {
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
-
+            string consulta = @"
+                        SELECT V.IdVenta, V.Fecha, V.NumeroFactura,
+                               C.IdCliente, C.Nombre AS NombreCliente,
+                               U.IdUsuario, U.NombreUsuario
+                        FROM Ventas V
+                        INNER JOIN Clientes C ON V.IdCliente = C.IdCliente
+                        INNER JOIN Usuarios U ON U.IdUsuario = V.IdUsuario
+                    ";
             try
             {
-                datos.setearConsulta(@"
-                    SELECT V.IdVenta, V.Fecha, V.NumeroFactura,
-                           C.IdCliente, C.Nombre AS NombreCliente,
-                           U.IdUsuario, U.NombreUsuario
-                    FROM Ventas V
-                    INNER JOIN Clientes C ON V.IdCliente = C.IdCliente
-                    INNER JOIN Usuarios U ON V.IdUsuario = U.IdUsuario
-                ");
-                datos.ejecutarLectura();
+
+                if (IdUsuario.HasValue)
+                {
+                    consulta += " WHERE U.IdUsuario = @IdVendedor AND V.IdUsuario = @IdVendedor";
+
+                    datos.setearConsulta(consulta);
+                    datos.setearParametro("@IdVendedor", IdUsuario);
+
+                    datos.ejecutarLectura();
+                }
+                else
+                {
+                    datos.setearConsulta(consulta);
+                    datos.ejecutarLectura();
+                }
+
 
                 while (datos.Lector.Read())
                 {
@@ -57,6 +72,7 @@ namespace Negocio
             }
         }
 
+       
         public List<Venta> Buscar(int IdVenta = 0, string nombreUsuario = null, string nombreCliente = null, int? numeroFactura = 0 )
         {
             List<Venta> ventas = new List<Venta>();

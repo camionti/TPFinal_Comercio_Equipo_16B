@@ -14,7 +14,6 @@ namespace TPFinal_Comercio_Equipo_16B
 {
     public partial class ProductosAdmin : System.Web.UI.Page
     {
-        public List<Producto> listaProducto { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +26,8 @@ namespace TPFinal_Comercio_Equipo_16B
 
         private void CargarLista()
         {
+            List<Producto> listaProducto = new List<Producto>();
+
             try
             {
                 ProductosNegocio conexionProducto = new ProductosNegocio();

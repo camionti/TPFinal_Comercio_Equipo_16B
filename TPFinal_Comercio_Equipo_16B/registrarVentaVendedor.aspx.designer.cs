@@ -11,7 +11,7 @@ namespace TPFinal_Comercio_Equipo_16B
 {
 
 
-    public partial class RegistroVentas
+    public partial class registrarVentaVendedor
     {
     }
 }

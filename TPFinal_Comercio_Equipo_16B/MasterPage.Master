@@ -15,9 +15,13 @@
 <body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-dark bg-dark">
-            <a href="Default.aspx">
-                <span class="navbar-brand mb-0 h1">DriveCar venta de automoviles</span>
-            </a>
+        <asp:HyperLink 
+            ID="btnInicio" 
+            runat="server" 
+            NavigateUrl='~/Default.aspx' 
+            CssClass="navbar-brand mb-0 h1">
+            DriveCar venta de automoviles
+        </asp:HyperLink>
         </nav>
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
