@@ -1,0 +1,24 @@
+# Compilación y build
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+
+# Archivos de Visual Studio
+**/.vs/
+*.user
+*.suo
+
+# Archivos temporales
+*.cache
+*.log
+*.tmp
+*.bak
+
+# Configuración local
+*.config.user
+
+# Paquetes NuGet
+packages/
+*.nupkg
+*.snupkg
