@@ -107,7 +107,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                lblError.Text = "No se puede eliminar la categoria porque está asociada a uno o más productos.";
                 lblError.Visible = true;
             }
         }

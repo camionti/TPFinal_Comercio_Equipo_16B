@@ -56,7 +56,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Modificar Categoria</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    
                 </div>
                 <div class="modal-body">
 
@@ -70,7 +70,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnGuardar" CssClass="btn btn-success" Text="Guardar" runat="server" OnClick="btnGuardar_Click" />
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Agregar Categoria</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    
                 </div>
 
                 <div class="modal-body">
@@ -92,7 +92,7 @@
                 <div class="modal-footer">
                     <asp:Button ID="btnGuardarAgregar" runat="server" Text="Guardar" CssClass="btn btn-success"
                         OnClick="btnGuardarAgregar_Click" />
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>

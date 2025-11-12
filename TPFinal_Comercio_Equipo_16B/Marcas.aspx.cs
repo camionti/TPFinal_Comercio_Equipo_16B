@@ -107,7 +107,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                lblError.Text = "No se puede eliminar la marca porque está asociada a uno o más productos.";
                 lblError.Visible = true;
             }
         }
@@ -123,6 +123,9 @@ namespace TPFinal_Comercio_Equipo_16B
             int idSeleccionado = (int)gvMarcas.SelectedDataKey.Value;
             ViewState["idMarcaSeleccionado"] = idSeleccionado;
         }
+
+        //BUSCA
+       
 
     }
 }
