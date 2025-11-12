@@ -24,7 +24,7 @@ namespace Negocio
                     Marca aux = new Marca();
                     aux.IdMarca = (int)datos.Lector["IdMarca"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    
+
 
                     lista.Add(aux);
                 }
@@ -67,6 +67,7 @@ namespace Negocio
             {
                 datos.setearConsulta("UPDATE Marcas SET Nombre = @Nombre WHERE IdMarca = @IdMarca");
                 datos.setearParametro("@Nombre", marca.Nombre);
+                datos.setearParametro("@IdMarca", marca.IdMarca);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -87,6 +88,37 @@ namespace Negocio
                 datos.setearConsulta("DELETE FROM Marcas WHERE IdMarca = @IdMarca");
                 datos.setearParametro("@IdMarca", id);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Marca ObtenerMarcaPorID(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Marca aux = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT IdMarca, Nombre FROM Marcas WHERE IdMarca = @IdMarca");
+                datos.setearParametro("@IdMarca", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    aux = new Marca();
+                    aux.IdMarca = (int)datos.Lector["IdMarca"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+
+                }
+
+                return aux;
             }
             catch (Exception ex)
             {
