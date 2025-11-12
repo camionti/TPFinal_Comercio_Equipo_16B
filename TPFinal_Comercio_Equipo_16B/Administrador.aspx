@@ -49,9 +49,27 @@
                     ID="btnMarcas"
                     OnClick="btnMarcas_Click" />
 
-
+                <asp:Button Text="Categorias"
+                    CssClass="btn btn-dark px-5 py-2 rounded-pill border fw-semibold hover-btn"
+                    runat="server"
+                    ID="btnCategorias"
+                    OnClick="btnCategorias_Click" />
             </div>
         </div>
     </div>
-
+    <div class="container text-center">
+        <div class="row align-items-end">
+            <div class="col">
+            </div>
+            <div class="col">
+                <asp:Button Text="Cerrar Sesion"
+                    CssClass="btn btn-info px-5 py-2 rounded-pill border fw-semibold hover-btn align-items-center"
+                    runat="server"
+                    ID="Button1"
+                    OnClick="btnSesion_Click" />
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
 </asp:Content>

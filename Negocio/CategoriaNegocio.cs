@@ -69,6 +69,7 @@ namespace Negocio
             {
                 datos.setearConsulta("UPDATE Categorias SET Descripcion = @Descripcion WHERE IdCategoria = @IdCategoria");
                 datos.setearParametro("@Descripcion", categoria.Descripcion);
+                datos.setearParametro("@IdCategoria", categoria.IdCategoria);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -89,6 +90,37 @@ namespace Negocio
                 datos.setearConsulta("DELETE FROM Categorias WHERE IdCategoria = @IdCategoria");
                 datos.setearParametro("@IdCategoria", id);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Categoria ObtenerCategoriaPorID(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Categoria aux = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT IdCategoria, Descripcion FROM Categorias WHERE IdCategoria = @IdCategoria");
+                datos.setearParametro("@IdCategoria", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    aux = new Categoria();
+                    aux.IdCategoria = (int)datos.Lector["IdCategoria"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                }
+
+                return aux;
             }
             catch (Exception ex)
             {

@@ -23,6 +23,10 @@ namespace TPFinal_Comercio_Equipo_16B
             Response.RedirectToRoute("ProductosVendedor", null);
 
         }
+        protected void btnSesion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
 
     }
