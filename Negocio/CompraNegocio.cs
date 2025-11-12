@@ -9,42 +9,37 @@ namespace Negocio
 {
     public class CompraNegocio
     {
-        public List<Compra> Listar()
+        public void AgregarCompra(Compra compra)
         {
-            List<Compra> lista = new List<Compra>();
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.setearConsulta("SELECT IdCompra, Fecha, IdProveedor FROM Compras");
-                datos.ejecutarLectura();
+                //INSERTA LA COMPRA
+                datos.setearConsulta("INSERT INTO Compras (Fecha, IdProveedor) OUTPUT INSERTED.IdCompra VALUES (@Fecha, @IdProveedor)");
+                datos.setearParametro("@Fecha", compra.Fecha);
+                datos.setearParametro("@IdProveedor", compra.Proveedor.IdProveedor);
 
-                while (datos.Lector.Read())
+                int idCompra = (int)datos.ejecutarScalar();
+
+                //INSRTA LOS DETALLES
+                foreach (var detalle in compra.Detalles)
                 {
-                    Compra aux = new Compra();
-                    aux.IdCompra = (int)datos.Lector["IdCompra"];
-                    aux.Fecha = (DateTime)datos.Lector["Fecha"];
-                    aux.IdProveedor = (int)datos.Lector["IdProveedor"];
-                    lista.Add(aux);
+                    datos.setearConsulta(@"INSERT INTO DetalleCompra (IdCompra, IdProducto, Cantidad, PrecioUnitario) 
+                                            VALUES (@IdCompra, @IdProducto, @Cantidad, @PrecioUnitario)";
+                    datos.setearParametro("@IdCompra", idCompra);
+                    datos.setearParametro("@IdProducto", detalle.Producto.IdProducto);
+                    datos.setearParametro("@Cantidad", detalle.Cantidad);
+                    datos.setearParametro("@PrecioUnitario", detalle.PrecioUnitario);
+                    datos.ejecutarAccion();
+
+                    //ACTUALIZA STOCK
+                    datos.setearConsulta(@"UPDATE Productos 
+                                           SET StockActual = StockActual + @Cantidad,
+                                           WHERE IdProducto = @IdProducto");
+                    datos.setearParametro("@Cantidad", detalle.Cantidad);
+                    datos.setearParametro("@IdProducto", detalle.Producto.IdProducto);
+                    datos.ejecutarAccion();
                 }
-
-                return lista;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-        public void Agregar(Compra nueva)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("INSERT INTO Compras (Fecha, IdProveedor) VALUES (@Fecha, @IdProveedor)");
-                datos.setearParametro("@Fecha", nueva.Fecha);
-                datos.setearParametro("@IdProveedor", nueva.IdProveedor);
-                datos.ejecutarAccion();
             }
             finally
             {
