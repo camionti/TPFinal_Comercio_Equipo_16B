@@ -9,7 +9,7 @@ namespace Dominio
     public enum Rol
     {
         Administrador = 1,
-        Vendedor= 2,
+        Vendedor = 2,
     }
     public class Usuario
     {
@@ -19,11 +19,11 @@ namespace Dominio
         public Rol Rol { get; set; }  // Administrador o Vendedor
 
         public Usuario() { }
-        public Usuario(string nombreusuario, string contrasenia, bool administrador) 
+        public Usuario(string nombreusuario, string contrasenia, bool administrador)
         {
             NombreUsuario = nombreusuario;
             Contrasenia = contrasenia;
             Rol = administrador ? Rol.Administrador : Rol.Vendedor;
-        }    
+        }
     }
 }

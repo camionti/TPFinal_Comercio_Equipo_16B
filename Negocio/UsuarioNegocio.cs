@@ -21,7 +21,11 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
-                    usuario.Rol = (string)datos.Lector["Rol"].ToString().ToLower() == "vendedor" ? Rol.Vendedor : Rol.Administrador;
+                    int rol = (int)datos.Lector["Rol"];
+
+                    // Si 1 = Administrador, 2 = Vendedor
+                    usuario.Rol = rol == 2 ? Rol.Vendedor : Rol.Administrador;
+
                     return true;
                 }
                 return false;
