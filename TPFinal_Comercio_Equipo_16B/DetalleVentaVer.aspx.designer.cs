@@ -11,79 +11,52 @@ namespace TPFinal_Comercio_Equipo_16B
 {
 
 
-    public partial class RegistroVentas
+    public partial class DetalleVentaVer
     {
 
         /// <summary>
-        /// Control adminVolver.
+        /// Control lblVendedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink adminVolver;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVendedor;
 
         /// <summary>
-        /// Control gvVentas.
+        /// Control lblCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvVentas;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCliente;
 
         /// <summary>
-        /// Control modalHeader.
+        /// Control lblNombreProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalHeader;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombreProducto;
 
         /// <summary>
-        /// Control lblMensajeModal.
+        /// Control lblCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeModal;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCantidad;
 
         /// <summary>
-        /// Control modalBody.
+        /// Control lblPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBody;
-
-        /// <summary>
-        /// Control lblMensajeError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeError;
-
-        /// <summary>
-        /// Control btnVolverAlPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolverAlPanel;
-
-        /// <summary>
-        /// Control btnCerrarModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCerrarModal;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrecio;
     }
 }

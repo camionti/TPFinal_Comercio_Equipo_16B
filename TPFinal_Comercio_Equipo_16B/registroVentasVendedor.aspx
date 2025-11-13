@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container">
+<div class="container">
     <div class="row align-items-center justify-content-between my-4 pl-2  ">
         <asp:HyperLink 
             ID="adminVolver" 
@@ -12,7 +12,6 @@
             CssClass="btn btn-secondary ml-2 col-3">
             Volver al panel de vendedor
         </asp:HyperLink>
-
 
 
         <asp:HyperLink 
@@ -27,6 +26,7 @@
     <asp:GridView ID="gvVentas" runat="server"
         CssClass="table table-hover text-nowrap"
         AutoGenerateColumns="false"
+        OnRowCommand="gvVentas_RowCommand"
     >
         <Columns >
                 <asp:BoundField DataField="IdVenta" HeaderText="#ID" />
@@ -35,6 +35,19 @@
                 <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                 <asp:BoundField DataField="Total" HeaderText="Total" />
        
+
+            <asp:TemplateField HeaderText="Eventos">
+                <ItemTemplate >
+                    <div class="d-flex align-items-center justify-content-around">
+                        <asp:LinkButton runat="server"
+                            CssClass="btn btn-sm btn-primary mx-1 "
+                            CommandName="Ver"
+                            CommandArgument='<%#Eval("IdVenta") %>'>
+                            Ver detalle
+                        </asp:LinkButton>
+                    </div>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 

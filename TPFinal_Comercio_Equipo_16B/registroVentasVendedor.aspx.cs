@@ -47,6 +47,25 @@ namespace TPFinal_Comercio_Equipo_16B
 
         }
 
+        protected void gvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(e.CommandName)) return;
+
+            //Si no puedo parsear el id de la venta hago return, sino parseo y guardo en la variable id
+            if (!int.TryParse(e.CommandArgument?.ToString(), out int id)) return;
+
+            string evento = e.CommandName;
+
+            switch (evento)
+            {
+                case "Ver":
+                    Response.Redirect($"~/DetalleVentaVer.aspx?id={id}");
+                    break;
+            }
+
+        }
+
         protected void btnBuscar_Click( object sender, EventArgs e)
         {
 

@@ -215,6 +215,24 @@ namespace Negocio
             }
         }
 
+        public void AgregarStock(int IdProducto, int cantidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Productos SET StockActual = StockActual + @Cantidad WHERE IdProducto = @IdProducto");
+                datos.setearParametro("IdProducto", IdProducto);
+                datos.setearParametro("@Cantidad", cantidad);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void eliminar(int IdProducto)
         {
             AccesoDatos datos = new AccesoDatos();

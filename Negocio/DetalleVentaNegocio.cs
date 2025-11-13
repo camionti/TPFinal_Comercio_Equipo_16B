@@ -27,6 +27,7 @@ namespace Negocio
 
                     aux.IdDetalleVenta = (int)datos.Lector["IdDetalleVenta"];
                     aux.IdVenta = (int)datos.Lector["IdVenta"];
+                    aux.Producto = new Producto();
                     aux.Producto.IdProducto = (int)datos.Lector["IdProducto"];
                     aux.Cantidad = (int)datos.Lector["Cantidad"];
                     aux.PrecioUnitario = (decimal)datos.Lector["PrecioUnitario"];
@@ -59,6 +60,25 @@ namespace Negocio
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Eliminar(int IdVenta)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM DetalleVenta where IdVenta = @IdVenta");
+                datos.setearParametro("@IdVenta", IdVenta);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {

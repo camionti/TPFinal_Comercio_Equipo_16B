@@ -10,14 +10,14 @@ namespace Negocio
     public class VentaNegocio
     {
 
-        public List<Venta> Listar(int? IdUsuario)
+        public List<Venta> Listar(int? IdUsuario = null)
         {
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
             string consulta = @"
                         SELECT V.IdVenta, V.Fecha, V.Total, 
                                C.IdCliente, C.Nombre AS NombreCliente,
-                               U.IdUsuario, U.Nombre AS NombreUsuario
+                               U.IdUsuario, U.NombreUsuario
                         FROM Ventas V
                         INNER JOIN Clientes C ON V.IdCliente = C.IdCliente
                         INNER JOIN Usuarios U ON U.IdUsuario = V.IdUsuario
@@ -78,7 +78,7 @@ namespace Negocio
             List<Venta> ventas = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha, V.NumeroFactura, U.NombreUsuario, C.Nombre NombreCliente FROM Ventas V" +
+            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha , U.NombreUsuario, C.Nombre NombreCliente FROM Ventas V" +
                               " LEFT JOIN Clientes C ON C.IdCliente = V.IdCliente" +
                               " LEFT JOIN Usuarios U ON U.IdUsuario = V.IdUsuario" +
                               " WHERE 1=1 ";
@@ -116,11 +116,13 @@ namespace Negocio
                     {
                         aux = new Venta();
                         aux.IdVenta = (int)datos.Lector["IdVenta"];
+                        aux.Cliente = new Cliente();
                         aux.Cliente.IdCliente = (int)datos.Lector["IdCliente"];
                         aux.Cliente.Nombre = (string)datos.Lector["NombreCliente"];
+                        aux.Usuario = new Usuario();
                         aux.Usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
                         aux.Usuario.NombreUsuario = (string)datos.Lector["NombreUsuario"];
-                        aux.NumeroFactura = (string)datos.Lector["NumeroFactura"];
+                        //aux.NumeroFactura = (string)datos.Lector["NumeroFactura"];
                         aux.Fecha = (DateTime)datos.Lector["Fecha"];
 
                         ventas.Add(aux);
