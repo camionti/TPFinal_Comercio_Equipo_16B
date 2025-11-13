@@ -32,25 +32,41 @@ namespace TPFinal_Comercio_Equipo_16B
             var clienteNegocio = new ClienteNegocio();
 
 
-            Venta venta = negocioVenta.Buscar(id)[0];
-            DetalleVenta detalleVenta = negocioDetalleVenta.ListarPorVenta(id)[0];
-            Producto producto = productoNegocio.buscar(detalleVenta.Producto.IdProducto)[0];
+            var ventas = negocioVenta.Buscar(id);
+            if (ventas == null || ventas.Count == 0)
+            {
+                Response.Redirect("~/Error.aspx");
+                return;
+            }
+            Venta venta = ventas[0];
+
+            var detalles = negocioDetalleVenta.ListarPorVenta(id);
+            if (detalles == null || detalles.Count == 0)
+            {
+                Response.Redirect("~/Error.aspx");
+                return;
+            }
+            DetalleVenta detalleVenta = detalles[0];
+
+            var productos = productoNegocio.buscar(detalleVenta.Producto.IdProducto);
+            if (productos == null || productos.Count == 0)
+            {
+                Response.Redirect("~/Error.aspx");
+                return;
+            }
+            Producto producto = productos[0];
+
             Cliente cliente = clienteNegocio.ObtenerClientePorID(venta.Cliente.IdCliente);
             Usuario vendedor = usuarioNegocio.BuscarPorId(venta.Usuario.IdUsuario);
 
-
-            if (detalleVenta == null || venta == null || producto==null || cliente == null || vendedor == null)
+            if (cliente == null || vendedor == null)
             {
                 Response.Redirect("~/Error.aspx");
                 return;
             }
 
+            // Si llegaste acá, todo está ok
 
-            if (producto == null || venta == null || detalleVenta == null)
-            {
-                Response.Redirect("~/Error.aspx");
-                return;
-            }
 
             lblVendedor.InnerText = vendedor.NombreUsuario;
             lblCliente.InnerText = cliente.Nombre;

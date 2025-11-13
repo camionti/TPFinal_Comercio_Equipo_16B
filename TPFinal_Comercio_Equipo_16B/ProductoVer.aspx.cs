@@ -34,11 +34,13 @@ namespace TPFinal_Comercio_Equipo_16B
                 return;
             }
 
+
             // 3) Asignar a los controles del front
             lblNombre.InnerText = producto.Nombre;
             lblMarca.InnerText = producto.Marca.Nombre;
             lblCategoria.InnerText = producto.Categoria.Descripcion;
             lblStock.InnerText = producto.StockActual.ToString();
+            lblPrecio.InnerText = producto.Precio.ToString();
 
             //lblPrecio.InnerText = "U$D " + producto.Precio.ToString("N0");
 

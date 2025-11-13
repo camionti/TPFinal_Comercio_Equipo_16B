@@ -17,11 +17,11 @@
 
     <!-- Card -->
     <div class="p-2 my-2 ">
-        <!-- Imagen -->
+        <!-- Imagen 
         <img id="imgProducto" runat="server"
              class="card-img-top"
              alt="Imagen del producto"
-             style="height: 250px; object-fit: cover;" />
+             style="height: 250px; object-fit: cover;" />-->
 
         <div class="card-body">
             <!-- Nombre -->
@@ -43,12 +43,14 @@
             <!-- Precio y porcentaje ganancia -->
 
             <div class="d-flex w-50 justify-content-between">
-                <!--<p class="fs-5 fw-semibold text-white mb-1 py-1 px-2 bg-success rounded">
-                    <span id="lblPrecio" runat="server"></span>
-                </p>-->
+                <p class="fs-5 mb-2 py-1 px-2">
+                    Precio:
+                    <span class="fw-semibold text-white mb-1 py-1 px-2 bg-success rounded" id="lblPrecio" runat="server"></span>
+                </p>
 
-                <p class="fs-5 fw-semibold text-white mb-1 py-1 px-2 bg-success rounded">
-                    <span id="lblPorcentajeGanancia" runat="server"></span>
+                <p class="fs-5 mb-1 py-1 px-2">
+                    Porcentaje de ganancia:
+                    <span class="fw-semibold text-white mb-1 py-1 px-2 bg-success rounded" id="lblPorcentajeGanancia" runat="server"></span>
                 </p>
             </div>
         </div>
