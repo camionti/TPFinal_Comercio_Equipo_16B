@@ -27,7 +27,7 @@ namespace Negocio
                     aux.IdCompra = (int)datos.Lector["IdCompra"];
                     aux.IdProducto = (int)datos.Lector["IdProducto"];
                     aux.Cantidad = (int)datos.Lector["Cantidad"];
-                    aux.PrecioCompra = (decimal)datos.Lector["PrecioCompra"];
+                    aux.PrecioUnitario = (decimal)datos.Lector["PrecioUnitario"];
                     lista.Add(aux);
                 }
 
@@ -48,7 +48,7 @@ namespace Negocio
                 datos.setearParametro("@IdCompra", detalle.IdCompra);
                 datos.setearParametro("@IdProducto", detalle.IdProducto);
                 datos.setearParametro("@Cantidad", detalle.Cantidad);
-                datos.setearParametro("@PrecioCompra", detalle.PrecioCompra);
+                datos.setearParametro("@PrecioCompra", detalle.PrecioUnitario);
                 datos.ejecutarAccion();
             }
             finally

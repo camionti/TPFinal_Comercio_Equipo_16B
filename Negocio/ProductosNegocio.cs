@@ -208,7 +208,8 @@ namespace Negocio
                 datos.setearParametro("@Cantidad", cantidad);
                 datos.ejecutarAccion();
 
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 throw;
             }
@@ -222,6 +223,44 @@ namespace Negocio
                 datos.setearConsulta("DELETE FROM Productos where IdProducto = @IdProducto");
                 datos.setearParametro("@IdProducto", IdProducto);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Producto> ListarPorMarcaCategoria(int idMarca, int idCategoria)
+        {
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = @"
+            SELECT P.IdProducto, P.Nombre 
+            FROM Productos P
+            INNER JOIN Marcas M ON P.IdMarca = M.IdMarca
+            INNER JOIN Categorias C ON P.IdCategoria = C.IdCategoria
+            WHERE P.IdMarca = @idMarca AND P.IdCategoria = @idCategoria";
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@idMarca", idMarca);
+                datos.setearParametro("@idCategoria", idCategoria);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Producto prod = new Producto();
+                    prod.IdProducto = (int)datos.Lector["IdProducto"];
+                    prod.Nombre = (string)datos.Lector["Nombre"];
+                    lista.Add(prod);
+                }
+
+                return lista;
             }
             catch (Exception ex)
             {

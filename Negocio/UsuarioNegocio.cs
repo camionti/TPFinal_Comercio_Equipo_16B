@@ -13,7 +13,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT IdUsuario, Rol FROM Usuarios WHERE Nombre = @NombreUsuario AND Contrasenia = @Contrasenia");
+                datos.setearConsulta("SELECT IdUsuario, Rol FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasenia = @Contrasenia");
                 datos.setearParametro("@NombreUsuario", usuario.NombreUsuario);
                 datos.setearParametro("@Contrasenia", usuario.Contrasenia);
 
