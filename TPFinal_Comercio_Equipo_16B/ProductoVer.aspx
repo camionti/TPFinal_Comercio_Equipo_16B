@@ -43,9 +43,9 @@
             <!-- Precio y porcentaje ganancia -->
 
             <div class="d-flex w-50 justify-content-between">
-                <p class="fs-5 fw-semibold text-white mb-1 py-1 px-2 bg-success rounded">
+                <!--<p class="fs-5 fw-semibold text-white mb-1 py-1 px-2 bg-success rounded">
                     <span id="lblPrecio" runat="server"></span>
-                </p>
+                </p>-->
 
                 <p class="fs-5 fw-semibold text-white mb-1 py-1 px-2 bg-success rounded">
                     <span id="lblPorcentajeGanancia" runat="server"></span>

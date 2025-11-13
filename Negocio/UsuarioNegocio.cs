@@ -13,7 +13,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT IdUsuario, Rol FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasenia = @Contrasenia");
+                datos.setearConsulta("SELECT IdUsuario, Rol FROM Usuarios WHERE Nombre = @NombreUsuario AND Contrasenia = @Contrasenia");
                 datos.setearParametro("@NombreUsuario", usuario.NombreUsuario);
                 datos.setearParametro("@Contrasenia", usuario.Contrasenia);
 
@@ -24,7 +24,7 @@ namespace Negocio
                     int rol = (int)datos.Lector["Rol"];
 
                     // Si 1 = Administrador, 2 = Vendedor
-                    usuario.Rol = rol == 2 ? Rol.Vendedor : Rol.Administrador;
+                    usuario.Rol = rol == 1 ? Rol.Administrador: Rol.Vendedor;
 
                     return true;
                 }

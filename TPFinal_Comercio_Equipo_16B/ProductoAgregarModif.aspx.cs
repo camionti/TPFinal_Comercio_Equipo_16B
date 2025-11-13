@@ -62,7 +62,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 txtStockActual.Text = prod.StockActual.ToString();
                 txtStockMinimo.Text = prod.StockMinimo.ToString();
                 txtPorcentajeGanancia.Text = prod.PorcentajeGanancia.ToString("0.##");
-                txtPrecio.Text = prod.Precio.ToString("0.##");
+                //txtPrecio.Text = prod.Precio.ToString("0.##");
             }
         }
 
@@ -80,7 +80,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 StockActual = int.Parse(txtStockActual.Text),
                 StockMinimo = int.Parse(txtStockMinimo.Text),
                 PorcentajeGanancia = decimal.Parse(txtPorcentajeGanancia.Text),
-                Precio = decimal.Parse(txtPrecio.Text)
+                //Precio = decimal.Parse(txtPrecio.Text)
             };
 
             lblMensajeError.Text = "";
@@ -107,6 +107,7 @@ namespace TPFinal_Comercio_Equipo_16B
 
             if (!hayError && !hayInputsVacios)
             {
+                //Pregunto si viene un ID por parametro, si hay edito sino agrego
                 if (int.TryParse(idStr, out int id))
                 {
                     prod.IdProducto = id;
@@ -155,11 +156,11 @@ namespace TPFinal_Comercio_Equipo_16B
                 hayError = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
-            {
-                lblMensajeError.Text += "El precio no puede estar vacío<br/>";
-                hayError = true;
-            }
+            //if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            //{
+            //    lblMensajeError.Text += "El precio no puede estar vacío<br/>";
+            //    hayError = true;
+            //}
 
             lblMensajeModal.Text = "Errores encontrados";
             modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
@@ -183,11 +184,11 @@ namespace TPFinal_Comercio_Equipo_16B
                 hayError = true;
             }
 
-            if (prod.Precio <= 1000)
-            {
-                lblMensajeError.Text += "El precio no puede ser menor a 1000<br/>";
-                hayError = true;
-            }
+            //if (prod.Precio <= 1000)
+            //{
+            //    lblMensajeError.Text += "El precio no puede ser menor a 1000<br/>";
+            //    hayError = true;
+            //}
 
             if (prod.StockMinimo < 0)
             {

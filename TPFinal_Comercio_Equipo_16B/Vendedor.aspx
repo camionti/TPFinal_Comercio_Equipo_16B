@@ -12,7 +12,7 @@
             style="max-width: 1100px; border-radius: 20px; background-color: white;">
 
             <div class="d-flex flex-wrap justify-content-center d-grid gap-2 d-md-block">
-                <asp:Button Text="Registrar Venta" ID="btnRegiVenta" CssClass="btn btn-dark  px-5 py-3 rounded-pill border fw-semibold hover-btn" OnClick="btnRegiVenta_Click" runat="server" />
+                <asp:Button Text="Mis Ventas" ID="btnRegiVenta" CssClass="btn btn-dark  px-5 py-3 rounded-pill border fw-semibold hover-btn" OnClick="btnRegiVenta_Click" runat="server" />
             </div>
 
             <div class="d-flex flex-wrap justify-content-center d-grid gap-2 d-md-block">

@@ -15,9 +15,9 @@ namespace Negocio
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
             string consulta = @"
-                        SELECT V.IdVenta, V.Fecha, V.NumeroFactura,
+                        SELECT V.IdVenta, V.Fecha, V.Total, 
                                C.IdCliente, C.Nombre AS NombreCliente,
-                               U.IdUsuario, U.NombreUsuario
+                               U.IdUsuario, U.Nombre AS NombreUsuario
                         FROM Ventas V
                         INNER JOIN Clientes C ON V.IdCliente = C.IdCliente
                         INNER JOIN Usuarios U ON U.IdUsuario = V.IdUsuario
@@ -46,8 +46,8 @@ namespace Negocio
                     Venta venta = new Venta();
                     venta.IdVenta = (int)datos.Lector["IdVenta"];
                     venta.Fecha = (DateTime)datos.Lector["Fecha"];
-                    venta.NumeroFactura = (string)datos.Lector["NumeroFactura"];
-
+                    venta.Total = (decimal)datos.Lector["Total"];
+                    //venta.NumeroFactura = (string)datos.Lector["NumeroFactura"];
 
                     venta.Cliente = new Cliente
                     {
@@ -140,17 +140,25 @@ namespace Negocio
 
         }
 
-        public void Agregar(Venta nueva)
+        public int Agregar(Venta nueva)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Ventas (Fecha, IdCliente, IdUsuario, NumeroFactura) VALUES (@Fecha, @IdCliente, @IdUsuario, @NumeroFactura)");
+                datos.setearConsulta("INSERT INTO Ventas (Fecha, IdCliente, IdUsuario, Total) VALUES (@Fecha, @IdCliente, @IdUsuario, @Total) SELECT SCOPE_IDENTITY()");
                 datos.setearParametro("@Fecha", nueva.Fecha);
                 datos.setearParametro("@IdCliente", nueva.Cliente.IdCliente);
                 datos.setearParametro("@IdUsuario", nueva.Usuario.IdUsuario);
-                datos.setearParametro("@NumeroFactura", nueva.NumeroFactura);
-                datos.ejecutarAccion();
+                datos.setearParametro("@Total", nueva.Total);
+                //datos.setearParametro("@NumeroFactura", nueva.NumeroFactura);
+
+                //Retorna el ID de la nueva venta
+                object IdNuevaVenta = datos.ejecutarScalar();
+
+                if (IdNuevaVenta == null || IdNuevaVenta == DBNull.Value)
+                    return 0;
+
+                return Convert.ToInt32(IdNuevaVenta);
             }
             catch (Exception)
             {
@@ -168,13 +176,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE Ventas SET Fecha = @Fecha, IdCliente = @IdCliente, IdUsuario = @IdUsuario, NumeroFactura = @NumeroFactura WHERE IdVenta = @IdVenta");
+                datos.setearConsulta("UPDATE Ventas SET Fecha = @Fecha, IdCliente = @IdCliente, IdUsuario = @IdUsuario, Total = @Total WHERE IdVenta = @IdVenta");
 
                 datos.setearParametro("@IdVenta", venta.IdVenta);
                 datos.setearParametro("@Fecha", venta.Fecha);
                 datos.setearParametro("@IdCliente", venta.Cliente.IdCliente);
                 datos.setearParametro("@IdUsuario", venta.Usuario.IdUsuario);
-                datos.setearParametro("@NumeroFactura", venta.NumeroFactura);
+                //datos.setearParametro("@NumeroFactura", venta.NumeroFactura);
+                datos.setearParametro("@Total", venta.Total);
 
                 datos.ejecutarAccion();
             }

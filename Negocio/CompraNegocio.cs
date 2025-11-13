@@ -25,7 +25,7 @@ namespace Negocio
                 foreach (var detalle in compra.Detalles)
                 {
                     datos.setearConsulta(@"INSERT INTO DetalleCompra (IdCompra, IdProducto, Cantidad, PrecioUnitario) 
-                                            VALUES (@IdCompra, @IdProducto, @Cantidad, @PrecioUnitario)";
+                                            VALUES (@IdCompra, @IdProducto, @Cantidad, @PrecioUnitario)");
                     datos.setearParametro("@IdCompra", idCompra);
                     datos.setearParametro("@IdProducto", detalle.Producto.IdProducto);
                     datos.setearParametro("@Cantidad", detalle.Cantidad);

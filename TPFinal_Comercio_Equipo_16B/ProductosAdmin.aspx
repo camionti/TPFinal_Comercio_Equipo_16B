@@ -21,10 +21,8 @@
         </asp:HyperLink>
 
         <div class="d-flex col-7 ">
-
             <asp:TextBox ID="txtPrecioMin" runat="server" CssClass="form-control col ml-2 pl-2" placeholder="$ Desde" TextMode="Number" />
             <asp:TextBox ID="txtPrecioMax" runat="server" CssClass="form-control col ml-2 pl-2" placeholder="$ Hasta" TextMode="Number" />
-
             <div class="input-group col-8">
                 <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" placeholder="Buscá por marca, categoría o nombre" />
 
@@ -59,9 +57,8 @@
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
                 <asp:BoundField DataField="Categoria.Descripcion" HeaderText="Categoria" />
-                <asp:BoundField DataField="StockActual" HeaderText="StockActual" />
+                <asp:BoundField DataField="StockActual" HeaderText="Stock" />
                 <asp:BoundField DataField="PorcentajeGanancia" HeaderText="% Ganancia" DataFormatString="{0:0.#}%" />
-                <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="U$D {0:N0}"/>
 
             <asp:TemplateField HeaderText="Eventos">
                 <ItemTemplate >

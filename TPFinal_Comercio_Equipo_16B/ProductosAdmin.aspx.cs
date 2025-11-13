@@ -36,10 +36,10 @@ namespace TPFinal_Comercio_Equipo_16B
                 gvProductos.DataSource = listaProducto;
                 gvProductos.DataBind();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                Response.Redirect("~/Error.aspx");
+                throw ex;
             }
         }
 

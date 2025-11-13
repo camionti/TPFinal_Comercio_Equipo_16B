@@ -42,7 +42,7 @@ namespace TPFinal_Comercio_Equipo_16B
             catch (Exception)
             {
 
-                Response.Redirect("~/Error.aspx");
+                throw;
             }
 
         }

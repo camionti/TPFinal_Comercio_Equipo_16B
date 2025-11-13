@@ -29,7 +29,7 @@
 
                     <asp:LinkButton runat="server"
                         ID="btnBuscar"
-                        CssClass="btn btn-outline-secondary"
+                        CssClass="btn btn-outline-secondary ml-3"
                         OnClick="btnBuscar_Click"
                         >
 
@@ -51,8 +51,8 @@
                 <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
                 <asp:BoundField DataField="Categoria.Descripcion" HeaderText="Categoria" />
                 <asp:BoundField DataField="StockActual" HeaderText="StockActual" />
+                <asp:BoundField DataField="Precio" HeaderText="Precio" />
                 <asp:BoundField DataField="PorcentajeGanancia" HeaderText="% Ganancia" DataFormatString="{0:0.#}%" />
-                <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="U$D {0:N0}"/>
 
                 <asp:TemplateField>
                     <ItemTemplate>

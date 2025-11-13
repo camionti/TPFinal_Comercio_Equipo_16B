@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.Precio, P.StockActual, P.StockMinimo, P.PorcentajeGanancia, C.Descripcion Categoria, M.Nombre Marca FROM Productos P LEFT JOIN Categorias C on C.IdCategoria = P.IdCategoria LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca LEFT JOIN Imagenes I ON I.IdProducto = P.IdProducto;");
+                datos.setearConsulta("SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.Precio, P.PorcentajeGanancia, C.Descripcion Categoria, M.Nombre Marca FROM Productos P LEFT JOIN Categorias C on C.IdCategoria = P.IdCategoria LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca LEFT JOIN Imagenes I ON I.IdProducto = P.IdProducto;");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -32,7 +32,7 @@ namespace Negocio
                         aux = new Producto();
                         aux.IdProducto = (int)datos.Lector["IdProducto"];
                         aux.Nombre = (string)datos.Lector["Nombre"];
-                        aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.Precio = (int)datos.Lector["Precio"];
                         aux.Categoria = new Categoria();
                         aux.Categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
@@ -70,7 +70,7 @@ namespace Negocio
 
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.Precio, P.StockActual, P.StockMinimo, P.PorcentajeGanancia," +
+            string consulta = "SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.PorcentajeGanancia, P.Precio," +
                                      " C.Descripcion Categoria, M.Nombre Marca" +
                                      " From Productos P" +
                                      " LEFT JOIN Categorias C ON C.IdCategoria = P.IdCategoria" +
@@ -84,9 +84,9 @@ namespace Negocio
                 if (!string.IsNullOrWhiteSpace(nombreMarcaCategoria))
                     consulta += " AND (P.Nombre LIKE @nombreMarcaCategoria OR C.Descripcion LIKE @nombreMarcaCategoria OR M.Nombre LIKE @nombreMarcaCategoria)";
                 if (precioMinimo != null)
-                    consulta += " AND Precio >= @precioMinimo";
+                    consulta += " AND P.Precio >= @precioMinimo";
                 if (precioMaximo != null)
-                    consulta += " AND Precio <= @precioMaximo";
+                    consulta += " AND P.Precio <= @precioMaximo";
 
                 datos.setearConsulta(consulta);
 
@@ -111,11 +111,10 @@ namespace Negocio
                         aux = new Producto();
                         aux.IdProducto = (int)datos.Lector["IdProducto"]; ;
                         aux.Nombre = (string)datos.Lector["Nombre"];
-                        aux.Precio = (decimal)datos.Lector["Precio"];
                         aux.StockActual = (int)datos.Lector["StockActual"];
                         aux.StockMinimo = (int)datos.Lector["StockMinimo"];
                         aux.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
-                        aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.Precio = (int)datos.Lector["Precio"];
 
                         aux.Marca = new Dominio.Marca { Nombre = (string)datos.Lector["Marca"] };
                         aux.Categoria = new Categoria { Descripcion = (string)datos.Lector["Categoria"] };
@@ -195,6 +194,23 @@ namespace Negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public void DescontarStock(int IdProducto, int cantidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Productos SET StockActual = StockActual - @Cantidad WHERE IdProducto = @IdProducto");
+                datos.setearParametro("IdProducto", IdProducto);
+                datos.setearParametro("@Cantidad", cantidad);
+                datos.ejecutarAccion();
+
+            }catch(Exception)
+            {
+                throw;
             }
         }
 

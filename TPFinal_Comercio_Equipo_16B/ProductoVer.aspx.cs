@@ -40,7 +40,7 @@ namespace TPFinal_Comercio_Equipo_16B
             lblCategoria.InnerText = producto.Categoria.Descripcion;
             lblStock.InnerText = producto.StockActual.ToString();
 
-            lblPrecio.InnerText = "U$D " + producto.Precio.ToString("N0");
+            //lblPrecio.InnerText = "U$D " + producto.Precio.ToString("N0");
 
             lblPorcentajeGanancia.InnerText = producto.PorcentajeGanancia.ToString("0.#") + " %";
 
