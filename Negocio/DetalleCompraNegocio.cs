@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdDetalleCompra, IdCompra, IdProducto, Cantidad, PrecioCompra FROM DetalleCompra WHERE IdCompra = @IdCompra");
+                datos.setearConsulta("SELECT IdDetalleCompra, IdCompra, IdProducto, Cantidad, PrecioUnitario FROM DetalleCompra WHERE IdCompra = @IdCompra");
                 datos.setearParametro("@IdCompra", idCompra);
                 datos.ejecutarLectura();
 

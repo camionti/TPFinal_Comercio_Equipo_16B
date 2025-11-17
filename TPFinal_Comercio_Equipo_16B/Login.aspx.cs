@@ -21,43 +21,27 @@ namespace TPFinal_Comercio_Equipo_16B
         }
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-
             Usuario usuario = new Usuario();
             usuario.NombreUsuario = txtUsuario.Text;
             usuario.Contrasenia = txtPassword.Text;
 
             UsuarioNegocio negocio = new UsuarioNegocio();
+            Usuario logueado = negocio.Loguear(usuario);
 
-            try
+            if (logueado != null)
             {
-                bool logueado = negocio.Loguear(usuario); 
+                Session["usuario"] = logueado;
+                Session["id"] = logueado.IdUsuario;
+                Session["rol"] = logueado.Rol == Rol.Administrador ? "admin" : "vendedor";
 
-                if (logueado)
-                {
-                    
-                    Session.Add("id", usuario.IdUsuario.ToString());
-
-                    // Redirige segun el rol
-                    if (usuario.Rol == Rol.Administrador)
-                    {
-                        Session.Add("rol", "admin");
-                        Response.Redirect("Administrador.aspx");
-                    }
-                    else if (usuario.Rol == Rol.Vendedor)
-                    {
-                        Session.Add("rol", "vendedor");
-                        Response.Redirect("Vendedor.aspx");
-                    }
-                }
+                if (logueado.Rol == Rol.Administrador)
+                    Response.Redirect("Administrador.aspx");
                 else
-                {
-                 
-                    lblMensaje.Text = "Usuario o contraseña incorrectos.";
-                }
+                    Response.Redirect("Vendedor.aspx");
             }
-            catch (Exception ex)
+            else
             {
-                lblMensaje.Text = "Error al iniciar sesión: " + ex.Message;
+                lblMensaje.Text = "Usuario o contraseña incorrectos.";
             }
         }
     }

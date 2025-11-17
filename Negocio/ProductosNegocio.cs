@@ -289,6 +289,37 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public Producto BuscarPorId(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT IdProducto, Nombre FROM Productos WHERE IdProducto = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Producto aux = new Producto();
+
+                    aux.IdProducto = (int)datos.Lector["IdProducto"];
+                    aux.Nombre = datos.Lector["Nombre"].ToString();
+        
+                    return aux;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
     }

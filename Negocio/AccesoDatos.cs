@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Dominio;
 
 
 namespace Negocio
@@ -14,22 +15,22 @@ namespace Negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-        public SqlDataReader Lector //para leer el lector desde el exterior
-        {
-            get { return lector; }
-        }
+
+        public SqlDataReader Lector { get { return lector; } }
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server = .\\SQLEXPRESS; database=ComercioDB; integrated security=true;");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=ComercioDB; integrated security=true;");
             comando = new SqlCommand();
         }
 
         public void setearConsulta(string consulta)
         {
-            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.Clear(); 
+            comando.CommandType = CommandType.Text;
             comando.CommandText = consulta;
         }
+
         public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
@@ -41,7 +42,9 @@ namespace Negocio
 
             try
             {
-                conexion.Open();
+                if (conexion.State != ConnectionState.Open) 
+                    conexion.Open();
+
                 lector = comando.ExecuteReader();
             }
             catch (Exception ex)
@@ -53,35 +56,60 @@ namespace Negocio
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
+
             try
             {
-                conexion.Open();
-                lector = comando.ExecuteReader();
+                if (conexion.State != ConnectionState.Open) 
+                    conexion.Open();
+
+                comando.ExecuteNonQuery(); 
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            finally
+            {
+                conexion.Close(); 
+            }
         }
+
         public object ejecutarScalar()
         {
             comando.Connection = conexion;
+
             try
             {
-                conexion.Open();
-                return comando.ExecuteScalar();
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
+
+                return comando.ExecuteScalar(); 
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conexion.Close(); 
             }
         }
 
         public void cerrarConexion()
         {
-            if (lector != null)
-                lector.Close();
-            conexion.Close();
+            try
+            {
+                if (lector != null && !lector.IsClosed)
+                    lector.Close();
+
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
+
 }

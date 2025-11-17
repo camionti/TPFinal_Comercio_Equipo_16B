@@ -8,27 +8,31 @@ namespace Negocio
 {
     public class UsuarioNegocio
     {
-        public bool Loguear(Usuario usuario)
+        public Usuario Loguear(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT IdUsuario, Rol FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasenia = @Contrasenia");
+                datos.setearConsulta("SELECT IdUsuario, NombreUsuario, Contrasenia, Rol FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasenia = @Contrasenia");
                 datos.setearParametro("@NombreUsuario", usuario.NombreUsuario);
                 datos.setearParametro("@Contrasenia", usuario.Contrasenia);
 
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    Usuario u = new Usuario();
+                    u.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    u.NombreUsuario = (string)datos.Lector["NombreUsuario"];
+                    u.Contrasenia = (string)datos.Lector["Contrasenia"];
+
                     int rol = (int)datos.Lector["Rol"];
 
-                    // Si 1 = Administrador, 2 = Vendedor
-                    usuario.Rol = rol == 1 ? Rol.Administrador: Rol.Vendedor;
 
-                    return true;
+                    u.Rol = rol == 1 ? Rol.Administrador : Rol.Vendedor;
+
+                    return u; 
                 }
-                return false;
+                return null;
             }
             catch (Exception ex)
             {
