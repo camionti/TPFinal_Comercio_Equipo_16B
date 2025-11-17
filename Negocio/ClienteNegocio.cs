@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdCliente, Nombre, Telefono, Email FROM Clientes");
+                datos.setearConsulta("SELECT IdCliente, Nombre, Telefono, Email FROM Clientes WHERE Activo = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -91,7 +91,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdCliente, Nombre, Telefono, Email FROM Clientes WHERE IdCliente = @IdCliente");
+                datos.setearConsulta("SELECT IdCliente, Nombre, Telefono, Email FROM Clientes WHERE IdCliente = @IdCliente AND Activo = 1");
                 datos.setearParametro("@IdCliente", id);
                 datos.ejecutarLectura();
 
@@ -121,7 +121,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM Clientes WHERE IdCliente = @IdCliente");
+                datos.setearConsulta("UPDATE Clientes SET Activo = 0 WHERE IdCliente = @IdCliente");
                 datos.setearParametro("@IdCliente", id);
                 datos.ejecutarAccion();
             }

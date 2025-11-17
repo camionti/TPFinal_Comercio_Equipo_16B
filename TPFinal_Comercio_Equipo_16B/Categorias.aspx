@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Categorias.aspx.cs" Inherits="TPFinal_Comercio_Equipo_16B.Categorias" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,7 +16,7 @@
                 <asp:CommandField ShowSelectButton="True" SelectText="Seleccionar" />
                 <asp:BoundField DataField="IdCategoria" HeaderText="ID" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-          
+
             </Columns>
             <SelectedRowStyle BackColor="#d1ecf1" Font-Bold="true" />
         </asp:GridView>
@@ -51,25 +52,43 @@
 
 
     <!--MODAL PARA MODIFICAR -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditar" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Modificar Categoria</h5>
-                    
                 </div>
                 <div class="modal-body">
-
                     <asp:HiddenField ID="hfIdCategoria" runat="server" />
-
                     <div class="mb-3">
-                        <label>Descricion</label>
+                        <label>Descripcion</label>
                         <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server" />
-                    </div>
+                        <asp:RequiredFieldValidator
+                            ID="rfvNombre"
+                            runat="server"
+                            ErrorMessage="El nombre es obligatorio"
+                            ControlToValidate="txtDescripcion"
+                            CssClass="text-danger"
+                            ValidationGroup="Modificar" />
 
+                        <asp:RegularExpressionValidator
+                            ID="revNombre"
+                            runat="server"
+                            ErrorMessage="Solo se permiten letras"
+                            ControlToValidate="txtDescripcion"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                            CssClass="text-danger"
+                            ValidationGroup="Modificar" />
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnGuardar" CssClass="btn btn-success" Text="Guardar" runat="server" OnClick="btnGuardar_Click" />
+                    <asp:Button
+                        ID="btnGuardarEditar"
+                        runat="server"
+                        Text="Guardar Cambios"
+                        CssClass="btn btn-success"
+                        OnClick="btnGuardarEditar_Click"
+                        ValidationGroup="Modificar" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -82,24 +101,45 @@
             <div class="modal-content">
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Agregar Categoria</h5>
-                    
                 </div>
-
                 <div class="modal-body">
-                    <asp:TextBox ID="txtAgregar" CssClass="form-control mb-3" runat="server" placeholder="Nombre"></asp:TextBox>
-                </div>
+                    <!-- NOMBRE -->
+                    <asp:TextBox ID="txtAgregar" CssClass="form-control mb-3"
+                        runat="server" placeholder="Descripcion"></asp:TextBox>
 
+                    <asp:RegularExpressionValidator
+                        ID="revAgregar"
+                        runat="server"
+                        ControlToValidate="txtAgregar"
+                        ErrorMessage="La descripcion solo puede contener letras."
+                        ValidationExpression="^[a-zA-ZÀ-ÿ\s]+$"
+                        CssClass="text-danger"
+                        ValidationGroup="vgAgregar">
+                    </asp:RegularExpressionValidator>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvAgregar"
+                        runat="server"
+                        ControlToValidate="txtAgregar"
+                        ErrorMessage="La descripcion es obligatoria."
+                        CssClass="text-danger"
+                        ValidationGroup="vgAgregar">
+                    </asp:RequiredFieldValidator>
+                </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnGuardarAgregar" runat="server" Text="Guardar" CssClass="btn btn-success"
-                        OnClick="btnGuardarAgregar_Click" />
+                    <asp:Button ID="btnGuardarAgregar"
+                        runat="server"
+                        Text="Guardar"
+                        CssClass="btn btn-success"
+                        OnClick="btnGuardarAgregar_Click"
+                        CausesValidation="true"
+                        ValidationGroup="vgAgregar" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
-    
-   <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold mt-3 d-block" Visible="false" />
-
+    <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold mt-3 d-block" Visible="false" />
 </asp:Content>
 
 

@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdProveedor, Nombre, Telefono, Email FROM Proveedores");
+                datos.setearConsulta("SELECT IdProveedor, Nombre, Telefono, Email FROM Proveedores WHERE Activo = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -92,7 +92,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdProveedor, Nombre, Telefono, Email FROM Proveedores WHERE IdProveedor = @IdProveedor");
+                datos.setearConsulta("SELECT IdProveedor, Nombre, Telefono, Email FROM Proveedores WHERE IdProveedor = @IdProveedor AND Activo = 1");
                 datos.setearParametro("@IdProveedor", id);
                 datos.ejecutarLectura();
 
@@ -122,16 +122,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM Proveedores WHERE IdProveedor = @id");
-                datos.setearParametro("@id", id);
+                datos.setearConsulta("UPDATE Proveedores SET Activo = 0 WHERE IdProveedor = @IdProveedor");
+                datos.setearParametro("@IdProveedor", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("REFERENCE constraint"))
-                    throw new Exception("No se puede eliminar el proveedor porque tiene productos asociados");
-                else
-                    throw;
+                throw ex;
             }
             finally
             {

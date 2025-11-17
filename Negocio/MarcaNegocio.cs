@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdMarca, Nombre FROM Marcas");
+                datos.setearConsulta("SELECT IdMarca, Nombre FROM Marcas WHERE Activo = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -85,7 +85,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM Marcas WHERE IdMarca = @IdMarca");
+                datos.setearConsulta("UPDATE Marcas SET Activo = 0 WHERE IdMarca = @IdMarca");
                 datos.setearParametro("@IdMarca", id);
                 datos.ejecutarAccion();
             }
@@ -106,7 +106,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdMarca, Nombre FROM Marcas WHERE IdMarca = @IdMarca");
+                datos.setearConsulta("SELECT IdMarca, Nombre FROM Marcas WHERE IdMarca = @IdMarca AND Activo = 1");
                 datos.setearParametro("@IdMarca", id);
                 datos.ejecutarLectura();
 

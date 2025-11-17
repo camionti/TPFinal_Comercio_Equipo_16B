@@ -22,7 +22,7 @@ namespace TPFinal_Comercio_Equipo_16B
         //CARGA LA LISTA
         private void cargarProveedores()
         {
-            ProveedorNegocio negocio = new  ProveedorNegocio();
+            ProveedorNegocio negocio = new ProveedorNegocio();
 
             try
             {
@@ -44,6 +44,8 @@ namespace TPFinal_Comercio_Equipo_16B
         //GUARDA LO QEU SE AGREGA
         protected void btnGuardarAgregar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
             Proveedor nuevo = new Proveedor();
             nuevo.Nombre = txtNombreAgregar.Text;
             nuevo.Telefono = txtTelefonoAgregar.Text;
@@ -62,6 +64,8 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             if (gvProveedores.SelectedRow != null)
             {
+                if (!Page.IsValid)
+                    return;
                 int idProveedor = Convert.ToInt32(gvProveedores.SelectedDataKey.Value);
 
                 ProveedorNegocio negocio = new ProveedorNegocio();
@@ -111,7 +115,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = "No se puede eliminar el proveedor porque está asociado a uno o más productos.";
+                lblError.Text = "Hubo un error" + ex.Message; 
                 lblError.Visible = true;
             }
         }

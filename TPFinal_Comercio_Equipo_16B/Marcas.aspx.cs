@@ -44,6 +44,8 @@ namespace TPFinal_Comercio_Equipo_16B
         //GUARDA LO QEU SE AGREGA
         protected void btnGuardarAgregar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
             Marca nuevo = new Marca();
             nuevo.Nombre = txtNombreAgregar.Text;
 
@@ -77,8 +79,10 @@ namespace TPFinal_Comercio_Equipo_16B
             }
         }
         //GUARGA LO DEL MODAL MODIFICAR
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardarEditar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
             MarcaNegocio negocio = new MarcaNegocio();
             Marca marca = new Marca();
 
@@ -107,7 +111,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = "No se puede eliminar la marca porque está asociada a uno o más productos.";
+                lblError.Text = "Hubo un error: " + ex.Message;
                 lblError.Visible = true;
             }
         }
@@ -125,7 +129,7 @@ namespace TPFinal_Comercio_Equipo_16B
         }
 
         //BUSCA
-       
+
 
     }
 }

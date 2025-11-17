@@ -77,7 +77,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
         }
         //GUARGA LO DEL MODAL MODIFICAR
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardarEditar_Click(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             Categoria categoria = new Categoria();
@@ -107,7 +107,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = "No se puede eliminar la categoria porque está asociada a uno o más productos.";
+                lblError.Text = "Hubo un error: " + ex.Message;
                 lblError.Visible = true;
             }
         }
