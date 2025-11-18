@@ -17,7 +17,8 @@ namespace Dominio
         public Usuario Usuario { get; set; }
 
         public decimal Total { get; set; }
-
+        public bool Activo { get; set; }
+        public string MotivoBaja { get; set; }
         public List<DetalleCompra> Detalles { get; set; } = new List<DetalleCompra>();
     }
 }

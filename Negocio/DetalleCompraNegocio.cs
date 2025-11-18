@@ -9,36 +9,7 @@ namespace Negocio
 {
     public class DetalleCompraNegocio
     {
-        public List<DetalleCompra> ListarPorCompra(int idCompra)
-        {
-            List<DetalleCompra> lista = new List<DetalleCompra>();
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.setearConsulta("SELECT IdDetalleCompra, IdCompra, IdProducto, Cantidad, PrecioUnitario FROM DetalleCompra WHERE IdCompra = @IdCompra");
-                datos.setearParametro("@IdCompra", idCompra);
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    DetalleCompra aux = new DetalleCompra();
-                    aux.IdDetalleCompra = (int)datos.Lector["IdDetalleCompra"];
-                    aux.IdCompra = (int)datos.Lector["IdCompra"];
-                    aux.IdProducto = (int)datos.Lector["IdProducto"];
-                    aux.Cantidad = (int)datos.Lector["Cantidad"];
-                    aux.PrecioUnitario = (decimal)datos.Lector["PrecioUnitario"];
-                    lista.Add(aux);
-                }
-
-                return lista;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
+     
         public void Agregar(DetalleCompra detalle)
         {
             AccesoDatos datos = new AccesoDatos();

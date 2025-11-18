@@ -21,5 +21,6 @@ namespace Dominio
                 return Cantidad * PrecioUnitario;
             }
         }
+        public bool Activo { get; set; }
     }
 }

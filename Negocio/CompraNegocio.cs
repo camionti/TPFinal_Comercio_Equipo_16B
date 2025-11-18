@@ -9,6 +9,7 @@ namespace Negocio
 {
     public class CompraNegocio
     {
+
         public void AgregarCompra(Compra compra)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -91,5 +92,24 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void DarDeBaja(int idCompra, string motivo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            // Baja compra
+            datos.setearConsulta("UPDATE Compras SET Activo = 0, MotivoBaja = @motivo WHERE IDCompra = @id");
+            datos.setearParametro("@id", idCompra);
+            datos.setearParametro("@motivo", motivo);
+            datos.ejecutarAccion();
+
+            // Baja detalles
+            datos.setearConsulta("UPDATE DetalleCompra SET Activo = 0 WHERE IDCompra = @id");
+            datos.setearParametro("@id", idCompra);
+            datos.ejecutarAccion();
+        }
+
+
     }
+
 }
