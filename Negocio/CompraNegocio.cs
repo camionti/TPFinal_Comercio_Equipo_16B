@@ -109,6 +109,45 @@ namespace Negocio
             datos.ejecutarAccion();
         }
 
+        public List<Compra> Listar()
+        {
+            List<Compra> lista = new List<Compra>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta(@"SELECT C.IdCompra, C.Fecha, C.Total,
+                               P.IdProveedor, P.Nombre AS Proveedor
+                               FROM Compras C
+                               INNER JOIN Proveedores P ON C.IdProveedor = P.IdProveedor
+                               WHERE C.Activo = 1");
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Compra c = new Compra();
+                    c.IdCompra = (int)datos.Lector["IdCompra"];
+                    c.Fecha = (DateTime)datos.Lector["Fecha"];
+                    c.Total = (decimal)datos.Lector["Total"];
+                    c.Proveedor = new Proveedor
+                    {
+                        IdProveedor = (int)datos.Lector["IdProveedor"],
+                        Nombre = datos.Lector["Proveedor"].ToString()
+                    };
+
+                    lista.Add(c);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
     }
 

@@ -35,7 +35,7 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void btnCompras_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegistroCompras.aspx");
+            Response.Redirect("DetalleCompras.aspx");
         }
 
         protected void btnMarcas_Click(object sender, EventArgs e)

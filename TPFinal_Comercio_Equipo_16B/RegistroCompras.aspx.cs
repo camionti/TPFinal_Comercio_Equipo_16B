@@ -15,12 +15,12 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             get
             {
-                if (Session["DetallesCompra"] == null)
-                    Session["DetallesCompra"] = new List<DetalleCompra>();
+                if (Session["DetalleCompra"] == null)
+                    Session["DetalleCompra"] = new List<DetalleCompra>();
 
-                return (List<DetalleCompra>)Session["DetallesCompra"];
+                return (List<DetalleCompra>)Session["DetalleCompra"];
             }
-            set { Session["DetallesCompra"] = value; }
+            set { Session["DetalleCompra"] = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -80,14 +80,14 @@ namespace TPFinal_Comercio_Equipo_16B
             CompraNegocio negocio = new CompraNegocio();
             negocio.AgregarCompra(compra);
 
-            // limpiar
+            
             Session["DetallesCompra"] = null;
             gvDetalles.DataSource = null;
             gvDetalles.DataBind();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Administrador.aspx");
+            Response.Redirect("DetalleCompras.aspx");
         }
     }
 }
