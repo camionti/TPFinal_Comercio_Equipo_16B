@@ -4,38 +4,36 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div class="container mt-5 pt-3 light-gray shadow-sm rounded shadow-sm mx-auto" style="max-width: 700px;">
+    <div class="container mt-5 pt-3 light-gray rounded shadow-sm mx-auto" style="max-width: 700px;">
         <asp:HyperLink 
             runat="server" 
             CssClass="" 
             NavigateUrl="javascript:history.back();">
-            Volver a mis ventas
+            Volver a la página anterior
         </asp:HyperLink>
+        <asp:Repeater ID="repDetalles" runat="server">
+            <HeaderTemplate>
+                <table class="table table-hover">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                    </tr>
+            </HeaderTemplate>
 
-    <!-- Card -->
-    <div class="p-2 my-2 ">
-        <div class="card-body">
-            <!-- Marca y Categoría -->
-            <p class="text-muted mb-2 d-flex">
-                Vendedor: <span class="ml-1" id="lblVendedor" runat="server"></span>
-            </p>
-            <p class="text-muted mb-2 d-flex">
-                Cliente: <span class="ml-1" id="lblCliente" runat="server"></span>
-            </p>
+            <ItemTemplate>
+                <tr>
+                    <td><%# Eval("Producto.Nombre") %></td>
+                    <td><%# Eval("Cantidad") %></td>
+                    <td><%# Eval("PrecioUnitario", "{0:C}") %></td>
+                    <td><%# (Convert.ToInt32(Eval("Cantidad")) * Convert.ToDecimal(Eval("PrecioUnitario"))) %></td>
+                </tr>
+            </ItemTemplate>
 
-            <p class="text-muted mb-2 d-flex">
-                Auto: <span class="ml-1" id="lblNombreProducto" runat="server"></span>
-            </p>
-
-            <p class="text-muted mb-2 d-flex">
-                Cantidad vendidos: <span class="ml-1" id="lblCantidad" runat="server"></span>
-            </p>
-
-            <p class="text-muted mb-2 d-flex">
-                Precio: <span class="ml-1" id="lblPrecio" runat="server"></span>
-            </p>
-
-
-        </div>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
 </asp:Content>

@@ -36,6 +36,20 @@ namespace Negocio
             comando.Parameters.AddWithValue(nombre, valor);
         }
 
+        public void setearProcedure(string nombreSP)
+        {
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+        }
+
+        public void setearParametroTabla(string nombre, DataTable tabla, string typeName)
+        {
+            var parametro = comando.Parameters.AddWithValue(nombre, tabla);
+            parametro.SqlDbType = SqlDbType.Structured;
+            parametro.TypeName = typeName; // "dbo.TipoDetalleVenta"
+        }
+
+
         public void ejecutarLectura()
         {
             comando.Connection = conexion;
@@ -74,6 +88,8 @@ namespace Negocio
             }
         }
 
+
+
         public object ejecutarScalar()
         {
             comando.Connection = conexion;
@@ -94,6 +110,7 @@ namespace Negocio
                 conexion.Close(); 
             }
         }
+
 
         public void cerrarConexion()
         {

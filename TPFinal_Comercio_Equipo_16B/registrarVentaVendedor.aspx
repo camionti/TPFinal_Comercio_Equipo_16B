@@ -12,6 +12,27 @@
         </div>
 
         <div class="card-body">
+
+
+            <!-- Cliente -->
+            <div class="mb-3">
+                <div class="mb-3">
+                <label for="ddlClientes" class="form-label">Cliente</label>
+                <asp:DropDownList ID="ddlClientes" runat="server"
+                    CssClass="form-control"
+                    AutoPostBack="true"
+                    OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged">
+                </asp:DropDownList>
+                </div>
+
+                <asp:Button ID="btnAceptarCliente" runat="server" Text="Aceptar" CssClass="btn btn-success" OnClick="btnAceptarCliente_Click" />
+                <asp:Button ID="btnCancelarCliente" runat="server" Text="Cancelar" CssClass="btn btn-danger ml-4" OnClick="btnCancelarCliente_Click" />
+
+
+            </div>
+
+            <hr />
+
             <!--Detalles del producto-->
             <div class="mb-3">
                 <label for="ddlProductos" class="form-label">Nombre</label>
@@ -21,7 +42,6 @@
                     OnSelectedIndexChanged="ddlProductos_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
-
 
             <div class="mb-3 mr-3">
                 <label for="txtMarca" class="form-label">Marca</label>
@@ -48,19 +68,62 @@
                 <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control" TextMode="Number" />
             </div>
 
+            <!-- Botón para agregar ítem al "carrito" -->
             <div class="mb-3">
-                <label for="ddlClientes" class="form-label">Cliente</label>
-                <asp:DropDownList ID="ddlClientes" runat="server"
-                    CssClass="form-control"
-                    AutoPostBack="true"
-                    OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged">
-                </asp:DropDownList>
+                <asp:Button ID="btnAgregarProducto" runat="server"
+                    Text="Agregar producto"
+                    CssClass="btn btn-secondary"
+                    OnClick="btnAgregarProducto_Click" />
+            </div>
+
+            <hr />
+
+
+            <!-- Grid con los productos agregados -->
+            <div class="mb-3">
+                <asp:GridView ID="gvDetalles" runat="server"
+                    AutoGenerateColumns="False"
+                    CssClass="table table-striped"
+                    OnRowCommand="gvDetalles_RowCommand">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Producto">
+                            <ItemTemplate>
+                                <%# Eval("Producto.Nombre") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+
+                        <asp:BoundField DataField="PrecioUnitario"
+                            HeaderText="Precio unitario"
+                            DataFormatString="{0:C}" />
+
+                        <asp:TemplateField HeaderText="Subtotal">
+                            <ItemTemplate>
+                                <%# ((int)Eval("Cantidad") * (decimal)Eval("PrecioUnitario")) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Acciones">
+                            <ItemTemplate>
+                                <asp:Button 
+                                    ID="btnQuitar" 
+                                    runat="server" 
+                                    Text="Quitar" 
+                                    CommandName="Quitar"
+                                    CommandArgument="<%# Container.DataItemIndex %>"
+                                    CssClass="btn btn-danger btn-sm" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
 
         <div class="card-footer d-flex justify-content-between">
-           
-            <asp:Button ID="btnAceptar" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="btnAceptar_Click" />
+            <!-- Ahora este botón confirma TODA la venta (cliente + lista de productos) -->
+            <asp:Button ID="btnAceptar" runat="server" Text="Generar venta" CssClass="btn btn-success" OnClick="btnAceptar_Click" />
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-danger" OnClick="btnCancelar_Click" CausesValidation="false" />
         </div>
     </div>
@@ -93,7 +156,6 @@
                         data-dismiss="modal">
                         Cerrar
                     </button>
-
 
                 </div>
             </div>

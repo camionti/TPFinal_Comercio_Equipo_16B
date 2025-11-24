@@ -15,48 +15,12 @@ namespace TPFinal_Comercio_Equipo_16B
     {
 
         /// <summary>
-        /// Control lblVendedor.
+        /// Control repDetalles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVendedor;
-
-        /// <summary>
-        /// Control lblCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCliente;
-
-        /// <summary>
-        /// Control lblNombreProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombreProducto;
-
-        /// <summary>
-        /// Control lblCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCantidad;
-
-        /// <summary>
-        /// Control lblPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrecio;
+        protected global::System.Web.UI.WebControls.Repeater repDetalles;
     }
 }

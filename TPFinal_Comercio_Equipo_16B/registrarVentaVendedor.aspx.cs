@@ -18,7 +18,11 @@ namespace TPFinal_Comercio_Equipo_16B
             {
                 CargarProductos();
                 CargarClientes();
+                LimpiarProducto();
+                LimpiarCliente();
+                LimpiarListaDetalles();
             }
+            ActualizarEstadoUI();
         }
 
         private void CargarProductos()
@@ -27,8 +31,8 @@ namespace TPFinal_Comercio_Equipo_16B
             List<Producto> lista = conexionProductos.Listar();
             Session["listaProductos"] = lista;
             ddlProductos.DataSource = lista;
-            ddlProductos.DataTextField = "Nombre";
-            ddlProductos.DataValueField = "IdProducto";
+            ddlProductos.DataTextField = "Nombre";      // lo que se muestra
+            ddlProductos.DataValueField = "IdProducto"; // lo que devuelve
             ddlProductos.DataBind();
 
             //Cargo manualmente el 1er item para que no muestre ningun producto existente
@@ -40,10 +44,7 @@ namespace TPFinal_Comercio_Equipo_16B
             if (ddlProductos.SelectedValue == "0")
             {
                 // Limpio textbox si no hay seleccion
-                txtCategoria.Text = "";
-                txtMarca.Text = "";
-                txtStock.Text = "";
-                txtPorcentajeGanancia.Text = "";
+                LimpiarProducto();
                 return;
             }
 
@@ -82,6 +83,8 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             if (ddlClientes.SelectedValue == "0")
             {
+                Session["clienteSeleccionado"] = null;
+                ActualizarEstadoUI();
                 return;
             }
 
@@ -89,63 +92,52 @@ namespace TPFinal_Comercio_Equipo_16B
 
             var lista = Session["listaClientes"] as List<Cliente>;
             var cliente = lista.Find(c => c.IdCliente == idCliente);
-            if (cliente == null) return;
-
-            Session["clienteSeleccionado"] = cliente;
-
-        }
-
-
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-
-            bool hayInputsVacios = validarInputs();
-            if (hayInputsVacios) return;
-
-            int IdProductoSeleccionado = int.Parse(ddlProductos.SelectedValue);
-            ProductosNegocio productoConexion = new ProductosNegocio();
-            Producto productoSeleccionado = productoConexion.buscar(IdProductoSeleccionado)[0];
-
-            Cliente cliente = Session["clienteSeleccionado"] as Cliente;
-            VentaNegocio conexionVentas = new VentaNegocio();
-
-
-            Venta venta = new Venta();
-            venta.Fecha = DateTime.Now;
-            venta.Cliente = new Cliente();
-            venta.Usuario = new Usuario();
-            venta.Cliente.IdCliente = cliente.IdCliente;
-            venta.Usuario.IdUsuario = int.Parse(Session["id"] as String);
-            venta.Total = productoSeleccionado.Precio * int.Parse(txtCantidad.Text);
-
-            int idVenta = conexionVentas.Agregar(venta);
-
-            if (idVenta <= 0)
+            if (cliente == null)
             {
-                lblMensajeError.Text = "No se pudo registrar la venta.";
-
-                mostrarError();
-
+                Session["clienteSeleccionado"] = null;
+                ActualizarEstadoUI();
                 return;
             }
-
-            DetalleVentaNegocio conexionDetalle = new DetalleVentaNegocio();
-            DetalleVenta detalle = new DetalleVenta();
-
-            detalle.IdVenta = idVenta;
-            detalle.Producto = new Producto();
-            detalle.Producto.IdProducto = int.Parse(ddlProductos.SelectedValue);
-            detalle.Cantidad = int.Parse(txtCantidad.Text);
-            detalle.PrecioUnitario = productoSeleccionado.Precio;
-
-            conexionDetalle.Agregar(detalle);
-
-            productoConexion.DescontarStock(detalle.Producto.IdProducto, detalle.Cantidad);
-
-            lblMensajeModal.Text = "Venta y DetalleVenta creados correctamente";
-            mostrarMensajeExito();
+            Session["clienteSeleccionado"] = cliente;
+            ActualizarEstadoUI();
         }
 
+
+        // ---------- Helpers ----------
+
+        private List<DetalleVenta> DescargarDetallesDeSession()
+        {
+            if (Session["detallesVenta"] == null)
+                Session["detallesVenta"] = new List<DetalleVenta>();
+
+            return (List<DetalleVenta>)Session["detallesVenta"];
+        }
+
+        private void ActualizarDetallesGrid()
+        {
+            var detalles = DescargarDetallesDeSession();
+            gvDetalles.DataSource = detalles;
+            gvDetalles.DataBind();
+        }
+
+        private void ActualizarProductoEnSession(Producto productoSeleccionado)
+        {
+            var listaProductos = Session["listaProductos"] as List<Producto>;
+
+            if(listaProductos == null)
+                listaProductos = new List<Producto>();
+
+            int index = listaProductos.FindIndex(p => p.IdProducto == productoSeleccionado.IdProducto);
+
+
+            if (index >= 0)
+            {
+                listaProductos[index] = productoSeleccionado;
+                Session["listaProductos"] = listaProductos; 
+            }
+        }
+
+        //  ---------- Validaciones ----------
         protected bool validarInputs()
         {
             bool hayError = false;
@@ -192,9 +184,231 @@ namespace TPFinal_Comercio_Equipo_16B
                 hayError = true;
             }
 
-            mostrarError();
+            if(hayError)
+                mostrarError();
 
             return hayError;
+        }
+
+        private bool HayStockDeProducto(Producto producto)
+        {
+            var detalles = DescargarDetallesDeSession();
+            var detalleConProducto = detalles.FirstOrDefault(d => d.Producto.IdProducto == producto.IdProducto);
+
+            int cantidadNueva = int.Parse(txtCantidad.Text);
+
+            // Cantidad ya reservada en el carrito
+            int cantidadEnCarrito = detalleConProducto != null ? detalleConProducto.Cantidad : 0;
+
+            // Validación contra stock real del producto
+            if (cantidadEnCarrito + cantidadNueva > producto.StockActual)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //  ---------- Limpieza de front ----------
+
+        private void ActualizarEstadoUI()
+        {
+            var detalles = DescargarDetallesDeSession();
+            bool hayProductos = detalles.Count > 0;
+            Cliente clienteSeleccionado = Session["clienteSeleccionado"] as Cliente;
+            Cliente clienteAceptado = Session["clienteAceptado"] as Cliente;
+
+            bool hayCliente = clienteSeleccionado != null;
+            bool hayClienteAceptado = clienteAceptado != null;
+
+            // Una vez que hay productos → cliente fijo
+            ddlClientes.Enabled = !hayProductos;
+
+            // Botón agregar producto SOLO si hay cliente
+            btnAgregarProducto.Enabled = hayClienteAceptado;
+
+            // Botón "Generar venta" SOLO si hay cliente + productos
+            btnAceptar.Enabled = hayCliente && hayProductos;
+
+            //Boton aceptar cliente solo si hay cliente en elegido y no hay cliente aceptado
+            btnAceptarCliente.Enabled = hayCliente && !hayClienteAceptado;
+
+            //Boton cancelar cliente solo si hay cliente aceptado y no hay productos
+            btnCancelarCliente.Enabled = hayClienteAceptado && !hayProductos;
+
+            //Dropdown cliente solo si no hay cliente aceptado
+            ddlClientes.Enabled = !hayClienteAceptado;
+
+            //Dropdown productos solo si hay cliente aceptado
+            ddlProductos.Enabled = hayClienteAceptado;
+
+        }
+
+        private void LimpiarProducto()
+        {
+            txtCategoria.Text = "";
+            txtMarca.Text = "";
+            txtStock.Text = "";
+            txtPorcentajeGanancia.Text = "";
+
+            ddlProductos.ClearSelection();
+            ddlProductos.SelectedIndex = 0;
+            Session["productoSeleccionado"] = null;
+        }
+
+        private void LimpiarCliente()
+        {
+            ddlClientes.ClearSelection();
+            ddlClientes.SelectedIndex = 0;
+            Session["clienteSeleccionado"] = null;
+            Session["clienteAceptado"] = null;
+        }
+        
+        private void LimpiarListaDetalles()
+        {
+            Session["detallesVenta"] = null;
+        }
+
+        // ---------- GridView: quitar ítems ----------
+
+        protected void gvDetalles_RowCommand(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Quitar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                var listaDetallesVenta = DescargarDetallesDeSession();
+
+                if (index >= 0 && index < listaDetallesVenta.Count)
+                {
+                    listaDetallesVenta.RemoveAt(index);
+                    Session["detallesVenta"] = listaDetallesVenta;
+                    ActualizarDetallesGrid();
+                }
+            }
+
+            ActualizarEstadoUI();
+        }
+
+        // ------------ BOTONES ------------
+        protected void btnAceptarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente clienteSeleccionado = Session["clienteSeleccionado"] as Cliente;
+
+            Session["clienteAceptado"] = clienteSeleccionado;
+
+            ActualizarEstadoUI();
+        }
+        protected void btnCancelarCliente_Click(object sender, EventArgs e)
+        {
+            LimpiarCliente();
+            ActualizarEstadoUI();
+        }
+
+        protected void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            //Valido errores del front
+            lblMensajeError.Text = "";
+            if (validarInputs())
+                return;
+
+            Producto productoSeleccionado = Session["productoSeleccionado"] as Producto;
+            int cantidad = int.Parse(txtCantidad.Text);
+
+            //Valido si hay stock en tiempo real (Session)
+            if(!HayStockDeProducto(productoSeleccionado))
+            {
+                lblMensajeError.Text = "No hay suficiente stock para agregar esa cantidad.";
+                mostrarError();
+                return;
+            }
+
+            var detallesVenta = DescargarDetallesDeSession();
+
+            // Si el producto ya está en la lista, sumo cantidades
+            var existente = detallesVenta.Find(d => d.Producto.IdProducto == productoSeleccionado.IdProducto);
+            if (existente != null)
+            {
+                existente.Cantidad += cantidad;
+            }
+            //Sino, creo que producto nuevo y lo agrego a la lista
+            else
+            {
+                DetalleVenta detalle = new DetalleVenta();
+                detalle.Producto = productoSeleccionado;
+                detalle.Cantidad = cantidad;
+                detalle.PrecioUnitario = productoSeleccionado.Precio;
+
+                detallesVenta.Add(detalle);
+            }
+            //Actualizo producto en Session
+            productoSeleccionado.StockActual = productoSeleccionado.StockActual - cantidad;
+            ActualizarProductoEnSession(productoSeleccionado);
+
+            //Guardo la lista de Detalles Venta en Session y actualizo el grid
+            Session["detallesVenta"] = detallesVenta;
+            ActualizarDetallesGrid();
+
+            //Limpio el front
+            txtCantidad.Text = "";
+            LimpiarProducto();
+            ActualizarEstadoUI();
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener cliente aceptado
+                Cliente cliente = Session["clienteAceptado"] as Cliente;
+                if (cliente == null)
+                {
+                    lblMensajeError.Text = "No se seleccionó un cliente.";
+                    mostrarError();
+                    return;
+                }
+
+                // Obtener detalles del carrito (Session)
+                List<DetalleVenta> detalles = DescargarDetallesDeSession();
+                if (detalles.Count == 0)
+                {
+                    lblMensajeError.Text = "No hay productos en la venta.";
+                    mostrarError();
+                    return;
+                }
+
+                if (Session["id"] == null)
+                {
+                    throw new Exception("No se pudo obtener el usuario logueado.");
+                }
+                int idUsuario = (int)Session["id"];
+
+
+                // Creo la Venta
+                Venta venta = new Venta();
+                venta.Cliente = cliente;
+                venta.Usuario = new Usuario { IdUsuario = idUsuario };
+                venta.Fecha = DateTime.Now;
+
+                VentaNegocio negocio = new VentaNegocio();
+                negocio.Agregar(venta, detalles);
+
+                lblMensajeModal.Text = "Venta generada correctamente.";
+                mostrarMensajeExito();
+
+                // Limpio la session
+                Session["detallesVenta"] = null;
+                Session["clienteAceptado"] = null;
+                Session["clienteSeleccionado"] = null;
+
+                //Limpio el front
+                ActualizarEstadoUI();
+                ActualizarDetallesGrid();
+            }
+            catch (Exception ex)
+            {
+                lblMensajeError.Text = ex.Message;
+                mostrarError();
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -207,6 +421,8 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             Response.RedirectToRoute($"VendedorRegistroVentas");
         }
+
+        //Condiguración del modal
 
         private void mostrarError()
         {

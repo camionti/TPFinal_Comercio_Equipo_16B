@@ -24,6 +24,33 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.Label lblTitulo;
 
         /// <summary>
+        /// Control ddlClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlClientes;
+
+        /// <summary>
+        /// Control btnAceptarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAceptarCliente;
+
+        /// <summary>
+        /// Control btnCancelarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarCliente;
+
+        /// <summary>
         /// Control ddlProductos.
         /// </summary>
         /// <remarks>
@@ -78,13 +105,22 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
 
         /// <summary>
-        /// Control ddlClientes.
+        /// Control btnAgregarProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlClientes;
+        protected global::System.Web.UI.WebControls.Button btnAgregarProducto;
+
+        /// <summary>
+        /// Control gvDetalles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDetalles;
 
         /// <summary>
         /// Control btnAceptar.

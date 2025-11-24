@@ -24,12 +24,13 @@
     </div>
 
     <asp:GridView ID="gvVentas" runat="server"
-        CssClass="table table-hover text-nowrap"
+        CssClass="table table-hover align-middle rounded shadow-sm"
         AutoGenerateColumns="false"
-        OnRowCommand="gvVentas_RowCommand"
-    >
+        HeaderStyle-CssClass="table-success"
+        GridLines="None"
+        OnRowCommand="gvVentas_RowCommand">
         <Columns >
-                <asp:BoundField DataField="IdVenta" HeaderText="#ID" />
+                <asp:BoundField DataField="IdVenta" HeaderText="ID Venta" ItemStyle-CssClass="text-center"/>
                 <asp:BoundField DataField="Usuario.NombreUsuario" HeaderText="Vendedor" />
                 <asp:BoundField DataField="Cliente.Nombre" HeaderText="Cliente" />
                 <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
@@ -39,10 +40,11 @@
             <asp:TemplateField HeaderText="Eventos">
                 <ItemTemplate >
                     <div class="d-flex align-items-center justify-content-around">
-                        <asp:LinkButton runat="server"
-                            CssClass="btn btn-sm btn-primary mx-1 "
+                        <asp:LinkButton 
+                            runat="server"
+                            CssClass="btn btn-sm btn-outline-primary"
                             CommandName="Ver"
-                            CommandArgument='<%#Eval("IdVenta") %>'>
+                            CommandArgument='<%# Eval("IdVenta") %>'>
                             Ver detalle
                         </asp:LinkButton>
                     </div>

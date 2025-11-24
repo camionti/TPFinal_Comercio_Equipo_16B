@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdDetalleVenta, IdVenta, IdProducto, Cantidad, PrecioUnitario FROM DetalleVenta WHERE IdVenta = @IdVenta");
+                datos.setearConsulta("SELECT DV.IdDetalleVenta, DV.IdVenta, DV.IdProducto, DV.Cantidad, DV.PrecioUnitario, P.Nombre FROM DetalleVenta DV JOIN Productos P ON P.IdProducto = DV.IdProducto WHERE IdVenta = @IdVenta");
                 datos.setearParametro("@IdVenta", IdVenta);
                 datos.ejecutarLectura();
 
@@ -29,6 +29,7 @@ namespace Negocio
                     aux.IdVenta = (int)datos.Lector["IdVenta"];
                     aux.Producto = new Producto();
                     aux.Producto.IdProducto = (int)datos.Lector["IdProducto"];
+                    aux.Producto.Nombre = (string)datos.Lector["Nombre"];
                     aux.Cantidad = (int)datos.Lector["Cantidad"];
                     aux.PrecioUnitario = (decimal)datos.Lector["PrecioUnitario"];
                     lista.Add(aux);

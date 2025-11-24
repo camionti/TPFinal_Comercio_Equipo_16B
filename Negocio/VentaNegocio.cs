@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;
 
 namespace Negocio
 {
@@ -142,25 +143,41 @@ namespace Negocio
 
         }
 
-        public int Agregar(Venta nueva)
+        public void Agregar(Venta venta, List<DetalleVenta> detalles)
         {
             AccesoDatos datos = new AccesoDatos();
+
             try
             {
-                datos.setearConsulta("INSERT INTO Ventas (Fecha, IdCliente, IdUsuario, Total) VALUES (@Fecha, @IdCliente, @IdUsuario, @Total) SELECT SCOPE_IDENTITY()");
-                datos.setearParametro("@Fecha", nueva.Fecha);
-                datos.setearParametro("@IdCliente", nueva.Cliente.IdCliente);
-                datos.setearParametro("@IdUsuario", nueva.Usuario.IdUsuario);
-                datos.setearParametro("@Total", nueva.Total);
-                //datos.setearParametro("@NumeroFactura", nueva.NumeroFactura);
+                // Seteo procedure
+                datos.setearProcedure("sp_Ventas_Crear");
 
-                //Retorna el ID de la nueva venta
-                object IdNuevaVenta = datos.ejecutarScalar();
+                // Seteo parametros
+                datos.setearParametro("@IdCliente", venta.Cliente.IdCliente);
+                datos.setearParametro("@IdUsuario", venta.Usuario.IdUsuario);
+                datos.setearParametro("@Fecha", venta.Fecha);
 
-                if (IdNuevaVenta == null || IdNuevaVenta == DBNull.Value)
-                    return 0;
+                // Armo la tabla Detalles para enviar a la DB
+                DataTable tablaDetalles = new DataTable();
+                tablaDetalles.Columns.Add("IdProducto", typeof(int));
+                tablaDetalles.Columns.Add("Cantidad", typeof(int));
+                tablaDetalles.Columns.Add("PrecioUnitario", typeof(decimal));
 
-                return Convert.ToInt32(IdNuevaVenta);
+                foreach (DetalleVenta det in detalles)
+                {
+                    tablaDetalles.Rows.Add(
+                        det.Producto.IdProducto,
+                        det.Cantidad,
+                        det.PrecioUnitario
+                    );
+                }
+
+                // Seteo la tabla Detalles
+                datos.setearParametroTabla("@Detalles", tablaDetalles, "dbo.TipoDetalleVenta");
+
+
+                datos.ejecutarAccion();
+
             }
             catch (Exception)
             {
