@@ -63,6 +63,48 @@ namespace Negocio
 
         }
 
+        public List<Producto> BuscarPorProveedor(int IdProveedor)
+        {
+            List<Producto> productos = new List<Producto>();
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "SELECT * FROM Productos WHERE IdProveedor = @IdProveedor";
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@IdProveedor", IdProveedor);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    int id = (int)datos.Lector["IdProducto"];
+                    Producto aux = productos.Find(a => a.IdProducto == id);
+
+                    if (aux == null)
+                    {
+                        aux = new Producto();
+                        aux.IdProducto = (int)datos.Lector["IdProducto"]; ;
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                        aux.StockActual = (int)datos.Lector["StockActual"];
+                        aux.StockMinimo = (int)datos.Lector["StockMinimo"];
+                        aux.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
+                        aux.Precio = (int)datos.Lector["Precio"];
+
+                        productos.Add(aux);
+                    }
+
+                }
+
+                return productos;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Producto> buscar(int IdProducto = 0, string nombreMarcaCategoria = null, decimal? precioMinimo = null, decimal? precioMaximo = null)
         {
 

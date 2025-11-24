@@ -300,7 +300,9 @@ namespace TPFinal_Comercio_Equipo_16B
         }
         protected void btnCancelarCliente_Click(object sender, EventArgs e)
         {
+            LimpiarProducto();
             LimpiarCliente();
+            LimpiarListaDetalles();
             ActualizarEstadoUI();
         }
 

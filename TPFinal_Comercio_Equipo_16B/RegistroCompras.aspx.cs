@@ -28,43 +28,215 @@ namespace TPFinal_Comercio_Equipo_16B
             if (!IsPostBack)
             {
                 CargarProveedores();
-                CargarProductos();
+                CargarProductosPorProveedor(null);
+                LimpiarProveedores();
+                LimpiarProductos();
+                LimpiarListaDetalles();
             }
+            ActualizarEstadoUI();
         }
 
         private void CargarProveedores()
         {
             ProveedorNegocio negocio = new ProveedorNegocio();
-            ddlProveedores.DataSource = negocio.Listar();
+            List<Proveedor> listaProveedores = negocio.Listar();
+            ddlProveedores.DataSource = listaProveedores;
             ddlProveedores.DataTextField = "Nombre";
             ddlProveedores.DataValueField = "IdProveedor";
             ddlProveedores.DataBind();
+            ddlProveedores.Items.Insert(0, new ListItem("Seleccione un proveedor", "0"));
+            Session["listaProveedores"] = listaProveedores;
         }
 
-        private void CargarProductos()
+        private void CargarProductosPorProveedor(int? IdProveedor)
         {
-            ProductosNegocio negocio = new ProductosNegocio();
-            ddlProductos.DataSource = negocio.Listar();
-            ddlProductos.DataTextField = "Nombre";
-            ddlProductos.DataValueField = "IdProducto";
-            ddlProductos.DataBind();
+            if(IdProveedor == null)
+            {
+                ddlProductos.Items.Insert(0, new ListItem("Seleccione un producto", "0"));
+            }
+            else
+            { 
+                try
+                {
+                    ProductosNegocio negocio = new ProductosNegocio();
+                    List<Producto> listaProductos = negocio.BuscarPorProveedor(int.Parse(IdProveedor.ToString()));
+                    ddlProductos.DataSource = listaProductos;
+                    ddlProductos.DataTextField = "Nombre";
+                    ddlProductos.DataValueField = "IdProducto";
+                    ddlProductos.DataBind();
+                    ddlProductos.Items.Insert(0, new ListItem("Seleccione un producto", "0"));
+                    Session["listaProductos"] = listaProductos;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
         }
 
+        private void ActualizarEstadoUI()
+        {
+           
+            Proveedor proveedorSeleccionado = Session["proveedorSeleccionado"] as Proveedor;
+            
+            bool hayProveedor = proveedorSeleccionado != null;
+            bool hayProductos = Detalles.Count > 0;
+
+            // Botón "Generar compra" SOLO si hay proveedor + productos
+            btnGuardarCompra.Enabled = hayProveedor && hayProductos;
+
+            //Boton aceptar cliente solo si no hay proveedor elegido y no hay productos
+            btnAceptarProveedor.Enabled = !hayProveedor && !hayProductos && ddlProveedores.SelectedValue != "0";
+
+            //Boton cancelar proveedor solo si hay proveedor aceptado y no hay productos
+            btnCancelarProveedor.Enabled = hayProveedor && !hayProductos && ddlProveedores.SelectedIndex > 0;
+
+            //Dropdown proveedor solo si no hay proveedor aceptado
+            ddlProveedores.Enabled = !hayProveedor;
+
+            //Dropdown productos solo si hay cliente aceptado
+            ddlProductos.Enabled = hayProveedor;
+
+            // Botón agregar producto SOLO si hay proveedor
+            btnAgregarDetalle.Enabled = hayProveedor;
+
+            //Txt Cantidad solo si hay proveedor
+            txtCantidad.Enabled = hayProveedor;
+
+            //Txt precio lo define el producto
+            txtPrecio.Enabled = false;
+        }
+
+        private void LimpiarProveedores()
+        {
+            ddlProveedores.ClearSelection();
+            ddlProveedores.SelectedIndex = 0;
+            Session["proveedorSeleccionado"] = null;
+        }
+
+        private void LimpiarProductos()
+        {
+            ddlProductos.ClearSelection();
+            ddlProductos.SelectedIndex = 0;
+            txtCantidad.Text = "";
+            txtPrecio.Text = "";
+            Session["productoSeleccionado"] = null;
+        }
+
+        private void LimpiarListaDetalles()
+        {
+            Session["DetalleCompra"] = null;
+        }
+
+        // ---------- Selected Index Changed ----------
+
+        protected void ddlProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarEstadoUI();
+        }
+
+        protected void ddlProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlProductos.SelectedValue == "0")
+            {
+                // Limpio textbox si no hay seleccion
+                LimpiarProductos();
+                return;
+            }
+
+            int idSeleccionado = int.Parse(ddlProductos.SelectedValue);
+            var listaProductos = Session["listaProductos"] as List<Producto>;
+
+            Producto seleccionado = listaProductos.Find(p => p.IdProducto == idSeleccionado);
+            if (seleccionado == null) return;
+
+            txtPrecio.Text = seleccionado.Precio.ToString();
+            
+            Session["productoSeleccionado"] = seleccionado;
+        }
+
+        // ---------- GridView: quitar ítems ----------
+
+        protected void gvDetalles_RowCommand(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Quitar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                if (index >= 0 && index < Detalles.Count)
+                {
+                    Detalles.RemoveAt(index);
+                    gvDetalles.DataSource = Detalles;
+                    gvDetalles.DataBind();
+                    ActualizarEstadoUI();
+                }
+            }
+            ActualizarEstadoUI();
+        }
+
+        // ---------- Botones ----------
+
+        protected void btnAceptarProveedor_Click(object sender, EventArgs e)
+        {
+            int idProveedor = int.Parse(ddlProveedores.SelectedValue);
+
+            var lista = Session["listaProveedores"] as List<Proveedor>;
+            var proveedor = lista.Find(p => p.IdProveedor == idProveedor);
+
+            Session["proveedorSeleccionado"] = proveedor;
+
+            CargarProductosPorProveedor(proveedor.IdProveedor);
+            ActualizarEstadoUI();
+        }
+
+        protected void btnCancelarProveedor_Click(object sender, EventArgs e)
+        {
+            LimpiarProveedores();
+            ActualizarEstadoUI();
+        }
+
+        protected void btnGuardarCompra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DetalleCompras.aspx");
+
+        }
         protected void btnAgregarDetalle_Click(object sender, EventArgs e)
         {
+            if (validarInputs())
+                return;
+
             ProductosNegocio prodNeg = new ProductosNegocio();
             Producto p = prodNeg.BuscarPorId(int.Parse(ddlProductos.SelectedValue));
 
-            DetalleCompra det = new DetalleCompra();
-            det.Producto = p;
-            det.Cantidad = int.Parse(txtCantidad.Text);
-            det.PrecioUnitario = decimal.Parse(txtPrecio.Text);
-            decimal subtotalCalculado = det.Subtotal;
+            // Si el producto ya está en la lista, sumo cantidades
+            var existente = Detalles.Find(d => d.Producto.IdProducto == p.IdProducto);
+            if (existente != null)
+            {
+                existente.Cantidad += int.Parse(txtCantidad.Text);
+            }
+            //Sino, creo que producto nuevo y lo agrego a la lista
+            else
+            {
+                DetalleCompra det = new DetalleCompra();
+                det.Producto = p;
+                det.Cantidad = int.Parse(txtCantidad.Text);
+                det.PrecioUnitario = decimal.Parse(txtPrecio.Text);
+                decimal subtotalCalculado = det.Subtotal;
 
-            Detalles.Add(det);
+                Detalles.Add(det);
+            }
 
             gvDetalles.DataSource = Detalles;
             gvDetalles.DataBind();
+
+            LimpiarProductos();
+            ActualizarEstadoUI();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -88,6 +260,84 @@ namespace TPFinal_Comercio_Equipo_16B
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("DetalleCompras.aspx");
+        }
+
+        protected void btnVolverAlPanel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DetalleCompras.aspx");
+        }
+
+        // ---------- Validaciones ----------
+
+        protected bool validarInputs()
+        {
+            bool hayError = false;
+
+            if (Session["productoSeleccionado"] as Producto == null)
+            {
+                lblMensajeError.Text += "No se selecciono ningun producto<br/>";
+                hayError = true;
+            }
+
+
+            if (!int.TryParse(txtCantidad.Text, out int cantidad))
+            {
+                lblMensajeError.Text += "La cantidad debe ser un número válido.<br/>";
+                hayError = true;
+            }
+
+            if (!int.TryParse(txtPrecio.Text, out int precio))
+            {
+                lblMensajeError.Text += "El precio debe ser un número válido.<br/>";
+                hayError = true;
+            }
+
+            if (Session["proveedorSeleccionado"] as Proveedor == null)
+            {
+                lblMensajeError.Text += "No se puede encontrar el proveedor<br/>";
+                hayError = true;
+            }
+
+            if (cantidad <= 0)
+            {
+                lblMensajeError.Text += "No se puede comprar un producto con cantidad 0 o negativa<br/>";
+                hayError = true;
+            }
+
+            if (precio <= 0)
+            {
+                lblMensajeError.Text += "No se puede comprar un producto con precio 0 o negativo<br/>";
+                hayError = true;
+            }
+
+            if (hayError)
+                mostrarError();
+
+            return hayError;
+        }
+
+        private void mostrarError()
+        {
+            lblMensajeModal.Text = "Errores encontrados";
+            modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
+            btnCerrarModal.Visible = true;
+            btnVolverAlPanel.Visible = false;
+            modalBody.Visible = true;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
+        }
+
+        private void mostrarMensajeExito()
+        {
+
+            lblMensajeModal.Text = "Venta creada correctamente";
+            modalHeader.Attributes["class"] = "modal-header bg-success text-white";
+            btnCerrarModal.Visible = false;
+            btnVolverAlPanel.Visible = true;
+            modalBody.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
         }
     }
 }
