@@ -3,249 +3,234 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 85vh; background-color: #f8f9fa;">
-        <h5 class="mb-5 text-center fw-bold text-dark">Lista de Clientes</h5>
 
-        <!--LISTA DE CLIENTES-->
-        <asp:GridView ID="gvClientes" runat="server"
-            CssClass="table table-striped table-hover text-center"
-            AutoGenerateColumns="False"
-            DataKeyNames="IdCliente"
-            OnSelectedIndexChanged="gvClientes_SelectedIndexChanged">
-            <Columns>
-                <asp:CommandField ShowSelectButton="True" SelectText="Seleccionar" />
-                <asp:BoundField DataField="IdCliente" HeaderText="ID" />
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-            </Columns>
-            <SelectedRowStyle BackColor="#d1ecf1" Font-Bold="true" />
-        </asp:GridView>
+    <div class="container py-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-dark text-white text-center rounded-top">
+                <h4 class="mb-0">Lista de Clientes</h4>
+            </div>
 
-        <div class="d-flex flex-wrap justify-content-center align-items-center d-grid gap-2 d-md-block text-center">
+            <div class="card-body">
 
-            <asp:Button Text="Agregar"
-                CssClass="btn btn-success px-5 py-2 rounded-pill border fw-semibold hover-btn"
-                runat="server"
-                ID="btnAgregar"
-                OnClick="btnAgregar_Click" />
+                <!-- GRID -->
+                <div class="table-responsive mb-4">
+                    <asp:GridView ID="gvClientes" runat="server"
+                        CssClass="table table-hover table-bordered align-middle"
+                        AutoGenerateColumns="False"
+                        DataKeyNames="IdCliente"
+                        OnSelectedIndexChanged="gvClientes_SelectedIndexChanged">
 
-            <asp:Button Text="Modificar"
-                CssClass="btn btn-info px-5 py-2 rounded-pill border fw-semibold hover-btn"
-                runat="server"
-                ID="btnModificar"
-                OnClick="btnModificar_Click" />
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" SelectText="➡" />
+                            <asp:BoundField DataField="IdCliente" HeaderText="ID" />
+                            <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                            <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
+                            <asp:BoundField DataField="Email" HeaderText="Email" />
+                        </Columns>
 
-            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar Seleccionado"
-                CssClass="btn btn-danger px-5 py-2 rounded-pill border fw-semibold hover-btn"
-                OnClick="btnEliminar_Click"
-                OnClientClick="return confirm('¿Seguro que desea eliminar este cliente?');" />
-
-
-            <asp:Button Text="Volver"
-                CssClass="btn btn-dark px-5 py-2 rounded-pill border fw-semibold hover-btn"
-                runat="server"
-                ID="btnVolver"
-                OnClick="btnVolver_Click" />
-        </div>
-
-    </div>
-
-
-    <!--MODAL PARA MODIFICAR CLIENTE-->
-    <div class="modal fade" id="modalEditar" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Modificar Cliente</h5>
+                        <SelectedRowStyle BackColor="#c7f3ff" Font-Bold="true" />
+                    </asp:GridView>
                 </div>
-                <div class="modal-body">
 
-                    <asp:HiddenField ID="hfIdCliente" runat="server" />
-                    <!-- NOMBRE -->
-                    <div class="mb-3">
-                        <label>Nombre</label>
-                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" />
-                        <asp:RequiredFieldValidator
-                            ID="rfvNombre"
-                            runat="server"
-                            ErrorMessage="El nombre es obligatorio"
-                            ControlToValidate="txtNombre"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar" />
-                        <asp:RegularExpressionValidator
-                            ID="RegularExpressionValidator1"
-                            runat="server"
-                            ControlToValidate="txtNombre"
-                            ErrorMessage="El nombre solo puede contener letras."
-                            ValidationExpression="^[a-zA-ZÀ-ÿ\s]+$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar">
-                        </asp:RegularExpressionValidator>
-                    </div>
+                <!-- BOTONES -->
+                <div class="d-flex flex-wrap justify-content-center gap-2 text-center mt-3">
 
-                    <!-- TELEFONO -->
-                    <div class="mb-3">
-                        <label>Telefono</label>
-                        <asp:TextBox ID="txtTelefono" CssClass="form-control" runat="server" />
-                        <asp:RequiredFieldValidator
-                            ID="rfvTelefono"
-                            runat="server"
-                            ErrorMessage="El teléfono es obligatorio"
-                            ControlToValidate="txtTelefono"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar" />
+                    <asp:Button Text="Agregar"
+                        CssClass="btn btn-success px-4 py-2 rounded-pill fw-semibold shadow-sm"
+                        runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" />
 
-                        <asp:RegularExpressionValidator
-                            ID="revTelefono"
-                            runat="server"
-                            ErrorMessage="Formato de teléfono inválido"
-                            ControlToValidate="txtTelefono"
-                            ValidationExpression="^[0-9]{7,15}$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar" />
-                    </div>
+                    <asp:Button Text="Modificar"
+                        CssClass="btn btn-info px-4 py-2 rounded-pill fw-semibold shadow-sm"
+                        runat="server" ID="btnModificar" OnClick="btnModificar_Click" />
 
-                    <!-- EMAIL -->
-                    <div class="mb-3">
-                        <label>Email</label>
-                        <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" />
-                        <asp:RequiredFieldValidator
-                            ID="rfvEmail"
-                            runat="server"
-                            ErrorMessage="El email es obligatorio"
-                            ControlToValidate="txtEmail"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar" />
+                    <asp:Button ID="btnEliminar" runat="server" Text="Dar de baja"
+                        CssClass="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm"
+                        OnClick="btnEliminar_Click"
+                        OnClientClick="return confirm('¿Seguro que desea dar de baja este cliente?');" />
 
-                        <asp:RegularExpressionValidator
-                            ID="revEmail"
-                            runat="server"
-                            ErrorMessage="Email inválido"
-                            ControlToValidate="txtEmail"
-                            ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgEditar" />
-                    </div>
-                    <!--BOTON GUARDAR MODIFICAR-->
-                    <div class="modal-footer">
-                        <asp:Button ID="btnGuardar"
-                            runat="server"
-                            Text="Guardar"
-                            CssClass="btn btn-success"
-                            OnClick="btnGuardar_Click"
-                            CausesValidation="true"
-                            ValidationGroup="vgEditar" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </div>
+                    <asp:Button Text="Volver"
+                        CssClass="btn btn-secondary px-4 py-2 rounded-pill fw-semibold shadow-sm"
+                        runat="server" ID="btnVolver" OnClick="btnVolver_Click" />
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!--MODAL PARA AGREGAR CLIENTE -->
-    <div class="modal fade" id="modalAgregar" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Agregar Cliente</h5>
+
+    <!-- ======================= MODAL EDITAR ======================= -->
+    <div class="modal fade" id="modalEditar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow">
+
+                <div class="modal-header bg-info text-white rounded-top">
+                    <h5 class="modal-title">Modificar Cliente</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
                 </div>
+
                 <div class="modal-body">
 
+                    <asp:HiddenField ID="hfIdCliente" runat="server" />
+
+                    <!-- NOMBRE -->
                     <div class="mb-3">
-                        <!-- NOMBRE -->
-                         <label>Nombre</label>
-                        <asp:TextBox ID="txtNombreAgregar" CssClass="form-control"
-                            runat="server" placeholder="Nombre"></asp:TextBox>
+                        <label class="fw-semibold">Nombre</label>
+                        <asp:TextBox ID="txtNombre" CssClass="form-control rounded-pill" runat="server" />
 
-                        <asp:RegularExpressionValidator
-                            ID="revNombreAgregar"
-                            runat="server"
-                            ControlToValidate="txtNombreAgregar"
-                            ErrorMessage="El nombre solo puede contener letras."
+                        <asp:RequiredFieldValidator ID="rfvNombre"
+                            runat="server" ErrorMessage="El nombre es obligatorio"
+                            ControlToValidate="txtNombre"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
+
+                        <asp:RegularExpressionValidator ID="revNombre"
+                            runat="server" ErrorMessage="Solo letras."
+                            ControlToValidate="txtNombre"
                             ValidationExpression="^[a-zA-ZÀ-ÿ\s]+$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RegularExpressionValidator>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvNombreAgregar"
-                            runat="server"
-                            ControlToValidate="txtNombreAgregar"
-                            ErrorMessage="El nombre es obligatorio."
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RequiredFieldValidator>
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
                     </div>
-
 
                     <!-- TELEFONO -->
                     <div class="mb-3">
-                         <label>Telefono</label>
-                        <asp:TextBox ID="txtTelefonoAgregar" CssClass="form-control"
-                            runat="server" placeholder="Teléfono"></asp:TextBox>
+                        <label class="fw-semibold">Teléfono</label>
+                        <asp:TextBox ID="txtTelefono" CssClass="form-control rounded-pill" runat="server" />
 
-                        <asp:RegularExpressionValidator
-                            ID="revTelefonoAgregar"
-                            runat="server"
-                            ControlToValidate="txtTelefonoAgregar"
-                            ErrorMessage="El teléfono solo puede contener números."
-                            ValidationExpression="^[0-9]+$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="rfvTelefono"
+                            runat="server" ErrorMessage="El teléfono es obligatorio"
+                            ControlToValidate="txtTelefono"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
 
-                        <asp:RequiredFieldValidator
-                            ID="rfvTelefonoAgregar"
-                            runat="server"
-                            ControlToValidate="txtTelefonoAgregar"
-                            ErrorMessage="El teléfono es obligatorio."
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RequiredFieldValidator>
-
+                        <asp:RegularExpressionValidator ID="revTelefono"
+                            runat="server" ErrorMessage="Formato inválido (solo números, 7 a 15 dígitos)"
+                            ControlToValidate="txtTelefono"
+                            ValidationExpression="^[0-9]{7,15}$"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
                     </div>
 
                     <!-- EMAIL -->
                     <div class="mb-3">
-                         <label>Email</label>
-                        <asp:TextBox ID="txtEmailAgregar" CssClass="form-control"
-                            runat="server" placeholder="Email"></asp:TextBox>
+                        <label class="fw-semibold">Email</label>
+                        <asp:TextBox ID="txtEmail" CssClass="form-control rounded-pill" runat="server" />
 
-                        <asp:RegularExpressionValidator
-                            ID="revEmailAgregar"
-                            runat="server"
-                            ControlToValidate="txtEmailAgregar"
-                            ErrorMessage="Ingrese un email válido."
+                        <asp:RequiredFieldValidator ID="rfvEmail"
+                            runat="server" ErrorMessage="El email es obligatorio"
+                            ControlToValidate="txtEmail"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
+
+                        <asp:RegularExpressionValidator ID="revEmail"
+                            runat="server" ErrorMessage="Email inválido"
+                            ControlToValidate="txtEmail"
                             ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RegularExpressionValidator>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvEmailAgregar"
-                            runat="server"
-                            ControlToValidate="txtEmailAgregar"
-                            ErrorMessage="El email es obligatorio."
-                            CssClass="text-danger"
-                            ValidationGroup="vgAgregar">
-                        </asp:RequiredFieldValidator>
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgEditar" />
                     </div>
+
                 </div>
 
-                <!--BOTON GUARDAR AGREGAR-->
+                <div class="modal-footer">
+                    <asp:Button ID="btnGuardar"
+                        runat="server" Text="Guardar Cambios"
+                        CssClass="btn btn-info rounded-pill px-4"
+                        OnClick="btnGuardar_Click" ValidationGroup="vgEditar" />
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ======================= MODAL AGREGAR ======================= -->
+    <div class="modal fade" id="modalAgregar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow">
+
+                <div class="modal-header bg-success text-white rounded-top">
+                    <h5 class="modal-title">Agregar Cliente</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- NOMBRE -->
+                    <div class="mb-3">
+                        <label class="fw-semibold">Nombre</label>
+                        <asp:TextBox ID="txtNombreAgregar" CssClass="form-control rounded-pill"
+                            runat="server" placeholder="Nombre" />
+
+                        <asp:RegularExpressionValidator ID="revNombreAgregar"
+                            runat="server" ControlToValidate="txtNombreAgregar"
+                            ErrorMessage="Solo letras."
+                            ValidationExpression="^[a-zA-ZÀ-ÿ\s]+$"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+
+                        <asp:RequiredFieldValidator ID="rfvNombreAgregar"
+                            runat="server" ControlToValidate="txtNombreAgregar"
+                            ErrorMessage="El nombre es obligatorio."
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+                    </div>
+
+                    <!-- TELEFONO -->
+                    <div class="mb-3">
+                        <label class="fw-semibold">Teléfono</label>
+                        <asp:TextBox ID="txtTelefonoAgregar" CssClass="form-control rounded-pill"
+                            runat="server" placeholder="Teléfono" />
+
+                        <asp:RegularExpressionValidator ID="revTelefonoAgregar"
+                            runat="server" ControlToValidate="txtTelefonoAgregar"
+                            ErrorMessage="Solo números."
+                            ValidationExpression="^[0-9]{7,15}$"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+
+                        <asp:RequiredFieldValidator ID="rfvTelefonoAgregar"
+                            runat="server" ControlToValidate="txtTelefonoAgregar"
+                            ErrorMessage="El teléfono es obligatorio."
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label class="fw-semibold">Email</label>
+                        <asp:TextBox ID="txtEmailAgregar" CssClass="form-control rounded-pill"
+                            runat="server" placeholder="Email" />
+
+                        <asp:RegularExpressionValidator ID="revEmailAgregar"
+                            runat="server" ControlToValidate="txtEmailAgregar"
+                            ErrorMessage="Formato de email inválido"
+                            ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+
+                        <asp:RequiredFieldValidator ID="rfvEmailAgregar"
+                            runat="server" ControlToValidate="txtEmailAgregar"
+                            ErrorMessage="El email es obligatorio."
+                            CssClass="text-danger small d-block"
+                            ValidationGroup="vgAgregar" />
+                    </div>
+
+                </div>
+
                 <div class="modal-footer">
                     <asp:Button ID="btnGuardarAgregar"
-                        runat="server"
-                        Text="Guardar"
-                        CssClass="btn btn-success"
+                        runat="server" Text="Guardar"
+                        CssClass="btn btn-success rounded-pill px-4"
                         OnClick="btnGuardarAgregar_Click"
-                        CausesValidation="true"
                         ValidationGroup="vgAgregar" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-dismiss="modal">Cancelar</button>
                 </div>
+
             </div>
         </div>
     </div>
 
 </asp:Content>
+

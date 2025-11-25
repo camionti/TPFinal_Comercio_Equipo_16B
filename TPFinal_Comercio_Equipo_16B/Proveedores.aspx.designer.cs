@@ -60,6 +60,15 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// Control hfIdProveedor.
         /// </summary>
         /// <remarks>
@@ -168,15 +177,6 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.TextBox txtNombreAgregar;
 
         /// <summary>
-        /// Control revNombreAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombreAgregar;
-
-        /// <summary>
         /// Control rfvNombreAgregar.
         /// </summary>
         /// <remarks>
@@ -184,6 +184,15 @@ namespace TPFinal_Comercio_Equipo_16B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreAgregar;
+
+        /// <summary>
+        /// Control revNombreAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombreAgregar;
 
         /// <summary>
         /// Control txtTelefonoAgregar.
@@ -195,15 +204,6 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoAgregar;
 
         /// <summary>
-        /// Control revTelefonoAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefonoAgregar;
-
-        /// <summary>
         /// Control rfvTelefonoAgregar.
         /// </summary>
         /// <remarks>
@@ -211,6 +211,15 @@ namespace TPFinal_Comercio_Equipo_16B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefonoAgregar;
+
+        /// <summary>
+        /// Control revTelefonoAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefonoAgregar;
 
         /// <summary>
         /// Control txtEmailAgregar.
@@ -222,15 +231,6 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.TextBox txtEmailAgregar;
 
         /// <summary>
-        /// Control revEmailAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmailAgregar;
-
-        /// <summary>
         /// Control rfvEmailAgregar.
         /// </summary>
         /// <remarks>
@@ -240,6 +240,15 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmailAgregar;
 
         /// <summary>
+        /// Control revEmailAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmailAgregar;
+
+        /// <summary>
         /// Control btnGuardarAgregar.
         /// </summary>
         /// <remarks>
@@ -247,14 +256,5 @@ namespace TPFinal_Comercio_Equipo_16B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarAgregar;
-
-        /// <summary>
-        /// Control lblError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }
