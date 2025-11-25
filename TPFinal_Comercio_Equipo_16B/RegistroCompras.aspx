@@ -1,13 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="RegistroCompras.aspx.cs" Inherits="TPFinal_Comercio_Equipo_16B.RegistroCompras" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .bg-warning-50 {
+            background-color:#dc3546c0;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container py-3">
 
         <div class="card shadow-sm border-0">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header bg-info text-white">
                 <h4 class="my-1">Registrar Nueva Compra</h4>
             </div>
 
@@ -15,7 +20,8 @@
 
                 <!-- PROVEEDOR -->
                 <div class="form-group">
-                    <label class="font-weight-bold">Proveedor</label>
+                    <asp:Label ID="lblAgregarProveedor" runat="server" CssClass="font-weight-lighter px-1 pb-1 rounded text-white bg-warning-50" >Por favor seleccione un proveedor</asp:Label>
+                    <label class="font-weight-bold d-block">Proveedor</label>
                     <asp:DropDownList 
                         ID="ddlProveedores" 
                         runat="server" 
@@ -26,8 +32,8 @@
 
                     
                     <div class="mt-3">
-                        <asp:Button ID="btnAceptarProveedor" runat="server" Text="Aceptar" CssClass="btn btn-success" OnClick="btnAceptarProveedor_Click" />
-                        <asp:Button ID="btnCancelarProveedor" runat="server" Text="Cancelar" CssClass="btn btn-danger ml-4" OnClick="btnCancelarProveedor_Click" />
+                        <asp:Button ID="btnAceptarProveedor" runat="server" Text="Aceptar" OnClick="btnAceptarProveedor_Click" />
+                        <asp:Button ID="btnCancelarProveedor" runat="server" Text="Cancelar" OnClick="btnCancelarProveedor_Click" />
                     </div>
                 </div>
 
@@ -56,7 +62,7 @@
                         </div>
 
                         <div class="form-group col-md-1 d-flex align-items-end">
-                            <asp:Button ID="btnAgregarDetalle" runat="server" CssClass="btn btn-success btn-block"
+                            <asp:Button ID="btnAgregarDetalle" runat="server" CssClass=""
                                 Text="+" OnClick="btnAgregarDetalle_Click" />
                         </div>
                     </div>
@@ -92,9 +98,9 @@
                 </div>
             </div>
 
-            <div class="card-footer d-flex justify-content-between">
-                <asp:Button ID="btnGuardarCompra" runat="server" CssClass="btn btn-outline-primary " Text="Generar Compra" OnClick="btnGuardarCompra_Click" />
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-danger" OnClick="btnCancelar_Click" CausesValidation="false" />
+            <div class="card-footer d-flex justify-content-end">
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-danger mr-3" OnClick="btnCancelar_Click" CausesValidation="false" />
+                <asp:Button ID="btnGuardarCompra" runat="server" CssClass="btn" Text="Generar Compra" OnClick="btnGuardarCompra_Click" />
             </div>
         </div>
 
@@ -111,6 +117,29 @@
                     <asp:Label ID="lblMensajeError" runat="server" Text="" EnableViewState="false" />
                 </div>
 
+                <div id="modalBodyGrid" class="modal-body " runat="server" visible="false">
+                    <div class="table-responsive mt-2">
+                        <asp:GridView ID="gvDetallesConfirmar" runat="server"
+                            CssClass="table table-striped table-bordered text-center"
+                            AutoGenerateColumns="False"
+                            OnRowCommand="gvDetalles_RowCommand">
+
+
+                            <Columns>
+                                <asp:BoundField DataField="Producto.Nombre" HeaderText="Producto" />
+                                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+                                <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio" DataFormatString="{0:C2}" />
+                                <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="{0:C2}" />
+
+                            </Columns>
+
+                        </asp:GridView>
+
+                    </div>
+                    <h6 class="  ">El total de la compra es de: <span ID="lblTotal" class="d-inline bg-warning-50 text-white rounded mx-auto w-auto py-1 px-2 text-center" runat="server"></span></h6>
+
+                </div>
+
                 <div class="modal-footer">
                     <!-- Botón para éxito -->
                     <asp:Button ID="btnVolverAlPanel" runat="server"
@@ -119,7 +148,7 @@
                         OnClick="btnVolverAlPanel_Click"
                         CausesValidation="false" />
 
-                    <!-- Botón para error -->
+                    <!-- Botón para Cerrar -->
                     <button id="btnCerrarModal"
                         runat="server"
                         type="button"
@@ -127,6 +156,13 @@
                         data-dismiss="modal">
                         Cerrar
                     </button>
+
+                    <!-- Botón para Confirmar -->
+                    <asp:Button ID="btnConfirmarCompra" runat="server"
+                        Text="Confirmar"
+                        CssClass="btn btn-outline-primary mx-auto"
+                        OnClick="btnConfirmarCompra_Click"
+                        CausesValidation="false" />
 
                 </div>
             </div>

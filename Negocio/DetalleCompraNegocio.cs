@@ -36,11 +36,11 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta(@"SELECT D.IdDetalleCompra, D.Cantidad, D.PrecioUnitario,
-                               P.IdProducto, P.Nombre
-                               FROM DetalleCompra D
-                               INNER JOIN Productos P ON D.IdProducto = P.IdProducto
-                               WHERE D.IdCompra = @id AND D.Activo = 1");
+                datos.setearConsulta(@"SELECT D.IdDetalleCompra, D.Cantidad, D.PrecioUnitario, 
+                               P.IdProducto, P.Nombre  
+                               FROM DetalleCompra D 
+                               INNER JOIN Productos P ON D.IdProducto = P.IdProducto 
+                               WHERE D.IdCompra = @id");
 
                 datos.setearParametro("@id", idCompra);
                 datos.ejecutarLectura();

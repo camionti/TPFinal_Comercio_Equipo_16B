@@ -106,6 +106,37 @@ namespace TPFinal_Comercio_Equipo_16B
 
             //Txt precio lo define el producto
             txtPrecio.Enabled = false;
+
+            // Mostrar/ocultar lbl mensaje agregar proveedor
+            lblAgregarProveedor.Visible = !hayProveedor;
+
+            CambiarEstilosBotones(hayProveedor, hayProductos);
+
+        }
+
+        //Cambios de estilo CSS de botones
+        private void CambiarEstilosBotones(bool hayProveedor, bool hayProductos)
+        {
+
+            if (hayProveedor && hayProductos)
+                btnGuardarCompra.CssClass = "btn btn-primary";
+            else
+                btnGuardarCompra.CssClass = "btn btn-secondary";
+
+            if (!hayProveedor && !hayProductos && ddlProveedores.SelectedValue != "0")
+                btnAceptarProveedor.CssClass = "btn btn-success";
+            else
+                btnAceptarProveedor.CssClass = "btn btn-secondary";
+
+            if(hayProveedor && !hayProductos && ddlProveedores.SelectedIndex > 0)
+                btnCancelarProveedor.CssClass = "btn btn-danger ml-4";
+            else
+                btnCancelarProveedor.CssClass = "btn btn-secondary ml-4";
+
+            if (hayProveedor)
+                btnAgregarDetalle.CssClass = "btn btn-block btn-success";
+            else
+                btnAgregarDetalle.CssClass = "btn btn-block btn-secondary";
         }
 
         private void LimpiarProveedores()
@@ -127,6 +158,17 @@ namespace TPFinal_Comercio_Equipo_16B
         private void LimpiarListaDetalles()
         {
             Session["DetalleCompra"] = null;
+            Detalles.Clear();
+            gvDetalles.DataSource = Detalles;
+            gvDetalles.DataBind();
+            ActualizarTotalCompra();
+            ActualizarEstadoUI();
+        }
+
+        private void ActualizarTotalCompra()
+        {
+            decimal total = Detalles.Sum(d => d.Subtotal);
+            lblTotal.InnerText ="$ " + total.ToString("0.00");
         }
 
         // ---------- Selected Index Changed ----------
@@ -152,7 +194,8 @@ namespace TPFinal_Comercio_Equipo_16B
             if (seleccionado == null) return;
 
             txtPrecio.Text = seleccionado.Precio.ToString();
-            
+            txtCantidad.Text = "1";
+
             Session["productoSeleccionado"] = seleccionado;
         }
 
@@ -169,12 +212,14 @@ namespace TPFinal_Comercio_Equipo_16B
                     Detalles.RemoveAt(index);
                     gvDetalles.DataSource = Detalles;
                     gvDetalles.DataBind();
+                    ActualizarTotalCompra();
                     ActualizarEstadoUI();
                 }
             }
             ActualizarEstadoUI();
         }
 
+        
         // ---------- Botones ----------
 
         protected void btnAceptarProveedor_Click(object sender, EventArgs e)
@@ -185,7 +230,6 @@ namespace TPFinal_Comercio_Equipo_16B
             var proveedor = lista.Find(p => p.IdProveedor == idProveedor);
 
             Session["proveedorSeleccionado"] = proveedor;
-
             CargarProductosPorProveedor(proveedor.IdProveedor);
             ActualizarEstadoUI();
         }
@@ -196,10 +240,7 @@ namespace TPFinal_Comercio_Equipo_16B
             ActualizarEstadoUI();
         }
 
-        protected void btnGuardarCompra_Click(object sender, EventArgs e)
-        {
 
-        }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -208,6 +249,7 @@ namespace TPFinal_Comercio_Equipo_16B
         }
         protected void btnAgregarDetalle_Click(object sender, EventArgs e)
         {
+
             if (validarInputs())
                 return;
 
@@ -227,24 +269,52 @@ namespace TPFinal_Comercio_Equipo_16B
                 det.Producto = p;
                 det.Cantidad = int.Parse(txtCantidad.Text);
                 det.PrecioUnitario = decimal.Parse(txtPrecio.Text);
-                decimal subtotalCalculado = det.Subtotal;
-
                 Detalles.Add(det);
             }
 
             gvDetalles.DataSource = Detalles;
             gvDetalles.DataBind();
+            gvDetallesConfirmar.DataSource = Detalles;
+            gvDetallesConfirmar.DataBind();
+
+            ActualizarTotalCompra();
 
             LimpiarProductos();
             ActualizarEstadoUI();
         }
+        protected void btnGuardarCompra_Click(object sender, EventArgs e)
+        {
+            MostrarMensajeConConfirmacion();
+        }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnConfirmarCompra_Click(object sender, EventArgs e)
         {
             Compra compra = new Compra();
             compra.Fecha = DateTime.Today;
             compra.Proveedor = new Proveedor { IdProveedor = int.Parse(ddlProveedores.SelectedValue) };
+
+            if (compra.Proveedor == null)
+            {
+                lblMensajeError.Text = "No se seleccionó un proveedor.";
+                mostrarError();
+                return;
+            }
+
             compra.Detalles = Detalles;
+
+            if (compra.Detalles.Count == 0)
+            {
+                lblMensajeError.Text = "No hay productos en la compra.";
+                mostrarError();
+                return;
+            }
+
+            if (Session["usuario"] == null)
+            {
+                lblMensajeError.Text = "No hay un usuario logeado.";
+                mostrarError();
+                return;
+            }
 
             Usuario usuario = (Usuario)Session["usuario"];
             compra.IdUsuario = usuario.IdUsuario;
@@ -252,10 +322,15 @@ namespace TPFinal_Comercio_Equipo_16B
             CompraNegocio negocio = new CompraNegocio();
             negocio.AgregarCompra(compra);
 
-            
+
             Session["DetallesCompra"] = null;
             gvDetalles.DataSource = null;
             gvDetalles.DataBind();
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            MostrarMensajeConConfirmacion();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
@@ -323,11 +398,12 @@ namespace TPFinal_Comercio_Equipo_16B
             btnCerrarModal.Visible = true;
             btnVolverAlPanel.Visible = false;
             modalBody.Visible = true;
+            btnConfirmarCompra.Visible = false;
+            modalBodyGrid.Visible = false;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
             "$('#modalConfirmacion').modal('show');", true);
         }
-
         private void mostrarMensajeExito()
         {
 
@@ -336,8 +412,27 @@ namespace TPFinal_Comercio_Equipo_16B
             btnCerrarModal.Visible = false;
             btnVolverAlPanel.Visible = true;
             modalBody.Visible = false;
+            btnConfirmarCompra.Visible = false;
+            modalBodyGrid.Visible = false;
+
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
             "$('#modalConfirmacion').modal('show');", true);
         }
+
+        private bool MostrarMensajeConConfirmacion()
+        {
+            lblMensajeModal.Text = "Usted va a generar la siguiente compra";
+            modalHeader.Attributes["class"] = "modal-header bg-primary text-white";
+            btnCerrarModal.Visible = true;
+            btnConfirmarCompra.Visible = true;
+            btnVolverAlPanel.Visible = false;
+            modalBody.Visible = false;
+            modalBodyGrid.Visible = true;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
+
+            return false;
+        }
+        
     }
 }

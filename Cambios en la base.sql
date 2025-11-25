@@ -169,7 +169,7 @@ BEGIN
     END CATCH
 END
 -- Tipo de tabla para enviar a sp_Ventas_Crear
--- Representa el detalle de una venta (lista de productos, cantidades y precios)
+-- Representa el DTO del detalle de una venta (lista de productos, cantidades y precios)
 -- Se usa para que el procedure pueda obtener una lista de DetallesVenta
 GO
 CREATE TYPE dbo.TipoDetalleVenta AS TABLE
@@ -188,7 +188,9 @@ CREATE PROCEDURE dbo.sp_Ventas_Crear
 )
 AS
 BEGIN
+    --Evita enviar mensaje a la consola cada vez que cambia una fila
     SET NOCOUNT ON;
+    --Hace rollback apenas de genera el throw
     SET XACT_ABORT ON;
 
     IF @Fecha IS NULL
@@ -281,3 +283,138 @@ BEGIN
     END CATCH;
 END;
 GO
+
+
+-- Tipo de tabla para enviar a sp_Compras_Crear
+-- Representa el DTO de detalle de una compra 
+-- Se usa para que el procedure pueda obtener una lista de DetallesCompra
+GO
+CREATE TYPE dbo.TipoDetalleCompra AS TABLE
+(
+    IdProducto     INT             NOT NULL,
+    Cantidad       INT             NOT NULL,
+    PrecioUnitario DECIMAL(10, 2)  NOT NULL
+);
+GO
+CREATE PROCEDURE dbo.sp_Compras_Crear
+(
+    @IdProveedor INT,
+    @IdUsuario INT,
+    @Fecha     DATETIME = NULL,
+    @Detalles  dbo.TipoDetalleCompra READONLY
+)
+AS
+BEGIN    
+    
+    --Evita enviar mensaje a la consola cada vez que cambia una fila
+    SET NOCOUNT ON;
+    --Hace rollback apenas de genera el throw
+    SET XACT_ABORT ON;
+
+    IF @Fecha IS NULL
+        SET @Fecha = GETDATE();
+    DECLARE @IdCompra INT;
+    BEGIN TRY
+        BEGIN TRAN;
+
+        IF NOT EXISTS (SELECT 1 FROM @Detalles)
+            THROW 50001, 'La compra debe tener al menos un producto en el detalle.', 1;
+
+        IF EXISTS (SELECT 1 FROM @Detalles WHERE Cantidad <= 0 OR PrecioUnitario <= 0)
+            THROW 50002, 'Cantidad y precio unitario deben ser mayores a cero.', 1;
+
+        IF NOT EXISTS (SELECT 1 FROM dbo.Proveedores WHERE IdProveedor = @IdProveedor AND Activo = 1)
+            THROW 50003, 'El proveedor no existe o está inactivo.', 1;
+
+        IF NOT EXISTS (SELECT 1 FROM dbo.Usuarios WHERE IdUsuario = @IdUsuario)
+            THROW 50004, 'El usuario que registra la compra no existe.', 1;
+
+        IF EXISTS (
+            SELECT d.IdProducto
+            FROM @Detalles d
+            LEFT JOIN dbo.Productos p ON p.IdProducto = d.IdProducto
+            WHERE p.IdProducto IS NULL OR p.Activo = 0
+        )
+            THROW 50005, 'Hay productos inexistentes o inactivos en el detalle.', 1;
+
+        IF EXISTS (
+            SELECT IdProducto
+            FROM @Detalles
+            GROUP BY IdProducto
+            HAVING COUNT(*) > 1
+        )
+            THROW 50006, 'Hay productos repetidos en el detalle de compra.', 1;
+
+
+        DECLARE @Total DECIMAL(10, 2);
+
+        SELECT @Total = SUM(d.Cantidad * d.PrecioUnitario)
+        FROM @Detalles d;
+
+        INSERT INTO dbo.Compras (Fecha, IdProveedor, IdUsuario, Total, Activo)
+        VALUES (@Fecha, @IdProveedor, @IdUsuario, @Total, 1);
+
+        SET @IdCompra = SCOPE_IDENTITY();
+
+        INSERT INTO dbo.DetalleCompra (IdCompra, IdProducto, Cantidad, PrecioUnitario)
+        SELECT @IdCompra,
+               d.IdProducto,
+               d.Cantidad,
+               d.PrecioUnitario
+        FROM @Detalles d;
+
+
+        --Creo una vista contando el stock de cada producto
+        ;WITH DetalleAgrupado AS
+        (
+            SELECT IdProducto,
+                   SUM(Cantidad) AS CantidadTotal
+            FROM @Detalles
+            GROUP BY IdProducto
+        )
+
+        --Actualizo stock
+        UPDATE p
+            SET p.StockActual = p.StockActual + da.CantidadTotal
+        FROM dbo.Productos p
+        JOIN DetalleAgrupado da ON da.IdProducto = p.IdProducto;
+
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRAN;
+
+        THROW;
+    END CATCH;
+END;
+GO
+
+
+
+-- 1) Agregar columna MotivoBaja a Compras
+ALTER TABLE dbo.Compras
+ADD MotivoBaja NVARCHAR(255) NULL;
+GO
+ALTER TABLE dbo.Ventas
+ADD MotivoBaja NVARCHAR(255) NULL;
+GO
+ALTER TABLE dbo.DetalleCompra
+DROP COLUMN MotivoBaja;
+GO
+
+ALTER TABLE dbo.DetalleCompra
+DROP CONSTRAINT DF__DetalleCo__Activ__72C60C4A;  -- nombre que te mostró el error
+
+ALTER TABLE dbo.DetalleCompra
+DROP COLUMN Activo;
+GO
+
+ALTER TABLE dbo.DetalleVenta
+DROP CONSTRAINT DF__DetalleVe__Activ__160F4887;
+
+ALTER TABLE dbo.DetalleVenta
+DROP COLUMN Activo;
+GO
+
+select * from proveedores

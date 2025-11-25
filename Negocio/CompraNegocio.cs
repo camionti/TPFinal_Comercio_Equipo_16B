@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,52 @@ namespace Negocio
 {
     public class CompraNegocio
     {
+
+        public void AgregarCompraConDetalles(Compra compra, List<DetalleCompra> detalles)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                // Seteo procedure
+                datos.setearProcedure("sp_Compras_Crear");
+
+                // Seteo parametros
+                datos.setearParametro("@IdProveedor", compra.Proveedor.IdProveedor);
+                datos.setearParametro("@IdUsuario", compra.IdUsuario);
+                datos.setearParametro("@Fecha", compra.Fecha);
+
+                // Armo la tabla Detalles para enviar a la DB
+                DataTable tablaDetalles = new DataTable();
+                tablaDetalles.Columns.Add("IdProducto", typeof(int));
+                tablaDetalles.Columns.Add("Cantidad", typeof(int));
+                tablaDetalles.Columns.Add("PrecioUnitario", typeof(decimal));
+
+                foreach (DetalleCompra det in detalles)
+                {
+                    tablaDetalles.Rows.Add(
+                        det.Producto.IdProducto,
+                        det.Cantidad,
+                        det.PrecioUnitario
+                    );
+                }
+
+                // Seteo la tabla Detalles
+                datos.setearParametroTabla("@Detalles", tablaDetalles, "dbo.TipoDetalleCompra");
+
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         public void AgregarCompra(Compra compra)
         {
@@ -102,25 +149,28 @@ namespace Negocio
             datos.setearParametro("@id", idCompra);
             datos.setearParametro("@motivo", motivo);
             datos.ejecutarAccion();
-
-            // Baja detalles
-            datos.setearConsulta("UPDATE DetalleCompra SET Activo = 0 WHERE IDCompra = @id");
-            datos.setearParametro("@id", idCompra);
-            datos.ejecutarAccion();
         }
 
-        public List<Compra> Listar()
+        public List<Compra> Listar(bool? activo = null)
         {
             List<Compra> lista = new List<Compra>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta(@"SELECT C.IdCompra, C.Fecha, C.Total,
+                string consulta = @"SELECT C.IdCompra, C.Fecha, C.Total, C.Activo, 
                                P.IdProveedor, P.Nombre AS Proveedor
                                FROM Compras C
-                               INNER JOIN Proveedores P ON C.IdProveedor = P.IdProveedor
-                               WHERE C.Activo = 1");
+                               INNER JOIN Proveedores P ON C.IdProveedor = P.IdProveedor 
+                               WHERE (@Activo IS NULL OR C.Activo = @Activo)";
+
+                datos.setearConsulta(consulta);
+
+                if (activo.HasValue)
+                    datos.setearParametro("@Activo", activo.Value);
+                else
+                    datos.setearParametro("@Activo", DBNull.Value);
+                
 
                 datos.ejecutarLectura();
 
@@ -135,6 +185,7 @@ namespace Negocio
                         IdProveedor = (int)datos.Lector["IdProveedor"],
                         Nombre = datos.Lector["Proveedor"].ToString()
                     };
+                    c.Activo = (bool)datos.Lector["Activo"];
 
                     lista.Add(c);
                 }
@@ -147,6 +198,46 @@ namespace Negocio
             }
         }
 
+        public Compra BuscarPorId(int IdCompra = 0)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = @"SELECT C.IdCompra, C.Fecha, C.Total, C.Activo, C.MotivoBaja, 
+                               P.IdProveedor, P.Nombre AS Proveedor 
+                               FROM Compras C 
+                               INNER JOIN Proveedores P ON C.IdProveedor = P.IdProveedor  
+                               WHERE (@id = C.IdCompra)";
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@id", IdCompra);
+
+                datos.ejecutarLectura();
+                Compra c = new Compra();
+                while (datos.Lector.Read())
+                {
+                    c.IdCompra = (int)datos.Lector["IdCompra"];
+                    c.Fecha = (DateTime)datos.Lector["Fecha"];
+                    c.Total = (decimal)datos.Lector["Total"];
+                    c.MotivoBaja = (string)datos.Lector["MotivoBaja"];
+                    c.Activo = (bool)datos.Lector["Activo"];
+
+                    c.Proveedor = new Proveedor
+                    {
+                        IdProveedor = (int)datos.Lector["IdProveedor"],
+                        Nombre = datos.Lector["Proveedor"].ToString()
+                    };
+                    
+                }
+                return c;
+
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
     }

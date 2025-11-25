@@ -15,7 +15,6 @@ namespace Dominio
 
         public int IdUsuario { get; set; }
         public Usuario Usuario { get; set; }
-
         public decimal Total { get; set; }
         public bool Activo { get; set; }
         public string MotivoBaja { get; set; }

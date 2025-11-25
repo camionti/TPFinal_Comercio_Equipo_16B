@@ -15,6 +15,15 @@ namespace TPFinal_Comercio_Equipo_16B
     {
 
         /// <summary>
+        /// Control lblAgregarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAgregarProveedor;
+
+        /// <summary>
         /// Control ddlProveedores.
         /// </summary>
         /// <remarks>
@@ -87,15 +96,6 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.GridView gvDetalles;
 
         /// <summary>
-        /// Control btnGuardarCompra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarCompra;
-
-        /// <summary>
         /// Control btnCancelar.
         /// </summary>
         /// <remarks>
@@ -103,6 +103,15 @@ namespace TPFinal_Comercio_Equipo_16B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+
+        /// <summary>
+        /// Control btnGuardarCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardarCompra;
 
         /// <summary>
         /// Control modalHeader.
@@ -141,6 +150,33 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.Label lblMensajeError;
 
         /// <summary>
+        /// Control modalBodyGrid.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBodyGrid;
+
+        /// <summary>
+        /// Control gvDetallesConfirmar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDetallesConfirmar;
+
+        /// <summary>
+        /// Control lblTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTotal;
+
+        /// <summary>
         /// Control btnVolverAlPanel.
         /// </summary>
         /// <remarks>
@@ -157,5 +193,14 @@ namespace TPFinal_Comercio_Equipo_16B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCerrarModal;
+
+        /// <summary>
+        /// Control btnConfirmarCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarCompra;
     }
 }
