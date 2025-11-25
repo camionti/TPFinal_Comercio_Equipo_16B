@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT DV.IdDetalleVenta, DV.IdVenta, DV.IdProducto, DV.Cantidad, DV.PrecioUnitario, P.Nombre FROM DetalleVenta DV JOIN Productos P ON P.IdProducto = DV.IdProducto WHERE IdVenta = @IdVenta");
+                datos.setearConsulta("SELECT DV.IdDetalleVenta, DV.IdVenta, DV.IdProducto, DV.Cantidad, DV.PrecioUnitario, P.Nombre, P.PorcentajeGanancia FROM DetalleVenta DV JOIN Productos P ON P.IdProducto = DV.IdProducto WHERE IdVenta = @IdVenta");
                 datos.setearParametro("@IdVenta", IdVenta);
                 datos.ejecutarLectura();
 
@@ -28,6 +28,7 @@ namespace Negocio
                     aux.IdDetalleVenta = (int)datos.Lector["IdDetalleVenta"];
                     aux.IdVenta = (int)datos.Lector["IdVenta"];
                     aux.Producto = new Producto();
+                    aux.Producto.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
                     aux.Producto.IdProducto = (int)datos.Lector["IdProducto"];
                     aux.Producto.Nombre = (string)datos.Lector["Nombre"];
                     aux.Cantidad = (int)datos.Lector["Cantidad"];
@@ -51,11 +52,16 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                decimal precioBase = detalle.PrecioUnitario;
+                decimal porcentaje = detalle.Producto.PorcentajeGanancia;
+
+                decimal precioConGanancia = precioBase + (precioBase * porcentaje / 100);
+
                 datos.setearConsulta("INSERT INTO DetalleVenta (IdVenta, IdProducto, Cantidad, PrecioUnitario) VALUES (@IdVenta, @IdProducto, @Cantidad, @PrecioUnitario)");
                 datos.setearParametro("@IdVenta", detalle.IdVenta);
                 datos.setearParametro("@IdProducto", detalle.Producto.IdProducto);
                 datos.setearParametro("@Cantidad", detalle.Cantidad);
-                datos.setearParametro("@PrecioUnitario", detalle.PrecioUnitario);
+                datos.setearParametro("@PrecioUnitario", precioConGanancia);
                 datos.ejecutarAccion();
             }
             catch (Exception)

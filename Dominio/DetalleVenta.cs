@@ -13,9 +13,20 @@ namespace Dominio
         public Producto Producto { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioUnitario { get; set; }
+        public decimal PrecioConGanancia
+        {
+            get
+            {
+                return PrecioUnitario + (PrecioUnitario * Producto.PorcentajeGanancia / 100);
+            }
+        }
+
         public decimal Subtotal
         {
-            get { return Cantidad * PrecioUnitario; }
+            get
+            {
+                return Cantidad * PrecioConGanancia;
+            }
         }
     }
 }

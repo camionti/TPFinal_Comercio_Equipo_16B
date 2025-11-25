@@ -17,12 +17,12 @@
             <!-- Cliente -->
             <div class="mb-3">
                 <div class="mb-3">
-                <label for="ddlClientes" class="form-label">Cliente</label>
-                <asp:DropDownList ID="ddlClientes" runat="server"
-                    CssClass="form-control"
-                    AutoPostBack="true"
-                    OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged">
-                </asp:DropDownList>
+                    <label for="ddlClientes" class="form-label">Cliente</label>
+                    <asp:DropDownList ID="ddlClientes" runat="server"
+                        CssClass="form-control"
+                        AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged">
+                    </asp:DropDownList>
                 </div>
 
                 <asp:Button ID="btnAceptarCliente" runat="server" Text="Aceptar" CssClass="btn btn-success" OnClick="btnAceptarCliente_Click" />
@@ -94,22 +94,14 @@
 
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
 
-                        <asp:BoundField DataField="PrecioUnitario"
-                            HeaderText="Precio unitario"
-                            DataFormatString="{0:C}" />
-
-                        <asp:TemplateField HeaderText="Subtotal">
-                            <ItemTemplate>
-                                <%# ((int)Eval("Cantidad") * (decimal)Eval("PrecioUnitario")) %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="{0:C}" />
 
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:Button 
-                                    ID="btnQuitar" 
-                                    runat="server" 
-                                    Text="Quitar" 
+                                <asp:Button
+                                    ID="btnQuitar"
+                                    runat="server"
+                                    Text="Quitar"
                                     CommandName="Quitar"
                                     CommandArgument="<%# Container.DataItemIndex %>"
                                     CssClass="btn btn-danger btn-sm" />
