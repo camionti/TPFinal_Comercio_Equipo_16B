@@ -208,6 +208,7 @@ BEGIN
         IF NOT EXISTS (SELECT 1 FROM dbo.Clientes WHERE IdCliente = @IdCliente AND Activo = 1)
             THROW 50003, 'El cliente no existe o está inactivo.', 1;
 
+
         IF NOT EXISTS (SELECT 1 FROM dbo.Usuarios WHERE IdUsuario = @IdUsuario)
             THROW 50004, 'El usuario que registra la venta no existe.', 1;
 
@@ -250,12 +251,11 @@ BEGIN
 
         SET @IdVenta = SCOPE_IDENTITY();
 
-        INSERT INTO dbo.DetalleVenta (IdVenta, IdProducto, Cantidad, PrecioUnitario, Activo)
+        INSERT INTO dbo.DetalleVenta (IdVenta, IdProducto, Cantidad, PrecioUnitario)
         SELECT @IdVenta,
                d.IdProducto,
                d.Cantidad,
-               d.PrecioUnitario,
-               1
+               d.PrecioUnitario
         FROM @Detalles d;
 
         ;WITH DetalleAgrupado AS
@@ -283,7 +283,6 @@ BEGIN
     END CATCH;
 END;
 GO
-
 
 -- Tipo de tabla para enviar a sp_Compras_Crear
 -- Representa el DTO de detalle de una compra 
@@ -416,5 +415,3 @@ DROP CONSTRAINT DF__DetalleVe__Activ__160F4887;
 ALTER TABLE dbo.DetalleVenta
 DROP COLUMN Activo;
 GO
-
-select * from proveedores

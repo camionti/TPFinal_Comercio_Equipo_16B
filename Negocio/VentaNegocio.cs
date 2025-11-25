@@ -172,6 +172,7 @@ namespace Negocio
                 datos.setearParametro("@IdUsuario", venta.Usuario.IdUsuario);
                 datos.setearParametro("@Fecha", venta.Fecha);
 
+
                 // Armo la tabla Detalles para enviar a la DB
                 DataTable tablaDetalles = new DataTable();
                 tablaDetalles.Columns.Add("IdProducto", typeof(int));

@@ -40,7 +40,21 @@ namespace TPFinal_Comercio_Equipo_16B
             try
             {
                 VentaNegocio conexionVenta = new VentaNegocio();
-                listaVenta = conexionVenta.Listar(null, activas);
+
+                string rol = Session["rol"] as string;
+
+                int id = Convert.ToInt32(Session["id"]);
+
+                if (rol == "admin")
+                {
+                    listaVenta = conexionVenta.Listar(null, activas);
+                }
+                else if (rol == "vendedor")
+                {
+                    listaVenta = conexionVenta.Listar(id, activas);
+                }
+
+
                 gvVentas.DataSource = listaVenta;
                 gvVentas.DataBind();
 
