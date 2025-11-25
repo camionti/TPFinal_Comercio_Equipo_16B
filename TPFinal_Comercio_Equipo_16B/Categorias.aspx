@@ -2,57 +2,81 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container py-5">
-        <div class="card shadow-lg border-0 rounded-4">
-            <div class="card-header bg-dark text-white text-center rounded-top">
-                <h4 class="mb-0"> Lista de Categorías</h4>
+     <div class="container mt-3">
+    <div class="d-flex justify-content-between mb-4">
+        <asp:Button ID="btnVolver" runat="server" Text="Volver"
+            CssClass="btn btn-outline-danger ml-2 fw-semibold hover-btn"
+            OnClick="btnVolver_Click" />
+
+        <asp:Button ID="btnAgregar" runat="server" Text="Agregar nueva categoría"
+            CssClass="btn btn-primary px-5 py-2 mr-3  fw-semibold hover-btn"
+            OnClick="btnAgregar_Click" />
+    </div>
+         </div>
+  
+    <div class="card shadow border-0 rounded-4">
+
+        <div class="card-header text-white rounded-top" style="background-color:#0a9bb8;">
+            <h4 class="mb-0 fw-bold">Listado de Categorías</h4>
+        </div>
+
+        <div class="card-body">
+
+     
+            <div class="table-responsive mb-4">
+                <asp:GridView ID="gvCategorias" runat="server"
+                    CssClass="table table-hover table-bordered align-middle"
+                    AutoGenerateColumns="False"
+                    DataKeyNames="IdCategoria"
+                    OnRowCommand="gvCategorias_RowCommand"
+                    HeaderStyle-CssClass="text-center fw-bold bg-light">
+
+                    <Columns>
+
+                      
+                        <asp:BoundField DataField="IdCategoria" HeaderText="#ID" />
+
+                       
+                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+
+                     
+                        <asp:TemplateField HeaderText="Editar">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnEditar" runat="server"
+                                    Text="Modificar"
+                                    CssClass= "btn btn-sm btn-primary mx-1 "
+                                    CommandName="Editar"
+                                    CommandArgument='<%# Eval("IdCategoria") %>'>
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                       
+                        <asp:TemplateField HeaderText="Eventos">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnBaja" runat="server"
+                                    Text="Dar de baja"
+                                    CssClass="btn btn-sm btn-danger mx-1 "
+                                    CommandName="Borrar"
+                                    CommandArgument='<%# Eval("IdCategoria") %>'
+                                    OnClientClick="return confirm('¿Seguro que desea dar de baja esta categoría?');">
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                    </Columns>
+
+                </asp:GridView>
             </div>
 
-            <div class="card-body">
-
-                <!-- GRID -->
-                <div class="table-responsive mb-4">
-                    <asp:GridView ID="gvCategorias" runat="server"
-                        CssClass="table table-hover table-bordered align-middle"
-                        AutoGenerateColumns="False"
-                        DataKeyNames="IdCategoria"
-                        OnSelectedIndexChanged="gvCategorias_SelectedIndexChanged">
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" SelectText="➡" />
-                            <asp:BoundField DataField="IdCategoria" HeaderText="ID" />
-                            <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                        </Columns>
-                        <SelectedRowStyle BackColor="#c7f3ff" Font-Bold="true" />
-                    </asp:GridView>
-                </div>
-
-                <!-- BOTONES -->
-                <div class="d-flex flex-wrap justify-content-center gap-2 text-center">
-                    <asp:Button Text="Agregar"
-                        CssClass="btn btn-success px-4 py-2 rounded-pill fw-semibold shadow-sm"
-                        runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" />
-
-                    <asp:Button Text="Modificar"
-                        CssClass="btn btn-info px-4 py-2 rounded-pill fw-semibold shadow-sm"
-                        runat="server" ID="btnModificar" OnClick="btnModificar_Click" />
-
-                    <asp:Button ID="btnEliminar" runat="server" Text="Dar de baja"
-                        CssClass="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm"
-                        OnClick="btnEliminar_Click"
-                        OnClientClick="return confirm('¿Seguro que desea dar de baja esta categoría?');" />
-
-                    <asp:Button Text="Volver"
-                        CssClass="btn btn-secondary px-4 py-2 rounded-pill fw-semibold shadow-sm"
-                        runat="server" ID="btnVolver" OnClick="btnVolver_Click" />
-                </div>
-
-            </div>
         </div>
     </div>
 
-    <!-- ======================= MODAL EDITAR ======================= -->
+
+    <!--  MODAL EDITAR  -->
     <div class="modal fade" id="modalEditar" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 shadow">
@@ -92,12 +116,13 @@
                         Cancelar
                     </button>
                 </div>
+
             </div>
         </div>
     </div>
 
 
-    <!-- ======================= MODAL AGREGAR ======================= -->
+    <!--  MODAL AGREGAR  -->
     <div class="modal fade" id="modalAgregar" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 shadow">
@@ -131,6 +156,7 @@
                         CssClass="text-danger small d-block"
                         ValidationGroup="vgAgregar">
                     </asp:RequiredFieldValidator>
+
                 </div>
 
                 <div class="modal-footer">
@@ -146,6 +172,7 @@
             </div>
         </div>
     </div>
+
 
     <asp:Label ID="lblError" runat="server"
         CssClass="text-danger fw-semibold mt-3 d-block text-center"

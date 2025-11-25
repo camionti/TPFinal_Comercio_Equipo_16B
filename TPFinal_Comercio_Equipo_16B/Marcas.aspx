@@ -14,7 +14,7 @@
 
             <div class="card-body">
 
-                <!-- GRID -->
+                <!-- LISTA -->
                 <div class="table-responsive mb-4">
                     <asp:GridView ID="gvMarcas" runat="server"
                         CssClass="table table-hover table-bordered align-middle"

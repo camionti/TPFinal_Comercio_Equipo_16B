@@ -124,5 +124,32 @@ namespace TPFinal_Comercio_Equipo_16B
             ViewState["idCategoriaSeleccionado"] = idSeleccionado;
         }
 
+        protected void gvCategorias_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int idCategoria = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Editar")
+            {
+                hfIdCategoria.Value = idCategoria.ToString();
+
+                // Cargar descripción
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                var cat = negocio.ObtenerCategoriaPorID(idCategoria);
+
+                txtDescripcion.Text = cat.Descripcion;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalEditar",
+                    "$('#modalEditar').modal('show');", true);
+            }
+
+            if (e.CommandName == "Borrar")
+            {
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                negocio.Eliminar(idCategoria);
+
+                cargarCategorias();
+            }
+        }
+
     }
 }

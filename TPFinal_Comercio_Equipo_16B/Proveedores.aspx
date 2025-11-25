@@ -12,7 +12,7 @@
 
             <div class="card-body">
 
-                <!-- GRID -->
+                <!-- LISTA -->
                 <div class="table-responsive">
                     <asp:GridView ID="gvProveedores" runat="server"
                         CssClass="table table-hover align-middle"

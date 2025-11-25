@@ -12,7 +12,7 @@
 
             <div class="card-body">
 
-                <!-- GRID -->
+                <!-- LISTA -->
                 <div class="table-responsive mb-4">
                     <asp:GridView ID="gvClientes" runat="server"
                         CssClass="table table-hover table-bordered align-middle"
@@ -58,7 +58,7 @@
     </div>
 
 
-    <!-- ======================= MODAL EDITAR ======================= -->
+    <!--  MODAL EDITAR  -->
     <div class="modal fade" id="modalEditar" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 shadow">
@@ -145,7 +145,7 @@
 
 
 
-    <!-- ======================= MODAL AGREGAR ======================= -->
+    <!--  MODAL AGREGAR  -->
     <div class="modal fade" id="modalAgregar" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 shadow">
