@@ -15,13 +15,31 @@ namespace TPFinal_Comercio_Equipo_16B
     {
 
         /// <summary>
-        /// Control adminVolver.
+        /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink adminVolver;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
+
+        /// <summary>
+        /// Control regVenta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button regVenta;
+
+        /// <summary>
+        /// Control ddlFiltros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFiltros;
 
         /// <summary>
         /// Control gvVentas.
@@ -33,57 +51,57 @@ namespace TPFinal_Comercio_Equipo_16B
         protected global::System.Web.UI.WebControls.GridView gvVentas;
 
         /// <summary>
-        /// Control modalHeader.
+        /// Control divMotivoBaja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalHeader;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMotivoBaja;
 
         /// <summary>
-        /// Control lblMensajeModal.
+        /// Control lblMotivoBaja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeModal;
+        protected global::System.Web.UI.WebControls.Label lblMotivoBaja;
 
         /// <summary>
-        /// Control modalBody.
+        /// Control gvDetalleVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBody;
+        protected global::System.Web.UI.WebControls.GridView gvDetalleVenta;
 
         /// <summary>
-        /// Control lblMensajeError.
+        /// Control txtMotivoBaja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeError;
+        protected global::System.Web.UI.WebControls.TextBox txtMotivoBaja;
 
         /// <summary>
-        /// Control btnVolverAlPanel.
+        /// Control hfIdVentaBaja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolverAlPanel;
+        protected global::System.Web.UI.WebControls.HiddenField hfIdVentaBaja;
 
         /// <summary>
-        /// Control btnCerrarModal.
+        /// Control btnConfirmarBaja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCerrarModal;
+        protected global::System.Web.UI.WebControls.Button btnConfirmarBaja;
     }
 }

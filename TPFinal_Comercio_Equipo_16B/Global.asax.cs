@@ -84,7 +84,7 @@ namespace TPFinal_Comercio_Equipo_16B
 
                 routes.MapPageRoute(
                     "VendedorRegistrarVenta",
-                    "vendedor/ventas/agregar",
+                    "ventas/agregar",
                     "~/registrarVentaVendedor.aspx"
                 );
 

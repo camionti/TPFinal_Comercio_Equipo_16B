@@ -17,24 +17,34 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             if (!IsPostBack)
             {
-                CargarVentas();
+                CargarVentas(true);
+                CargarFiltros();
+
                 DataBind();
             }
 
         }
+        private void CargarFiltros()
+        {
+            ddlFiltros.Items.Clear();
 
-        private void CargarVentas()
+            ddlFiltros.Items.Add(new ListItem("Activas", "1"));
+            ddlFiltros.Items.Add(new ListItem("Inactivas", "0"));
+            ddlFiltros.Items.Add(new ListItem("Todas", ""));
+        }
+
+        private void CargarVentas(bool? activas = null)
         {
             List<Venta> listaVenta = new List<Venta>();
-
 
             try
             {
                 VentaNegocio conexionVenta = new VentaNegocio();
-                listaVenta = conexionVenta.Listar();
-
+                listaVenta = conexionVenta.Listar(null,activas);
                 gvVentas.DataSource = listaVenta;
                 gvVentas.DataBind();
+
+
             }
             catch (Exception)
             {
@@ -44,80 +54,94 @@ namespace TPFinal_Comercio_Equipo_16B
 
         }
 
+
         protected void gvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int idVenta = Convert.ToInt32(e.CommandArgument);
 
-            if (string.IsNullOrEmpty(e.CommandName)) return;
-
-            //Si no puedo parsear el id de la venta hago return, sino parseo y guardo en la variable id
-            if (!int.TryParse(e.CommandArgument?.ToString(), out int id)) return;
-
-            string evento = e.CommandName;
-
-
-
-            switch (evento)
+            if (e.CommandName == "VerDetalles")
             {
-                case "Ver":
-                    Response.Redirect($"~/DetalleVentaVer.aspx?id={id}");
+                divMotivoBaja.Visible = false;
+                lblMotivoBaja.Visible = true;
+                DetalleVentaNegocio detalleNegocio = new DetalleVentaNegocio();
+                gvDetalleVenta.DataSource = detalleNegocio.ListarPorVenta(idVenta);
+                gvDetalleVenta.DataBind();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                    "$('#modalDetalles').modal('show');", true);
+            }
+
+            if (e.CommandName == "DarBaja")
+            {
+                divMotivoBaja.Visible = false;
+                lblMotivoBaja.Visible = true;
+                hfIdVentaBaja.Value = idVenta.ToString();
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                    "$('#modalBaja').modal('show');", true);
+            }
+
+            if (e.CommandName == "MotivoBaja")
+            {
+                DetalleVentaNegocio detalleNegocio = new DetalleVentaNegocio();
+                gvDetalleVenta.DataSource = detalleNegocio.ListarPorVenta(idVenta);
+                gvDetalleVenta.DataBind();
+
+                VentaNegocio ventaNegocio = new VentaNegocio();
+                var venta = ventaNegocio.Buscar(idVenta)[0];
+                lblMotivoBaja.Text = venta.MotivoBaja;
+                lblMotivoBaja.Visible = true;
+                divMotivoBaja.Visible = true;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                    "$('#modalDetalles').modal('show');", true);
+            }
+        }
+
+        protected void lblFiltrarVentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool? activo = null;
+
+            switch (ddlFiltros.SelectedValue)
+            {
+                case "1": // Solo activas
+                    activo = true;
                     break;
-
-                case "Eliminar":
-                    try
-                    {
-                        VentaNegocio ventasConexion = new VentaNegocio();
-                        DetalleVentaNegocio detalleVentaConexion = new DetalleVentaNegocio();
-                        DetalleVenta detalleVenta = detalleVentaConexion.ListarPorVenta(id)[0];
-
-                        detalleVentaConexion.Eliminar(id);
-                        ventasConexion.Eliminar(id);
-
-                        ProductosNegocio conexionProductos = new ProductosNegocio();
-                        conexionProductos.AgregarStock(detalleVenta.Producto.IdProducto, detalleVenta.Cantidad);
-
-                        mostrarMensajeExito();
-
-                        CargarVentas();
-                        break;
-
-                    }
-                    catch (Exception)
-                    {
-                        mostrarError();
-                        throw;
-                        //Response.Redirect("~/Error.aspx");
-                    }
+                case "0": // Solo inactivas
+                    activo = false;
+                    break;
+                case "":  // Todas
+                    activo = null;
                     break;
             }
 
+            CargarVentas(activo);
+        }
+
+        protected void btnConfirmarBaja_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfIdVentaBaja.Value);
+            string motivo = txtMotivoBaja.Text;
+
+            VentaNegocio negocio = new VentaNegocio();
+            negocio.DarDeBaja(id, motivo);
+
+            CargarVentas();
+        }
+
+        protected void regVenta_Click(object sender, EventArgs e)
+        {
+            Response.RedirectToRoute($"VendedorRegistrarVenta");
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.RedirectToRoute($"Administrador.aspx");
         }
 
         protected void btnVolverAlPanel_Click(object sender, EventArgs e)
         {
-            Response.RedirectToRoute($"Administrador");
+            Response.RedirectToRoute($"Administrador.aspx");
         }
 
-        private void mostrarError()
-        {
-            lblMensajeModal.Text = "Error al borrar la venta";
-            modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
-            btnCerrarModal.Visible = true;
-            btnVolverAlPanel.Visible = false;
-            modalBody.Visible = false;
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
-            "$('#modalConfirmacion').modal('show');", true);
-        }
-
-        private void mostrarMensajeExito()
-        {
-            lblMensajeModal.Text = "Venta borrada correctamente";
-            modalHeader.Attributes["class"] = "modal-header bg-success text-white";
-            btnCerrarModal.Visible = true;
-            btnVolverAlPanel.Visible = false;
-            modalBody.Visible = false;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
-            "$('#modalConfirmacion').modal('show');", true);
-        }
     }
 }

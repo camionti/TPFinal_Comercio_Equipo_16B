@@ -73,6 +73,8 @@
                     <asp:GridView ID="gvDetalles" runat="server"
                         CssClass="table table-striped table-bordered text-center"
                         AutoGenerateColumns="False"
+                        HeaderStyle-CssClass="table-success"
+                        GridLines="None"
                         OnRowCommand="gvDetalles_RowCommand">
 
 

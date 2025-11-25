@@ -11,35 +11,42 @@ namespace Negocio
     public class VentaNegocio
     {
 
-        public List<Venta> Listar(int? IdUsuario = null)
+        public List<Venta> Listar(int? IdUsuario = null, bool? activo = null)
         {
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
             string consulta = @"
-                        SELECT V.IdVenta, V.Fecha, V.Total, 
+                        SELECT V.IdVenta, V.Fecha, V.Total, V.MotivoBaja, V.Activo, 
                                C.IdCliente, C.Nombre AS NombreCliente,
                                U.IdUsuario, U.NombreUsuario
                         FROM Ventas V
                         INNER JOIN Clientes C ON V.IdCliente = C.IdCliente
                         INNER JOIN Usuarios U ON U.IdUsuario = V.IdUsuario
+                        WHERE 1=1 
                     ";
             try
             {
-
+                //Seteo consulta
                 if (IdUsuario.HasValue)
                 {
-                    consulta += " WHERE U.IdUsuario = @IdVendedor AND V.IdUsuario = @IdVendedor";
-
-                    datos.setearConsulta(consulta);
-                    datos.setearParametro("@IdVendedor", IdUsuario);
-
-                    datos.ejecutarLectura();
+                    consulta += " AND U.IdUsuario = @IdVendedor";
                 }
-                else
+
+                if (activo.HasValue)
                 {
-                    datos.setearConsulta(consulta);
-                    datos.ejecutarLectura();
+                    consulta += " AND V.Activo = @Activo";
                 }
+
+                datos.setearConsulta(consulta);
+
+                //seteo parametros
+                if (IdUsuario.HasValue)
+                    datos.setearParametro("@IdVendedor", IdUsuario.Value);
+
+                if (activo.HasValue)
+                    datos.setearParametro("@Activo", activo.Value);
+
+                datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
@@ -48,6 +55,11 @@ namespace Negocio
                     venta.IdVenta = (int)datos.Lector["IdVenta"];
                     venta.Fecha = (DateTime)datos.Lector["Fecha"];
                     venta.Total = (decimal)datos.Lector["Total"];
+                    venta.MotivoBaja = datos.Lector["MotivoBaja"] == DBNull.Value
+                            ? null
+                            : (string)datos.Lector["MotivoBaja"];
+                    venta.Activo = (bool)datos.Lector["Activo"];
+
                     //venta.NumeroFactura = (string)datos.Lector["NumeroFactura"];
 
                     venta.Cliente = new Cliente
@@ -79,7 +91,7 @@ namespace Negocio
             List<Venta> ventas = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha , U.NombreUsuario, C.Nombre NombreCliente FROM Ventas V" +
+            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha, V.MotivoBaja, V.Activo , U.NombreUsuario, C.Nombre NombreCliente FROM Ventas V" +
                               " LEFT JOIN Clientes C ON C.IdCliente = V.IdCliente" +
                               " LEFT JOIN Usuarios U ON U.IdUsuario = V.IdUsuario" +
                               " WHERE 1=1 ";
@@ -125,7 +137,10 @@ namespace Negocio
                         aux.Usuario.NombreUsuario = (string)datos.Lector["NombreUsuario"];
                         //aux.NumeroFactura = (string)datos.Lector["NumeroFactura"];
                         aux.Fecha = (DateTime)datos.Lector["Fecha"];
-
+                        aux.MotivoBaja = datos.Lector["MotivoBaja"] == DBNull.Value
+                                            ? null
+                                            : (string)datos.Lector["MotivoBaja"];
+                        aux.Activo = (bool)datos.Lector["Activo"];
                         ventas.Add(aux);
                     }
                 }
@@ -214,6 +229,16 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void DarDeBaja(int idVenta, string motivo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            datos.setearConsulta("UPDATE Ventas SET Activo = 0, MotivoBaja = @motivo WHERE IdVenta = @id");
+            datos.setearParametro("@id", idVenta);
+            datos.setearParametro("@motivo", motivo);
+            datos.ejecutarAccion();
         }
 
         public void Eliminar(int IdVenta)

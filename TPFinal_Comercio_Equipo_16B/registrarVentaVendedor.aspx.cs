@@ -415,7 +415,21 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.RedirectToRoute($"VendedorRegistroVentas");
+            string rol = Session["rol"] as string;
+
+            if (rol == "admin")
+            {
+                Response.RedirectToRoute($"Administrador.aspx");
+
+            }
+            else if (rol == "vendedor")
+            {
+                Response.RedirectToRoute($"Vendedor");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
 
         }
 

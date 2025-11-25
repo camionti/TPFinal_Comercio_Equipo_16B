@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container mt-3">
-
+        <!-- BOTONES VOLVER - CREAR -->
         <div class="row align-items-center justify-content-between my-4 pl-2  ">
             <asp:Button Text="Volver"
                 CssClass="btn btn-outline-danger ml-2 fw-semibold hover-btn"
@@ -34,6 +34,7 @@
 
                 <!-- COMPRAS -->
                 <div class="mb-4 d-flex">
+                    <!-- FILTROS -->
                     <h6 class = "text-center mr-3 py-1 my-1 fw-semibold">Mostrar compras:</h6>
                     <asp:DropDownList 
                         ID="ddlFiltros" 
@@ -48,9 +49,11 @@
                 </div>
 
                 <asp:GridView ID="gvCompras" runat="server"
-                    CssClass="table table-hover text-center "
+                    CssClass="table table-hover  rounded shadow-sm "
                     AutoGenerateColumns="False"
                     OnRowCommand="gvCompras_RowCommand"
+                    HeaderStyle-CssClass="table-info"
+                    GridLines="None"
                     DataKeyNames="IdCompra">
 
                     <Columns>
@@ -67,10 +70,10 @@
 
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-
+                                <div class="d-flex align-items-center justify-content-between">
                                 <!-- DETALLES -->
                                 <asp:LinkButton ID="btnDetalles" runat="server"
-                                    CssClass="btn btn-info btn-sm mr-2"
+                                    CssClass="btn btn-primary btn-sm mr-2"
                                     CommandName="VerDetalles"
                                     Visible='<%# (bool)Eval("Activo") %>' 
                                     CommandArgument='<%# Eval("IdCompra") %>'>
@@ -94,7 +97,7 @@
                                     CommandArgument='<%# Eval("IdCompra") %>'>
                                     <i class="fas fa-trash-alt"></i> Dar Baja
                                 </asp:LinkButton>
-
+                                 </div>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -144,20 +147,6 @@
 
                     </asp:GridView>
 
-                    <asp:GridView ID="gvDetalleCompraInactiva" runat="server"
-                        CssClass="table table-bordered text-center"
-                        AutoGenerateColumns="False">
-
-                        <Columns>
-                            <asp:BoundField DataField="Producto.Nombre" HeaderText="Producto" />
-                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario"
-                                DataFormatString="${0:N2}" />
-                            <asp:BoundField DataField="Subtotal" HeaderText="Subtotal"
-                                DataFormatString="${0:N2}" />
-                        </Columns>
-
-                    </asp:GridView>
 
                 </div>
 
@@ -182,7 +171,6 @@
                 </div>
                 <!--Body-->
                 <div class="modal-body">
-
                     <label>Motivo de baja</label>
                     <asp:TextBox ID="txtMotivoBaja" runat="server" CssClass="form-control"></asp:TextBox>
                     <asp:HiddenField ID="hfIdCompraBaja" runat="server" />

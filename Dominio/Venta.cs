@@ -15,5 +15,8 @@ namespace Dominio
         public string NumeroFactura { get; set; }
         public List<DetalleVenta> Detalles { get; set; } = new List<DetalleVenta>();
         public decimal Total { get; set; }
+        public string MotivoBaja { get; set; }
+        public bool Activo { get; set; }
+
     }
 }

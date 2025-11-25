@@ -17,27 +17,34 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             if (!IsPostBack)
             {
-                CargarVentas();
+                CargarVentas(true);
+                CargarFiltros();
                 DataBind();
             }
 
         }
 
-        private void CargarVentas()
+        private void CargarFiltros()
+        {
+            ddlFiltros.Items.Clear();
+
+            ddlFiltros.Items.Add(new ListItem("Activas", "1"));
+            ddlFiltros.Items.Add(new ListItem("Inactivas", "0"));
+            ddlFiltros.Items.Add(new ListItem("Todas", ""));
+        }
+
+        private void CargarVentas(bool? activas = null)
         {
             List<Venta> listaVenta = new List<Venta>();
-            int IdVendedor = 0;
-
-            if (int.TryParse(Session["id"]?.ToString(), out var idVendedor))
-                IdVendedor = idVendedor;
 
             try
             {
                 VentaNegocio conexionVenta = new VentaNegocio();
-                listaVenta = conexionVenta.Listar(IdVendedor);
-
+                listaVenta = conexionVenta.Listar(null, activas);
                 gvVentas.DataSource = listaVenta;
                 gvVentas.DataBind();
+
+
             }
             catch (Exception)
             {
@@ -49,23 +56,56 @@ namespace TPFinal_Comercio_Equipo_16B
 
         protected void gvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int idVenta = Convert.ToInt32(e.CommandArgument);
 
-            if (string.IsNullOrEmpty(e.CommandName)) return;
-
-            //Si no puedo parsear el id de la venta hago return, sino parseo y guardo en la variable id
-            if (!int.TryParse(e.CommandArgument?.ToString(), out int id)) return;
-
-            string evento = e.CommandName;
-
-            switch (evento)
+            if (e.CommandName == "VerDetalles")
             {
-                case "Ver":
-                    Response.Redirect($"~/DetalleVentaVer.aspx?id={id}");
+                divMotivoBaja.Visible = false;
+                lblMotivoBaja.Visible = true;
+                DetalleVentaNegocio detalleNegocio = new DetalleVentaNegocio();
+                gvDetalleVenta.DataSource = detalleNegocio.ListarPorVenta(idVenta);
+                gvDetalleVenta.DataBind();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                    "$('#modalDetalles').modal('show');", true);
+            }
+
+            if (e.CommandName == "MotivoBaja")
+            {
+                DetalleVentaNegocio detalleNegocio = new DetalleVentaNegocio();
+                gvDetalleVenta.DataSource = detalleNegocio.ListarPorVenta(idVenta);
+                gvDetalleVenta.DataBind();
+
+                VentaNegocio ventaNegocio = new VentaNegocio();
+                var venta = ventaNegocio.Buscar(idVenta)[0];
+                lblMotivoBaja.Text = venta.MotivoBaja;
+                lblMotivoBaja.Visible = true;
+                divMotivoBaja.Visible = true;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                    "$('#modalDetalles').modal('show');", true);
+            }
+        }
+
+        protected void lblFiltrarVentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool? activo = null;
+
+            switch (ddlFiltros.SelectedValue)
+            {
+                case "1": // Solo activas
+                    activo = true;
+                    break;
+                case "0": // Solo inactivas
+                    activo = false;
+                    break;
+                case "":  // Todas
+                    activo = null;
                     break;
             }
 
+            CargarVentas(activo);
         }
-
         protected void btnBuscar_Click( object sender, EventArgs e)
         {
 
