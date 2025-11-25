@@ -119,23 +119,7 @@ namespace TPFinal_Comercio_Equipo_16B
             ViewState["IdClienteSeleccionado"] = idSeleccionado;
         }
 
-        protected void gvClientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int id = Convert.ToInt32(e.CommandArgument);
 
-            if (e.CommandName == "Editar")
-            {
-                CargarClienteEnModal(id);
-                ScriptManager.RegisterStartupScript(this, GetType(), "modalEd",
-                    "$('#modalEditar').modal('show');", true);
-            }
-
-            if (e.CommandName == "Borrar")
-            {
-                DarDeBajaCliente(id);
-                CargarClientes(); // refrescar grid
-            }
-        }
 
     }
 }
