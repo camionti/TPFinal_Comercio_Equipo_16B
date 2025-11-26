@@ -128,7 +128,32 @@ namespace TPFinal_Comercio_Equipo_16B
             ViewState["idMarcaSeleccionado"] = idSeleccionado;
         }
 
-        //BUSCA
+        protected void gvMarcas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int IdMarca = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Editar")
+            {
+                hfIdMarca.Value = IdMarca.ToString();
+
+                // Cargar descripción
+                MarcaNegocio negocio = new MarcaNegocio();
+                var cat = negocio.ObtenerMarcaPorID(IdMarca);
+
+                txtNombre.Text = cat.Nombre;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalEditar",
+                    "$('#modalEditar').modal('show');", true);
+            }
+
+            if (e.CommandName == "Borrar")
+            {
+                MarcaNegocio negocio = new MarcaNegocio();
+                negocio.Eliminar(IdMarca);
+
+                cargarMarcas();
+            }
+        }
 
 
     }

@@ -115,8 +115,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
             catch (Exception ex)
             {
-                lblError.Text = "Hubo un error" + ex.Message; 
-                lblError.Visible = true;
+                throw ex;
             }
         }
 
@@ -130,6 +129,36 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             int idSeleccionado = (int)gvProveedores.SelectedDataKey.Value;
             ViewState["IdClienteSeleccionado"] = idSeleccionado;
+        }
+
+        protected void gvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int IdProveedor = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Editar")
+            {
+                hfIdProveedor.Value = IdProveedor.ToString();
+
+                // Cargar 
+                ProveedorNegocio negocio = new ProveedorNegocio();
+                var cat = negocio.ObtenerProveedorPorID(IdProveedor);
+
+                txtNombre.Text = cat.Nombre;
+                txtEmail.Text = cat.Email;
+                txtTelefono.Text = cat.Telefono;
+
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalEditar",
+                    "$('#modalEditar').modal('show');", true);
+            }
+
+            if (e.CommandName == "Borrar")
+            {
+                ProveedorNegocio negocio = new ProveedorNegocio();
+                negocio.Eliminar(IdProveedor);
+
+                cargarProveedores();
+            }
         }
     }
 }

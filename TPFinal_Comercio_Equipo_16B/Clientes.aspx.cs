@@ -33,6 +33,8 @@ namespace TPFinal_Comercio_Equipo_16B
                 Response.Write("<script>alert('Error al cargar clientes: " + ex.Message + "');</script>");
             }
         }
+
+ 
         //MODAL AGREGAR
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -120,6 +122,35 @@ namespace TPFinal_Comercio_Equipo_16B
         }
 
 
+        protected void gvClientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int IdCliente = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Editar")
+            {
+                hfIdCliente.Value = IdCliente.ToString();
+
+                // Cargar descripción
+                ClienteNegocio negocio = new ClienteNegocio();
+                var cat = negocio.ObtenerClientePorID(IdCliente);
+
+                txtNombre.Text = cat.Nombre;
+                txtEmail.Text = cat.Email;
+                txtTelefono.Text = cat.Telefono;
+               
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalEditar",
+                    "$('#modalEditar').modal('show');", true);
+            }
+
+            if (e.CommandName == "Borrar")
+            {
+                ClienteNegocio negocio = new ClienteNegocio();
+                negocio.Eliminar(IdCliente);
+
+                cargarClientes();
+            }
+        }
 
     }
 }
