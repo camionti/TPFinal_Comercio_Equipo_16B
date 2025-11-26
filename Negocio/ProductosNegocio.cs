@@ -127,7 +127,7 @@ namespace Negocio
                                      " From Productos P" +
                                      " LEFT JOIN Categorias C ON C.IdCategoria = P.IdCategoria" +
                                      " LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca" +
-                                     " WHERE 1=1 AND Activo=1 ";
+                                     " WHERE 1=1 AND P.Activo = 1 ";
             try
             {
 

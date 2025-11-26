@@ -136,9 +136,9 @@
                         <Columns>
                             <asp:BoundField DataField="Producto.Nombre" HeaderText="Producto" />
                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario"
-                                DataFormatString="${0:N2}" />
-                            <asp:BoundField DataField="Subtotal" HeaderText="Subtotal"
+                            
+                               
+                            <asp:BoundField DataField="Subtotal" HeaderText="Total"
                                 DataFormatString="${0:N2}" />
                         </Columns>
 
