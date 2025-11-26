@@ -26,7 +26,7 @@ namespace TPFinal_Comercio_Equipo_16B
             try
             {
                 ProductosNegocio conexionProducto = new ProductosNegocio();
-                listaProducto = conexionProducto.Listar();
+                listaProducto = conexionProducto.Listar(true);
 
                 gvProductos.DataSource = listaProducto;
                 gvProductos.DataBind();

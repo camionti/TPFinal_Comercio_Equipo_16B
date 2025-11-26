@@ -19,19 +19,19 @@ namespace TPFinal_Comercio_Equipo_16B
         {
             if (!IsPostBack)
             {
-                CargarLista();
-                DataBind();
+                CargarLista(true);
+                CargarFiltros();
             }
         }
 
-        private void CargarLista()
+        private void CargarLista(bool? activos = null)
         {
             List<Producto> listaProducto = new List<Producto>();
 
             try
             {
                 ProductosNegocio conexionProducto = new ProductosNegocio();
-                listaProducto = conexionProducto.Listar();
+                listaProducto = conexionProducto.Listar(activos);
 
                 gvProductos.DataSource = listaProducto;
                 gvProductos.DataBind();
@@ -39,8 +39,38 @@ namespace TPFinal_Comercio_Equipo_16B
             catch (Exception ex)
             {
 
-                throw ex;
+                lblMensajeError.Text = ex.ToString();
+                mostrarError();
             }
+        }
+
+        private void CargarFiltros()
+        {
+            ddlFiltros.Items.Clear();
+
+            ddlFiltros.Items.Add(new ListItem("Activos", "1"));
+            ddlFiltros.Items.Add(new ListItem("Inactivos", "0"));
+            ddlFiltros.Items.Add(new ListItem("Todos", ""));
+        }
+
+        protected void lblFiltrarProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool? activo = null;
+
+            switch (ddlFiltros.SelectedValue)
+            {
+                case "1": // Solo activos
+                    activo = true;
+                    break;
+                case "0": // Solo inactivos
+                    activo = false;
+                    break;
+                case "":  // Todas
+                    activo = null;
+                    break;
+            }
+
+            CargarLista(activo);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -53,7 +83,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 && string.IsNullOrWhiteSpace(txtPrecioMax.Text)
                )
             {
-                CargarLista();
+                CargarLista(true);
                 return;
             }
 
@@ -93,9 +123,10 @@ namespace TPFinal_Comercio_Equipo_16B
                 gvProductos.DataSource = productos;
                 gvProductos.DataBind();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Response.Redirect("~/Error.aspx");
+                lblMensajeError.Text = ex.ToString();
+                mostrarError();
             }
 
         }
@@ -128,20 +159,86 @@ namespace TPFinal_Comercio_Equipo_16B
                     break;
 
                 case "Eliminar":
-                    try
-                    {
-                        ProductosNegocio conexionProductos = new ProductosNegocio();
-                        conexionProductos.eliminar(id);
-                        CargarLista();
-                        break;
-
-                    }
-                    catch (Exception)
-                    {
-                        Response.Redirect("~/Error.aspx");
-                    }
+                    tituloModalConfirmar.InnerText = "Confirmar baja de producto";
+                    modalconfirmarheader.Attributes["class"] = "modal-header bg-danger text-white";
+                    btnConfirmarBaja.Visible = true;
+                    btnConfirmarAlta.Visible = false;
+                    hfIdProducto.Value = id.ToString();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                        "$('#modalBaja').modal('show');", true);
                     break;
+
+                case "Alta":
+                    tituloModalConfirmar.InnerText = "Confirmar alta de producto";
+                    btnConfirmarAlta.Visible = true;
+                    btnConfirmarBaja.Visible = false;
+                    modalconfirmarheader.Attributes["class"] = "modal-header bg-primary text-white";
+                    hfIdProducto.Value = id.ToString();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "modal",
+                        "$('#modalBaja').modal('show');", true);
+                    break;
+                }
+
+        }
+
+        protected void btnConfirmarAlta_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfIdProducto.Value);
+            try
+            {
+                var productoConexion = new ProductosNegocio();
+                productoConexion.DarDeAlta(id);
+                lblMensajeModal.Text = "Producto activado correctamente";
+                mostrarMensajeExito();
+                ddlFiltros.SelectedValue = "";
+                CargarLista();
             }
+            catch (Exception ex)
+            {
+                lblMensajeError.Text = ex.ToString();
+                mostrarError();
+            }
+        }
+
+
+        protected void btnConfirmarBaja_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hfIdProducto.Value);
+
+            try
+            {
+                var productoConexion = new ProductosNegocio();
+                productoConexion.DarDeBaja(id);
+                lblMensajeModal.Text = "Producto eliminado correctamente";
+                mostrarMensajeExito();
+                ddlFiltros.SelectedValue = "";
+                CargarLista();
+
+            }
+            catch (Exception ex)
+            {
+                lblMensajeError.Text = ex.ToString();
+                mostrarError();
+            }
+        }
+
+        private void mostrarError()
+        {
+            lblMensajeModal.Text = "Errores encontrados";
+            modalHeader.Attributes["class"] = "modal-header bg-danger text-white";
+            btnCerrarModal.Visible = true;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
+        }
+
+        private void mostrarMensajeExito()
+        {
+            modalHeader.Attributes["class"] = "modal-header bg-success text-white";
+            btnCerrarModal.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal",
+            "$('#modalConfirmacion').modal('show');", true);
+            btnCerrarModal.Visible = true;
 
         }
     }

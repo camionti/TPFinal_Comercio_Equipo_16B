@@ -28,7 +28,7 @@ namespace TPFinal_Comercio_Equipo_16B
         private void CargarProductos()
         {
             ProductosNegocio conexionProductos = new ProductosNegocio();
-            List<Producto> lista = conexionProductos.Listar();
+            List<Producto> lista = conexionProductos.Listar(true);
             Session["listaProductos"] = lista;
             ddlProductos.DataSource = lista;
             ddlProductos.DataTextField = "Nombre";      // lo que se muestra

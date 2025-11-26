@@ -18,6 +18,7 @@ namespace Dominio
         public decimal PorcentajeGanancia { get; set; }
         public decimal Precio { get; set; }
         public List<Imagen> Imagenes { get; set; }
+        public bool Estado { get; set; }
 
         // Relacion con proveedores
         public List<Proveedor> Proveedores { get; set; } = new List<Proveedor>();

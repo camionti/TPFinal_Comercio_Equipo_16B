@@ -9,7 +9,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  
-    <div class="container">
+    <div class="container mt-3">
         <div class="row align-items-center justify-content-between my-4 pl-2  ">
             <asp:HyperLink 
                 ID="adminVolver" 
@@ -40,9 +40,18 @@
             </div>
 
         </div>
+            <div class="card shadow-lg border-0">
+        <div class="card-header bg-info text-white d-flex justify-content-between">
+            <h4 class="mb-0">Listado de Productos</h4>
+        </div>
+
+
+     <div class="card-body">
 
         <asp:GridView ID="gvProductos" runat="server"
-            CssClass="table table-hover text-nowrap"
+            CssClass="table table-hover  rounded shadow-sm "
+            HeaderStyle-CssClass="table-info"
+            GridLines="None"
             AutoGenerateColumns="false"
             >
             <Columns >
@@ -70,6 +79,8 @@
             </Columns>
         </asp:GridView>
     </div>
+    </div>
+</div>
 
 
         <!--Modal para error-->

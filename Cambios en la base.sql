@@ -390,7 +390,6 @@ END;
 GO
 
 
-
 -- 1) Agregar columna MotivoBaja a Compras
 ALTER TABLE dbo.Compras
 ADD MotivoBaja NVARCHAR(255) NULL;
@@ -415,3 +414,32 @@ DROP CONSTRAINT DF__DetalleVe__Activ__160F4887;
 ALTER TABLE dbo.DetalleVenta
 DROP COLUMN Activo;
 GO
+
+
+--25/11
+
+ALTER TABLE dbo.Productos
+ADD Estado BIT NOT NULL DEFAULT 1;
+GO
+
+CREATE TRIGGER trg_ActualizarEstadoPorStock
+ON Productos
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Actualizar estado según el stock nuevo
+    UPDATE P
+    SET P.Estado = CASE 
+                       WHEN I.StockActual <= 0 THEN 0
+                       ELSE 1
+                   END
+    FROM Productos P
+    INNER JOIN inserted I ON P.IdProducto = I.IdProducto;
+END;
+GO
+
+
+
+
