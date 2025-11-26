@@ -198,7 +198,7 @@ namespace Negocio
             {
 
                 datos.setearConsulta("INSERT INTO Productos (Nombre, IdMarca, IdCategoria, StockActual, StockMinimo, PorcentajeGanancia, Precio, Activo) " +
-                    "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, @Activo)");
+                    "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, 1)");
 
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@IdMarca", nuevo.Marca.IdMarca);
@@ -228,7 +228,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio, Activo = @Activo WHERE IdProducto = @IdProducto");
+                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio WHERE IdProducto = @IdProducto");
 
                 datos.setearParametro("@IdProducto", producto.IdProducto);
                 datos.setearParametro("@Nombre", producto.Nombre);
@@ -238,7 +238,6 @@ namespace Negocio
                 datos.setearParametro("@StockMinimo", producto.StockMinimo);
                 datos.setearParametro("@PorcentajeGanancia", producto.PorcentajeGanancia);
                 datos.setearParametro("@Precio", producto.Precio);
-                datos.setearParametro("@Activo", producto.Activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

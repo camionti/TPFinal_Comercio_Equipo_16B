@@ -41,7 +41,7 @@
             ID="adminAgregarProducto" 
             runat="server" 
             NavigateUrl='<%# GetRouteUrl("ProductosAdmin_Agregar", null) %>' 
-            CssClass="btn btn-primary col">
+            CssClass="btn btn-primary col mr-3">
             Agregar nuevo producto
         </asp:HyperLink>
     </div>

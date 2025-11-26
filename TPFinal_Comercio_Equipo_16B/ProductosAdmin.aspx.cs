@@ -21,6 +21,8 @@ namespace TPFinal_Comercio_Equipo_16B
             {
                 CargarLista(true);
                 CargarFiltros();
+                limpiarModal();
+                DataBind();
             }
         }
 
@@ -248,6 +250,15 @@ namespace TPFinal_Comercio_Equipo_16B
             "$('#modalConfirmacion').modal('show');", true);
             btnCerrarModal.Visible = true;
 
+        }
+
+        private void limpiarModal()
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "noModal",
+            "$('.modal').modal('hide');", true);
+
+            lblMensajeModal.Text = "";
+            lblMensajeError.Text = "";
         }
     }
 }
