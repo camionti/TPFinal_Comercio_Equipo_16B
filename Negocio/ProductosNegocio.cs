@@ -18,13 +18,13 @@ namespace Negocio
 
             try
             {
-                string consulta = @"SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.Precio, P.PorcentajeGanancia, P.Estado, C.Descripcion Categoria, M.Nombre Marca FROM Productos P LEFT JOIN Categorias C on C.IdCategoria = P.IdCategoria LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca LEFT JOIN Imagenes I ON I.IdProducto = P.IdProducto WHERE 1 = 1 ";
+                string consulta = @"SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.Precio, P.PorcentajeGanancia, P.Activo, C.Descripcion Categoria, M.Nombre Marca FROM Productos P LEFT JOIN Categorias C on C.IdCategoria = P.IdCategoria LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca LEFT JOIN Imagenes I ON I.IdProducto = P.IdProducto WHERE 1 = 1 ";
 
                 if (estado == true)
-                    consulta += " AND P.Estado = 1";
+                    consulta += " AND P.Activo = 1";
 
                 if(estado == false)
-                    consulta += " AND P.Estado = 0";
+                    consulta += " AND P.Activo = 0";
 
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
@@ -50,7 +50,7 @@ namespace Negocio
                         aux.StockActual = (int)datos.Lector["StockActual"];
                         aux.StockMinimo = (int)datos.Lector["StockMinimo"];
                         aux.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
-                        aux.Estado = (bool)datos.Lector["Estado"];
+                        aux.Activo = (bool)datos.Lector["Activo"];
 
 
 
@@ -81,7 +81,7 @@ namespace Negocio
 
             try
             {
-                string consulta = "SELECT * FROM Productos WHERE IdProveedor = @IdProveedor";
+                string consulta = "SELECT IdProducto, Nombre, StockActual, StockMinimo, PorcentajeGanancia, Precio, Activo FROM Productos WHERE IdProveedor = @IdProveedor";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@IdProveedor", IdProveedor);
                 datos.ejecutarLectura();
@@ -100,7 +100,7 @@ namespace Negocio
                         aux.StockMinimo = (int)datos.Lector["StockMinimo"];
                         aux.PorcentajeGanancia = (decimal)datos.Lector["PorcentajeGanancia"];
                         aux.Precio = (int)datos.Lector["Precio"];
-                        aux.Estado = (bool)datos.Lector["Estado"];
+                        aux.Activo = (bool)datos.Lector["Activo"];
                         productos.Add(aux);
                     }
 
@@ -122,12 +122,12 @@ namespace Negocio
 
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.PorcentajeGanancia, P.Precio, P.Estado, " +
+            string consulta = "SELECT P.IdProducto, P.Nombre, P.IdMarca, P.IdCategoria, P.StockActual, P.StockMinimo, P.PorcentajeGanancia, P.Precio, P.Activo, " +
                                      " C.Descripcion Categoria, M.Nombre Marca" +
                                      " From Productos P" +
                                      " LEFT JOIN Categorias C ON C.IdCategoria = P.IdCategoria" +
                                      " LEFT JOIN Marcas M ON M.IdMarca = P.IdMarca" +
-                                     " WHERE 1=1 AND ESTADO=1 ";
+                                     " WHERE 1=1 AND Activo=1 ";
             try
             {
 
@@ -170,7 +170,7 @@ namespace Negocio
                         aux.Marca = new Dominio.Marca { Nombre = (string)datos.Lector["Marca"] };
                         aux.Categoria = new Categoria { Descripcion = (string)datos.Lector["Categoria"] };
                         aux.Imagenes = new List<Imagen>();
-                        aux.Estado = (bool)datos.Lector["Estado"];
+                        aux.Activo = (bool)datos.Lector["Activo"];
 
                         productos.Add(aux);
                     }
@@ -197,8 +197,8 @@ namespace Negocio
             try
             {
 
-                datos.setearConsulta("INSERT INTO Productos (Nombre, IdMarca, IdCategoria, StockActual, StockMinimo, PorcentajeGanancia, Precio, Estado) " +
-                    "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, @Estado)");
+                datos.setearConsulta("INSERT INTO Productos (Nombre, IdMarca, IdCategoria, StockActual, StockMinimo, PorcentajeGanancia, Precio, Activo) " +
+                    "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, @Activo)");
 
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@IdMarca", nuevo.Marca.IdMarca);
@@ -207,7 +207,7 @@ namespace Negocio
                 datos.setearParametro("@StockMinimo", nuevo.StockMinimo);
                 datos.setearParametro("@PorcentajeGanancia", nuevo.PorcentajeGanancia);
                 datos.setearParametro("@Precio", nuevo.Precio);
-                datos.setearParametro("@Estado", nuevo.Estado);
+                datos.setearParametro("@Activo", nuevo.Activo);
 
                 datos.ejecutarAccion();
             }
@@ -228,7 +228,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio, Estado = @Estado WHERE IdProducto = @IdProducto");
+                datos.setearConsulta("UPDATE Productos SET Nombre = @Nombre, IdMarca = @IdMarca, IdCategoria = @IdCategoria, StockActual = @StockActual, StockMinimo = @StockMinimo, PorcentajeGanancia = @PorcentajeGanancia, Precio = @Precio, Activo = @Activo WHERE IdProducto = @IdProducto");
 
                 datos.setearParametro("@IdProducto", producto.IdProducto);
                 datos.setearParametro("@Nombre", producto.Nombre);
@@ -238,7 +238,7 @@ namespace Negocio
                 datos.setearParametro("@StockMinimo", producto.StockMinimo);
                 datos.setearParametro("@PorcentajeGanancia", producto.PorcentajeGanancia);
                 datos.setearParametro("@Precio", producto.Precio);
-                datos.setearParametro("@Estado", producto.Estado);
+                datos.setearParametro("@Activo", producto.Activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -292,7 +292,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Productos SET Estado = 0 FROM Productos WHERE IdProducto = @IdProducto");
+                datos.setearConsulta("UPDATE Productos SET Activo = 0 FROM Productos WHERE IdProducto = @IdProducto");
                 datos.setearParametro("@IdProducto", IdProducto);
                 datos.ejecutarAccion();
             }
@@ -311,7 +311,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Productos SET Estado = 1 FROM Productos WHERE IdProducto = @IdProducto");
+                datos.setearConsulta("UPDATE Productos SET Activo = 1 FROM Productos WHERE IdProducto = @IdProducto");
                 datos.setearParametro("@IdProducto", IdProducto);
                 datos.ejecutarAccion();
             }
@@ -333,7 +333,7 @@ namespace Negocio
             try
             {
                 string consulta = @"
-            SELECT P.IdProducto, P.Nombre, P.Estado 
+            SELECT P.IdProducto, P.Nombre, P.Activo 
             FROM Productos P
             INNER JOIN Marcas M ON P.IdMarca = M.IdMarca
             INNER JOIN Categorias C ON P.IdCategoria = C.IdCategoria
@@ -350,7 +350,7 @@ namespace Negocio
                     Producto prod = new Producto();
                     prod.IdProducto = (int)datos.Lector["IdProducto"];
                     prod.Nombre = (string)datos.Lector["Nombre"];
-                    prod.Estado = (bool)datos.Lector["Estado"];
+                    prod.Activo = (bool)datos.Lector["Activo"];
 
                     lista.Add(prod);
                 }
@@ -372,7 +372,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdProducto, Nombre, Estado FROM Productos WHERE IdProducto = @id");
+                datos.setearConsulta("SELECT IdProducto, Nombre, Activo, StockActual FROM Productos WHERE IdProducto = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarLectura();
 
@@ -381,9 +381,11 @@ namespace Negocio
                     Producto aux = new Producto();
 
                     aux.IdProducto = (int)datos.Lector["IdProducto"];
-                    aux.Estado = (bool)datos.Lector["Estado"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
                     aux.Nombre = datos.Lector["Nombre"].ToString();
-        
+                    aux.StockActual = (int)datos.Lector["StockActual"];
+
+
                     return aux;
                 }
 

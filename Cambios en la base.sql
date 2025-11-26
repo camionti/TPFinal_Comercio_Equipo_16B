@@ -429,17 +429,17 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Actualizar estado según el stock nuevo
+    -- Solo actualizar productos que NO estén dados de baja lógicamente
     UPDATE P
-    SET P.Estado = CASE 
+    SET P.Activo = CASE 
                        WHEN I.StockActual <= 0 THEN 0
                        ELSE 1
                    END
     FROM Productos P
-    INNER JOIN inserted I ON P.IdProducto = I.IdProducto;
+    INNER JOIN inserted I ON P.IdProducto = I.IdProducto
+    WHERE P.Activo = 1;  -- SOLO tocar productos activos
 END;
 GO
 
 
-
-
+select * from productos

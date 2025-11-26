@@ -187,6 +187,14 @@ namespace TPFinal_Comercio_Equipo_16B
             try
             {
                 var productoConexion = new ProductosNegocio();
+                var producto = productoConexion.BuscarPorId(id);
+
+                if(producto.StockActual <= 0)
+                {
+                    lblMensajeError.Text = "El producto no tiene stock y no se puede activar";
+                    mostrarError();
+                    return;
+                }
                 productoConexion.DarDeAlta(id);
                 lblMensajeModal.Text = "Producto activado correctamente";
                 mostrarMensajeExito();

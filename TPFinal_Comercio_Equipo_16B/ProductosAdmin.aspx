@@ -88,7 +88,7 @@
                             <asp:LinkButton runat="server"
                                 CssClass="btn btn-sm btn-primary mx-1 "
                                 CommandName="Ver"
-                                Visible='<%# (bool)Eval("Estado") %>' 
+                                Visible='<%# (bool)Eval("Activo") %>' 
                                 CommandArgument='<%#Eval("IdProducto") %>'>
                                 Ver detalle
                             </asp:LinkButton>
@@ -96,7 +96,7 @@
                             <asp:LinkButton runat="server"
                                 CssClass="btn btn-sm btn-success mx-1"
                                 CommandName="Editar"
-                                Visible='<%# (bool)Eval("Estado") %>' 
+                                Visible='<%# (bool)Eval("Activo") %>' 
                                 CommandArgument='<%#Eval("IdProducto") %>'>
 
                                 Editar
@@ -105,7 +105,7 @@
                             <asp:LinkButton runat="server"
                                 CssClass="btn btn-sm btn-danger mx-1"
                                 CommandName="Eliminar"
-                                Visible='<%# (bool)Eval("Estado") %>' 
+                                Visible='<%# (bool)Eval("Activo") %>' 
                                 CommandArgument='<%#Eval("IdProducto") %>'
                                 >
                                 Eliminar
@@ -114,7 +114,7 @@
                             <asp:LinkButton runat="server"
                                 CssClass="btn btn-sm btn-danger mx-1"
                                 CommandName="Alta"
-                                Visible='<%# !(bool)Eval("Estado") %>' 
+                                Visible='<%# !(bool)Eval("Activo") %>' 
                                 CommandArgument='<%#Eval("IdProducto") %>'
                                 >
                                 Activar
