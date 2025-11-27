@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="RegistroVentas.aspx.cs" Inherits="TPFinal_Comercio_Equipo_16B.RegistroVentas" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="RegistroVentas.aspx.cs" Inherits="TPFinal_Comercio_Equipo_16B.RegistroVentas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -62,7 +62,7 @@
                         <asp:BoundField DataField="Usuario.NombreUsuario" HeaderText="Vendedor" />
                         <asp:BoundField DataField="Cliente.Nombre" HeaderText="Cliente" />
                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
-                        <asp:BoundField DataField="Total" HeaderText="Total" />
+                      
 
                         <asp:TemplateField HeaderText="Eventos">
                             <ItemTemplate>

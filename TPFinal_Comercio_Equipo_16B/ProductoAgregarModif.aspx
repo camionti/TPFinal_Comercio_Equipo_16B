@@ -34,6 +34,12 @@
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select" />
             </div>
 
+            <div class="mb-3">
+                <label for="ddlProveedor" class="form-label">Proveedor</label>
+                <asp:DropDownList ID="ddlProveedor" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="txtStockActual" class="form-label">Stock Actual</label>
@@ -50,7 +56,7 @@
                     <label for="txtPorcentajeGanancia" class="form-label">Porcentaje de Ganancia (%)</label>
                     <asp:TextBox ID="txtPorcentajeGanancia" runat="server" CssClass="form-control" TextMode="Number" placeholder="Ej: 15" />
                 </div>
-    
+
             </div>
         </div>
 
@@ -63,36 +69,36 @@
 
     <!-- Modal de confirmación -->
     <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header text-white mx-auto" id="modalHeader" runat="server">
-            <asp:Label ID="lblMensajeModal" runat="server" Text=""></asp:Label>
-          </div>
-            <div ID="modalBody" class="modal-body "  runat="server" >
-                <asp:Label ID="lblMensajeError" runat="server" Text="" EnableViewState="false" />
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white mx-auto" id="modalHeader" runat="server">
+                    <asp:Label ID="lblMensajeModal" runat="server" Text=""></asp:Label>
+                </div>
+                <div id="modalBody" class="modal-body " runat="server">
+                    <asp:Label ID="lblMensajeError" runat="server" Text="" EnableViewState="false" />
+                </div>
+
+                <div class="modal-footer">
+                    <!-- Botón para éxito -->
+                    <asp:Button ID="btnVolverAlPanel" runat="server"
+                        Text="Volver al panel"
+                        CssClass="btn btn-outline-primary mx-auto"
+                        OnClick="btnVolverAlPanel_Click"
+                        CausesValidation="false" />
+
+                    <!-- Botón para error -->
+                    <button id="btnCerrarModal"
+                        runat="server"
+                        type="button"
+                        class="btn btn-outline-danger mx-auto"
+                        data-dismiss="modal">
+                        Cerrar
+                    </button>
+
+
+                </div>
             </div>
-
-          <div class="modal-footer">
-            <!-- Botón para éxito -->
-            <asp:Button ID="btnVolverAlPanel" runat="server" 
-                Text="Volver al panel" 
-                CssClass="btn btn-outline-primary mx-auto" 
-                OnClick="btnVolverAlPanel_Click" 
-                CausesValidation="false" />
-
-            <!-- Botón para error -->
-              <button id="btnCerrarModal"
-                    runat="server"
-                    type="button"
-                    class="btn btn-outline-danger mx-auto"
-                    data-dismiss="modal">
-              Cerrar
-            </button>
-
-
-          </div>
         </div>
-      </div>
-     </div>
+    </div>
 
 </asp:Content>

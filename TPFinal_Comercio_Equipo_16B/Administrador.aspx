@@ -54,6 +54,12 @@
                     runat="server"
                     ID="btnCategorias"
                     OnClick="btnCategorias_Click" />
+
+                <asp:Button Text="Usuarios"
+                    CssClass="btn btn-dark px-5 py-2 rounded-pill border fw-semibold hover-btn"
+                    runat="server"
+                    ID="btnUsuarios"
+                    OnClick="btnUsuarios_Click" />
             </div>
         </div>
     </div>

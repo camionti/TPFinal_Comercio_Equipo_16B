@@ -55,7 +55,7 @@
                         </asp:TemplateField>
 
                        
-                        <asp:TemplateField HeaderText="Eventos">
+                        <asp:TemplateField HeaderText="Baja">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnBaja" runat="server"
                                     Text="Dar de baja"

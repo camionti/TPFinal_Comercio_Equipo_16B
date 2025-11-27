@@ -443,3 +443,11 @@ GO
 
 
 select * from productos
+
+
+---BAJA USUARIOS 27/11 LOGICA
+
+USE ComercioDB
+GO
+ALTER TABLE Usuarios
+ADD Activo BIT NOT NULL DEFAULT 1;

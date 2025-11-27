@@ -21,6 +21,7 @@ namespace Dominio
         public bool Activo { get; set; }
 
         // Relacion con proveedores
+        public Proveedor Proveedor { get; set; }
         public List<Proveedor> Proveedores { get; set; } = new List<Proveedor>();
     }
 

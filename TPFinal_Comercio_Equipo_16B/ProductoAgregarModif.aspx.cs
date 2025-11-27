@@ -18,6 +18,7 @@ namespace TPFinal_Comercio_Equipo_16B
             {
                 CargarMarcas();
                 CargarCategorias();
+                CargarProveedores();
 
                 // 1) Obtener el id desde la ruta
                 var idStr = Page.RouteData.Values["id"] as string;
@@ -31,6 +32,7 @@ namespace TPFinal_Comercio_Equipo_16B
             }
         }
 
+
         private void CargarMarcas()
         {
             MarcaNegocio marcaNeg = new MarcaNegocio();
@@ -38,6 +40,15 @@ namespace TPFinal_Comercio_Equipo_16B
             ddlMarca.DataTextField = "Nombre";
             ddlMarca.DataValueField = "IdMarca";
             ddlMarca.DataBind();
+        }
+
+        private void CargarProveedores()
+        {
+            ProveedorNegocio provNeg = new ProveedorNegocio();
+            ddlProveedor.DataSource = provNeg.Listar();
+            ddlProveedor.DataTextField = "Nombre";
+            ddlProveedor.DataValueField = "IdProveedor";
+            ddlProveedor.DataBind();
         }
 
         private void CargarCategorias()
@@ -80,7 +91,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 StockActual = int.Parse(txtStockActual.Text),
                 StockMinimo = int.Parse(txtStockMinimo.Text),
                 PorcentajeGanancia = decimal.Parse(txtPorcentajeGanancia.Text),
-                //Precio = decimal.Parse(txtPrecio.Text)
+                Proveedor = new Proveedor { IdProveedor = int.Parse(ddlProveedor.SelectedValue) }
             };
 
             lblMensajeError.Text = "";

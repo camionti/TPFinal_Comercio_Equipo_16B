@@ -85,27 +85,29 @@ namespace Negocio
             }
         }
 
-       
-        public List<Venta> Buscar(int IdVenta = 0, string nombreUsuario = null, string nombreCliente = null, int? numeroFactura = 0 )
+
+        public List<Venta> Buscar(int IdVenta = 0, string nombreUsuario = null, string nombreCliente = null, int? numeroFactura = 0)
         {
             List<Venta> ventas = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
 
-            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha, V.MotivoBaja, V.Activo , U.NombreUsuario, C.Nombre NombreCliente FROM Ventas V" +
-                              " LEFT JOIN Clientes C ON C.IdCliente = V.IdCliente" +
-                              " LEFT JOIN Usuarios U ON U.IdUsuario = V.IdUsuario" +
-                              " WHERE 1=1 ";
+            string consulta = "SELECT V.IdVenta, V.IdCliente, V.IdUsuario, V.Fecha, V.MotivoBaja, V.Activo , " +
+                              "U.NombreUsuario, C.Nombre NombreCliente " +
+                              "FROM Ventas V " +
+                              "LEFT JOIN Clientes C ON C.IdCliente = V.IdCliente " +
+                              "LEFT JOIN Usuarios U ON U.IdUsuario = V.IdUsuario " +
+                              "WHERE 1=1 ";
+
             try
             {
-                //Pregunto cosas, idventa, idcliente etc
                 if (IdVenta > 0)
                     consulta += " AND V.IdVenta = @IdVenta";
                 if (!string.IsNullOrWhiteSpace(nombreUsuario))
                     consulta += " AND U.NombreUsuario LIKE @NombreUsuario";
-                if(!string.IsNullOrWhiteSpace(nombreCliente))
-                    consulta += " AND C.NombreCliente LIKE @nombreCliente";
+                if (!string.IsNullOrWhiteSpace(nombreCliente))
+                    consulta += " AND C.Nombre LIKE @NombreCliente";
                 if (numeroFactura > 0)
-                    consulta += " AND V.NumeroFactura = @numeroFactura";
+                    consulta += " AND V.NumeroFactura = @NumeroFactura";
 
                 datos.setearConsulta(consulta);
 
@@ -120,43 +122,51 @@ namespace Negocio
 
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     int id = (int)datos.Lector["IdVenta"];
                     Venta aux = ventas.Find(x => x.IdVenta == id);
 
-                    if(aux == null)
+                    if (aux == null)
                     {
                         aux = new Venta();
-                        aux.IdVenta = (int)datos.Lector["IdVenta"];
+                        aux.IdVenta = id;
+
                         aux.Cliente = new Cliente();
                         aux.Cliente.IdCliente = (int)datos.Lector["IdCliente"];
                         aux.Cliente.Nombre = (string)datos.Lector["NombreCliente"];
+
                         aux.Usuario = new Usuario();
                         aux.Usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
                         aux.Usuario.NombreUsuario = (string)datos.Lector["NombreUsuario"];
-                        //aux.NumeroFactura = (string)datos.Lector["NumeroFactura"];
+
                         aux.Fecha = (DateTime)datos.Lector["Fecha"];
-                        aux.MotivoBaja = datos.Lector["MotivoBaja"] == DBNull.Value
-                                            ? null
-                                            : (string)datos.Lector["MotivoBaja"];
+                        aux.MotivoBaja = datos.Lector["MotivoBaja"] == DBNull.Value ? null : (string)datos.Lector["MotivoBaja"];
                         aux.Activo = (bool)datos.Lector["Activo"];
+
                         ventas.Add(aux);
                     }
                 }
+
+                // 
+                DetalleVentaNegocio negocioDetalles = new DetalleVentaNegocio();
+                foreach (var venta in ventas)
+                {
+                    venta.Detalles = negocioDetalles.ListarPorVenta(venta.IdVenta);
+                }
+
                 return ventas;
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 datos.cerrarConexion();
             }
-
         }
+
 
         public void Agregar(Venta venta, List<DetalleVenta> detalles)
         {
@@ -234,31 +244,45 @@ namespace Negocio
 
         public void DarDeBaja(int idVenta, string motivo)
         {
-            AccesoDatos datos = new AccesoDatos();
-
-            datos.setearConsulta("UPDATE Ventas SET Activo = 0, MotivoBaja = @motivo WHERE IdVenta = @id");
-            datos.setearParametro("@id", idVenta);
-            datos.setearParametro("@motivo", motivo);
-            datos.ejecutarAccion();
-        }
-
-        public void Eliminar(int IdVenta)
-        {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM Ventas where IdVenta = @IdVenta");
-                datos.setearParametro("@IdVenta", IdVenta);
-                datos.ejecutarAccion();
+                // Traer la venta con los detalles incluidos
+                Venta venta = Buscar(idVenta).FirstOrDefault();
+
+                if (venta == null)
+                    throw new Exception("Error: no se encontró la venta.");
+
+                // Por cada detalle, devolver el stock
+                foreach (var det in venta.Detalles)
+                {
+                    AccesoDatos datosStock = new AccesoDatos();
+
+                    datosStock.setearConsulta(
+                        "UPDATE Productos SET StockActual = StockActual + @cantidad WHERE IdProducto = @idProducto"
+                    );
+                    datosStock.setearParametro("@cantidad", det.Cantidad);
+                    datosStock.setearParametro("@idProducto", det.Producto.IdProducto);
+
+                    datosStock.ejecutarAccion();
+                }
+
+                // Dar de baja la venta
+                AccesoDatos datosBaja = new AccesoDatos();
+
+                datosBaja.setearConsulta(
+                    "UPDATE Ventas SET Activo = 0, MotivoBaja = @motivo WHERE IdVenta = @id"
+                );
+                datosBaja.setearParametro("@id", idVenta);
+                datosBaja.setearParametro("@motivo", motivo);
+
+                datosBaja.ejecutarAccion();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            finally
-            {
-                datos.cerrarConexion();
-            }
         }
+
+
     }
 }

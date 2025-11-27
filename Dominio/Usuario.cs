@@ -25,5 +25,7 @@ namespace Dominio
             Contrasenia = contrasenia;
             Rol = administrador ? Rol.Administrador : Rol.Vendedor;
         }
+
+        public bool Activo { get; set; }
     }
 }

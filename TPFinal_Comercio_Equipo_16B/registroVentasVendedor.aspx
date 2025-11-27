@@ -62,7 +62,7 @@
                             <asp:BoundField DataField="Usuario.NombreUsuario" HeaderText="Vendedor" />
                             <asp:BoundField DataField="Cliente.Nombre" HeaderText="Cliente" />
                             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                            <asp:BoundField DataField="Total" HeaderText="Total" />
+                         
        
 
                         <asp:TemplateField HeaderText="Eventos">
@@ -126,8 +126,6 @@
                     <Columns>
                         <asp:BoundField DataField="Producto.Nombre" HeaderText="Producto" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                        <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario"
-                            DataFormatString="${0:N2}" />
                         <asp:BoundField DataField="Subtotal" HeaderText="Subtotal"
                             DataFormatString="${0:N2}" />
                     </Columns>

@@ -74,5 +74,111 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void Agregar(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta(
+                    "INSERT INTO Usuarios (NombreUsuario, Contrasenia, Rol, Activo) " +
+                    "VALUES (@NombreUsuario, @Contrasenia, @Rol, 1)");
+
+                datos.setearParametro("@NombreUsuario", usuario.NombreUsuario);
+                datos.setearParametro("@Contrasenia", usuario.Contrasenia);
+                datos.setearParametro("@Rol", (int)usuario.Rol);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Modificar(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta(
+                    "UPDATE Usuarios SET NombreUsuario = @NombreUsuario, " +
+                    "Contrasenia = @Contrasenia, Rol = @Rol " +
+                    "WHERE IdUsuario = @IdUsuario");
+
+                datos.setearParametro("@NombreUsuario", usuario.NombreUsuario);
+                datos.setearParametro("@Contrasenia", usuario.Contrasenia);
+                datos.setearParametro("@Rol", (int)usuario.Rol);
+                datos.setearParametro("@IdUsuario", usuario.IdUsuario);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+ 
+        public void Eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta(
+                    "UPDATE Usuarios SET Activo = 0 WHERE IdUsuario = @IdUsuario");
+
+                datos.setearParametro("@IdUsuario", id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Usuario> Listar()
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT IdUsuario, NombreUsuario, Contrasenia, Rol, Activo FROM Usuarios WHERE Activo = 1");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario u = new Usuario();
+                    u.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    u.NombreUsuario = (string)datos.Lector["NombreUsuario"];
+                    u.Contrasenia = (string)datos.Lector["Contrasenia"];
+                    u.Rol = (Rol)(int)datos.Lector["Rol"];
+                    u.Activo = (bool)datos.Lector["Activo"];
+
+                    lista.Add(u);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

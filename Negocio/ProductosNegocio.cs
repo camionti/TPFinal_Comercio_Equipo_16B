@@ -23,7 +23,7 @@ namespace Negocio
                 if (estado == true)
                     consulta += " AND P.Activo = 1";
 
-                if(estado == false)
+                if (estado == false)
                     consulta += " AND P.Activo = 0";
 
                 datos.setearConsulta(consulta);
@@ -197,9 +197,12 @@ namespace Negocio
             try
             {
 
-                datos.setearConsulta("INSERT INTO Productos (Nombre, IdMarca, IdCategoria, StockActual, StockMinimo, PorcentajeGanancia, Precio, Activo) " +
-                    "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, 1)");
+                datos.setearConsulta(
+                     "INSERT INTO Productos (Nombre, IdMarca, IdCategoria, StockActual, StockMinimo, PorcentajeGanancia, Precio, IdProveedor, Activo) " +
+                     "VALUES (@Nombre, @IdMarca, @IdCategoria, @StockActual, @StockMinimo, @PorcentajeGanancia, @Precio, @IdProveedor, 1)"
+                 );
 
+                datos.setearParametro("@IdProveedor", nuevo.Proveedor.IdProveedor);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@IdMarca", nuevo.Marca.IdMarca);
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.IdCategoria);
