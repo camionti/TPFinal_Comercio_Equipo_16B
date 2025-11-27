@@ -56,7 +56,30 @@
                     <label for="txtPorcentajeGanancia" class="form-label">Porcentaje de Ganancia (%)</label>
                     <asp:TextBox ID="txtPorcentajeGanancia" runat="server" CssClass="form-control" TextMode="Number" placeholder="Ej: 15" />
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="txtPrecio" class="form-label">Precio</label>
 
+                    <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" placeholder="Ej: 15000000" />
+
+                    <asp:RegularExpressionValidator
+                        ID="revPrecio"
+                        runat="server"
+                        ControlToValidate="txtPrecio"
+                        ValidationExpression="^\d+$"
+                        ErrorMessage="Solo se permiten números"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
+
+                    <asp:RequiredFieldValidator
+                        ID="reqPrecio"
+                        runat="server"
+                        ControlToValidate="txtPrecio"
+                        ErrorMessage="El precio es obligatorio"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
+                </div>
             </div>
         </div>
 

@@ -18,6 +18,7 @@ namespace TPFinal_Comercio_Equipo_16B
             // 1) Obtener el id desde la ruta
             var idStr = Page.RouteData.Values["id"] as string;
 
+
             if (!int.TryParse(idStr, out int id))
             {
                 //Si no puede parsear el ID vuelve a la pagina anterior del historial

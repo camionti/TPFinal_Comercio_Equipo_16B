@@ -73,6 +73,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 txtStockActual.Text = prod.StockActual.ToString();
                 txtStockMinimo.Text = prod.StockMinimo.ToString();
                 txtPorcentajeGanancia.Text = prod.PorcentajeGanancia.ToString("0.##");
+                txtPrecio.Text = prod.Precio.ToString();
                 //txtPrecio.Text = prod.Precio.ToString("0.##");
             }
         }

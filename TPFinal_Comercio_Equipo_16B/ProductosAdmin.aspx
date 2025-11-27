@@ -81,7 +81,6 @@
                     <asp:BoundField DataField="Categoria.Descripcion" HeaderText="Categoria" />
                     <asp:BoundField DataField="StockActual" HeaderText="Stock" />
                     <asp:BoundField DataField="PorcentajeGanancia" HeaderText="% Ganancia" DataFormatString="{0:0.#}%" />
-
                 <asp:TemplateField HeaderText="Eventos">
                     <ItemTemplate >
                         <div class="d-inline-flex gap-3 align-items-center justify-content-center">
