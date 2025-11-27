@@ -56,8 +56,7 @@
                     <label for="txtPorcentajeGanancia" class="form-label">Porcentaje de Ganancia (%)</label>
                     <asp:TextBox ID="txtPorcentajeGanancia" runat="server" CssClass="form-control" TextMode="Number" placeholder="Ej: 15" />
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-md-6 mb-3">
                     <label for="txtPrecio" class="form-label">Precio</label>
 

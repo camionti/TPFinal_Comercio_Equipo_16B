@@ -91,6 +91,7 @@ namespace TPFinal_Comercio_Equipo_16B
                 Categoria = new Categoria { IdCategoria = int.Parse(ddlCategoria.SelectedValue) },
                 StockActual = int.Parse(txtStockActual.Text),
                 StockMinimo = int.Parse(txtStockMinimo.Text),
+                Precio = decimal.Parse(txtPrecio.Text),
                 PorcentajeGanancia = decimal.Parse(txtPorcentajeGanancia.Text),
                 Proveedor = new Proveedor { IdProveedor = int.Parse(ddlProveedor.SelectedValue) }
             };
