@@ -319,13 +319,23 @@ namespace TPFinal_Comercio_Equipo_16B
             Usuario usuario = (Usuario)Session["usuario"];
             compra.IdUsuario = usuario.IdUsuario;
 
-            CompraNegocio negocio = new CompraNegocio();
-            negocio.AgregarCompra(compra);
+            try
+            {
+                CompraNegocio negocio = new CompraNegocio();
+                negocio.AgregarCompra(compra);
 
 
-            Session["DetallesCompra"] = null;
-            gvDetalles.DataSource = null;
-            gvDetalles.DataBind();
+                Session["DetallesCompra"] = null;
+                gvDetalles.DataSource = null;
+                gvDetalles.DataBind();
+
+                mostrarMensajeExito();
+            }
+            catch (Exception ex)
+            {
+                lblMensajeError.Text = ex.ToString();
+                mostrarError();
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -407,7 +417,7 @@ namespace TPFinal_Comercio_Equipo_16B
         private void mostrarMensajeExito()
         {
 
-            lblMensajeModal.Text = "Venta creada correctamente";
+            lblMensajeModal.Text = "Compra creada correctamente";
             modalHeader.Attributes["class"] = "modal-header bg-success text-white";
             btnCerrarModal.Visible = false;
             btnVolverAlPanel.Visible = true;
