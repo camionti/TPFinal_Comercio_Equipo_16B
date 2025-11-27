@@ -352,6 +352,11 @@ namespace TPFinal_Comercio_Equipo_16B
             Response.Redirect("DetalleCompras.aspx");
         }
 
+        protected void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ProductoAgregarModif.aspx");
+        }
+
         // ---------- Validaciones ----------
 
         protected bool validarInputs()

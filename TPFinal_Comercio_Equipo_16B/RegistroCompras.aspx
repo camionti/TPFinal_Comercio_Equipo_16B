@@ -101,8 +101,9 @@
             </div>
 
             <div class="card-footer d-flex justify-content-end">
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-danger mr-3" OnClick="btnCancelar_Click" CausesValidation="false" />
-                <asp:Button ID="btnGuardarCompra" runat="server" CssClass="btn" Text="Generar Compra" OnClick="btnGuardarCompra_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-danger ml-3" OnClick="btnCancelar_Click" CausesValidation="false" />
+                <asp:Button ID="btnGuardarCompra" runat="server" CssClass="btn ml-3" Text="Generar Compra" OnClick="btnGuardarCompra_Click" />
+                <asp:Button ID="btnAgregarProducto" runat="server" CssClass="btn btn-primary " Text="Agregar Producto" OnClick="btnAgregarProducto_Click" />
             </div>
         </div>
 
